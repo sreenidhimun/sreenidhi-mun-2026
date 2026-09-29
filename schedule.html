@@ -77,6 +77,64 @@
       <p class="deck" data-reveal data-reveal-delay="0.35">The full conference schedule will be published here.</p>
       <div class="rule" data-draw data-reveal-delay="0.4"></div>
     </header>
+
+    <section class="section stop-press" aria-labelledby="stop-press-title">
+      <div class="container">
+        <div class="notice" data-reveal>
+          <div class="notice__inner">
+            <p class="kicker">Stop Press</p>
+            <h2 id="stop-press-title" class="notice__title notice__title--big">Programme to be announced.</h2>
+            <p class="notice__text">The complete three-day schedule is being finalised and will appear here shortly. Check back soon, or follow us on Instagram for the announcement.</p>
+            <div class="notice__actions">
+              <a class="btn btn--ghost" data-site-href="instagram" href="https://www.instagram.com/sreenidhi.mun/" target="_blank" rel="noopener">Follow on Instagram <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+              <a class="btn btn--primary" href="registrations.html">Register meanwhile <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <span class="stamp stamp--soon" aria-hidden="true">Coming Soon</span>
+        </div>
+
+        <!-- SCHEDULE — for now a faint "ghost" preview of the three-day layout.
+             When the programme is ready, replace the ghost rows with real ones
+             (same markup: .day__time + .day__event with text inside) and remove
+             the "schedule--ghost" class and aria-hidden, or load them from a
+             future data/schedule.json. -->
+        <div class="schedule schedule--ghost" aria-hidden="true" data-reveal>
+          <div class="day">
+            <p class="day__label">Day I</p>
+            <p class="day__date">[ Date ]</p>
+            <ul class="day__rows" role="list">
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <p class="day__label">Day II</p>
+            <p class="day__date">[ Date ]</p>
+            <ul class="day__rows" role="list">
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+            </ul>
+          </div>
+          <div class="day">
+            <p class="day__label">Day III</p>
+            <p class="day__date">[ Date ]</p>
+            <ul class="day__rows" role="list">
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
+              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="chrome-bottom"></div>

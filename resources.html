@@ -78,6 +78,55 @@
       <p class="deck" data-reveal data-reveal-delay="0.35">Videos, documents and trusted external guides to prepare you for committee — whether it’s your first conference or your fifteenth.</p>
       <div class="rule" data-draw data-reveal-delay="0.4"></div>
     </header>
+
+    <section class="section resources" aria-label="Resource library">
+      <div class="container">
+        <div class="res-toolbar" data-reveal>
+          <div class="res-tabs" role="tablist" aria-label="Filter resources by type">
+            <button class="res-tab" role="tab" type="button" id="tab-all" data-type="all" aria-selected="true" aria-controls="res-panel">All</button>
+            <button class="res-tab" role="tab" type="button" id="tab-videos" data-type="videos" aria-selected="false" aria-controls="res-panel" tabindex="-1">Videos</button>
+            <button class="res-tab" role="tab" type="button" id="tab-documents" data-type="documents" aria-selected="false" aria-controls="res-panel" tabindex="-1">Documents</button>
+            <button class="res-tab" role="tab" type="button" id="tab-iimun" data-type="iimun" aria-selected="false" aria-controls="res-panel" tabindex="-1">IIMUN Resources</button>
+          </div>
+          <div class="res-search">
+            <label class="sr-only" for="res-q">Search resources</label>
+            <span class="res-search__icon" aria-hidden="true">⌕</span>
+            <input id="res-q" class="res-search__input" type="search" placeholder="Search resources…" autocomplete="off">
+          </div>
+        </div>
+
+        <div id="res-panel" class="res-panel" role="tabpanel" aria-labelledby="tab-all" data-res-panel>
+          <section class="res-group" data-group="videos" aria-labelledby="videos-title">
+            <header class="section-head" data-reveal>
+              <div class="section-head__title"><span class="numeral" aria-hidden="true">01</span><h2 id="videos-title" class="h-section">Videos</h2></div>
+              <span class="meta">Watch in place</span>
+            </header>
+            <div class="rule" data-draw></div>
+            <div class="res-videos" data-list="videos"></div>
+          </section>
+
+          <section class="res-group" data-group="documents" aria-labelledby="docs-title">
+            <header class="section-head" data-reveal>
+              <div class="section-head__title"><span class="numeral" aria-hidden="true">02</span><h2 id="docs-title" class="h-section">Documents</h2></div>
+              <span class="meta">MUN Club Docs</span>
+            </header>
+            <div class="rule" data-draw></div>
+            <ul class="res-docs" role="list" data-list="documents"></ul>
+          </section>
+
+          <section class="res-group" data-group="iimun" aria-labelledby="iimun-title">
+            <header class="section-head" data-reveal>
+              <div class="section-head__title"><span class="numeral" aria-hidden="true">03</span><h2 id="iimun-title" class="h-section">IIMUN Resources</h2></div>
+              <span class="meta">External — with source</span>
+            </header>
+            <div class="rule" data-draw></div>
+            <div class="res-iimun" data-list="iimun"></div>
+          </section>
+
+          <p class="res-empty" data-empty role="status" hidden></p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="chrome-bottom"></div>

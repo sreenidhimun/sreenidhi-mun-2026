@@ -10,7 +10,7 @@
 - [x] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
 - [x] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
 - [x] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
-- [ ] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
+- [x] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
 - [ ] **Phase 8 — Motion pass:** reveal system everywhere, §14.12–14.13 polish, timing tune, refresh after fonts/images, pins after transitions/resize
 - [ ] **Phase 9 — QA:** SPEC §13 checklist; desktop / touch / reduced motion; JSON validity; console; links; 390px overflow; screenshots vs /design
 - [x] **Phase 10 — Handover:** README.md; final PROGRESS.md (built, decisions, known issues, placeholders by file)
@@ -82,3 +82,8 @@
 - `js/allocation-search.js`: ✦ section head, pill search (56px, green focus ring), Delegates / International Press toggles (`aria-pressed`), CSV fetched once per sheet and cached, quote-aware parser, 150ms debounce, ≥2 characters, max 5 matches, matched text highlighted, only the four configured columns ever shown. States: idle hint, loading skeletons, results (stagger in), "No match for '…'. Can't find your name? Email …", and "Allocations aren't published yet — check back soon" (empty link or fetch error). Verified with an in-memory CSV (quoted commas, escaped quotes, accents, extra columns hidden).
 - Info row with the site email + Copy button.
 - **Note for testing locally:** Python's built-in server occasionally resets a connection when a page requests many files at once; a refresh fixes it (not an issue on Netlify/GitHub Pages).
+
+### Phase 7 — Schedule & Resources ✅
+- `schedule.html` + `css/pages/schedule.css`: Stop Press notice (double border, COMING SOON stamp, Instagram link bound to `site.instagram`, "Register meanwhile"), ghost three-day preview at 40% with column rules, `aria-hidden`. The ghost uses the same `.day / .day__time / .day__event` markup a real programme would use (instructions in an HTML comment).
+- `resources.html` + `js/resources.js` + `css/pages/resources.css`: `role="tablist"` pills (All / Videos / Documents / IIMUN Resources, ←/→ keys), search (title + description, case-insensitive, 120ms debounce), empty state "No resources match '…'.", address bar kept in sync (`?type=videos&q=…`, shareable, restored on load), GSAP Flip reflow with fade/scale enter/leave. Videos: YouTube thumbnail from the id (or placeholder art), 56px play circle, click swaps in a `youtube-nocookie.com` player (autoplay) in place, "Play ▶" cursor, thumbnail scale 1.04 on hover. Documents: file icon with type label, meta line, Download ↓ (or "Coming soon" when no file). IIMUN cards credit "Source: IIMUN" and open in a new tab; placeholder links (`#`) render as non-links with "Link coming soon".
+- **Decision:** videos without a `youtubeId` show "Video coming soon" and aren't clickable (instead of a broken player).

@@ -1,3 +1,155 @@
 /* ==========================================================================
-   SMUN XIV — resources page styles
+   SMUN XIV — Training Resources
+   1. Toolbar   2. Videos   3. Documents   4. IIMUN cards
    ========================================================================== */
+.resources { padding-top: clamp(32px, 4vw, 56px); }
+.res-group { margin-bottom: clamp(56px, 7vw, 88px); }
+.res-group:last-of-type { margin-bottom: 0; }
+
+/* ---------- 1. Toolbar ---------- */
+.res-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.res-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.res-tab {
+  padding: 10px 18px;
+  border: 1px solid rgba(26, 38, 32, .2);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  transition: background-color .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out);
+}
+.res-tab:hover { border-color: var(--ink); }
+.res-tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--card); }
+.res-search { position: relative; width: min(360px, 100%); }
+.res-search__icon { position: absolute; left: 20px; top: 50%; translate: 0 -50%; pointer-events: none; }
+.res-search__input {
+  width: 100%;
+  height: 46px;
+  padding: 0 20px 0 44px;
+  border: 1px solid rgba(26, 38, 32, .2);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.res-search__input::placeholder { color: rgba(26, 38, 32, .5); }
+.res-search__input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.res-empty {
+  padding: 32px 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--muted);
+}
+
+/* ---------- 2. Videos ---------- */
+.res-videos { display: grid; gap: 32px 24px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) { .res-videos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.video__thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--sage);
+  padding: 0;
+}
+.video__thumb > .ph, .video__thumb > img {
+  width: 100%;
+  height: 100%;
+  transition: transform .5s var(--ease-out);
+}
+.video__thumb:hover > .ph, .video__thumb:hover > img,
+.video__thumb:focus-visible > .ph, .video__thumb:focus-visible > img { transform: scale(1.04); }
+.video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+}
+.video__play svg { width: 18px; height: 18px; margin-left: 3px; }
+.video__thumb--soon .video__play { opacity: .7; }
+.video__thumb--soon .ph__label { z-index: 1; }
+.video__frame { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; }
+.video__kicker { margin-top: 16px; }
+.video__dur { margin-left: 8px; font-weight: 500; letter-spacing: .04em; text-transform: none; color: var(--muted); }
+.video__title { margin-top: 8px; font-family: var(--font-display); font-weight: 400; font-size: 21px; line-height: 1.3; }
+
+/* ---------- 3. Documents ---------- */
+.res-docs { list-style: none; margin: 0; padding: 0; }
+.doc {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas: "icon title" "icon meta" "icon action";
+  column-gap: 20px;
+  row-gap: 4px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+@media (min-width: 768px) {
+  .doc { grid-template-columns: 40px minmax(0, 1fr) auto auto; grid-template-areas: "icon title meta action"; column-gap: 24px; }
+}
+.doc__icon {
+  grid-area: icon;
+  position: relative;
+  width: 40px;
+  height: 50px;
+  background: var(--card);
+  border: 1px solid rgba(26, 38, 32, .18);
+}
+.doc__icon span {
+  position: absolute;
+  left: 0; right: 0; bottom: 8px;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 8px;
+  letter-spacing: .12em;
+  color: var(--terra-ink);
+}
+.doc__title { grid-area: title; font-family: var(--font-display); font-weight: 400; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.25; }
+.doc__meta { grid-area: meta; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
+.doc__dl, .doc__soon { grid-area: action; font-size: 13px; }
+.doc__soon { font-family: var(--font-ui); color: var(--muted); }
+
+/* ---------- 4. IIMUN cards (always credited) ---------- */
+.res-iimun { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) { .res-iimun { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.iimun {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  background: var(--card);
+  border: 1px solid rgba(26, 38, 32, .12);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color .3s var(--ease-out), box-shadow .3s var(--ease-out), transform .3s var(--ease-out);
+}
+a.iimun:hover, a.iimun:focus-visible { border-color: rgba(26, 38, 32, .35); box-shadow: 0 12px 28px rgba(26, 38, 32, .1); transform: translateY(-4px); }
+.iimun__top { display: flex; justify-content: space-between; align-items: center; }
+.iimun__arrow { font-family: var(--font-ui); color: var(--green); }
+.iimun__title { margin-top: 22px; font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 2vw, 26px); line-height: 1.2; }
+.iimun__desc { margin-top: 12px; font-family: var(--font-display); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--muted); }
+.iimun__note { margin-top: 18px; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
+.iimun--soon .iimun__arrow { opacity: .4; }
