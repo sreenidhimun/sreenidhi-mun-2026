@@ -417,8 +417,10 @@
 .nl-desktop {
   position: relative;
   grid-template-columns: 230px minmax(0, 1fr) 330px;
+  align-content: start;
   column-gap: 22px;
   padding-block: 24px;
+  min-height: 530px;            /* room for the portrait even when the list is short */
 }
 .nl-caption {
   position: absolute;

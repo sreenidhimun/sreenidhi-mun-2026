@@ -8,7 +8,7 @@
 - [x] **Phase 2 — Home layout:** hero, fact strip, opening image, countdown, letter + envelope markup, collage, contact & map, partners, full footer
 - [x] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
 - [x] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
-- [ ] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
+- [x] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
 - [ ] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
 - [ ] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
 - [ ] **Phase 8 — Motion pass:** reveal system everywhere, §14.12–14.13 polish, timing tune, refresh after fonts/images, pins after transitions/resize
@@ -70,3 +70,9 @@
 - Mobile/touch: scroll-snap cards (82vw, alternating ±1.5°), "← swipe →", dots pager synced with an IntersectionObserver; tap → same drawer (full-screen on phones).
 - `js/secretariat.js` loads `data/secretariat.json` and staggers the list in.
 - **Decisions:** real names are long ("Vyshnavi Reddy Mandipalli"), so the list auto-fits: if the widest name (bold, ×1.1, +18px) wouldn't fit its column, the whole list's font-size shrinks (≈43px at 1440 instead of 58px) rather than colliding with the portrait. The portrait is also clickable (opens the active person) and shows a "Read →" cursor.
+
+### Phase 5 — Committees ✅
+- `js/committees.js`: index rows from `data/committees.json` (roman numeral, logo circle — image or colour + abbreviation, name, agenda, arrow → "Open →"); floating 200px logo that follows the pointer (+40, −100) with `quickTo`, tilts with horizontal velocity (±8°, settles to −4°), pops in with `back.out(1.7)`, cross-fades between committees, shrinks away when leaving the list (desktop + motion only).
+- `committee.html?id=slug`: breadcrumb, hero (logo 240/140px, "Committee III", name, agenda in curly quotes), fact strip, 01 Executive Board via `initNameList` (with the design's bio excerpt under the list, portraits in the committee colour), 02 Background Guide card (CSS paper stack that lifts/fans on hover; download + preview when `guide.pdf` is set, otherwise a disabled "Background guide coming soon"), back link, page title/description/OG updated from the data, friendly not-found state.
+- `css/pages/committees.css`.
+- **Decisions:** row hover moves the content 24px with a transform (not padding) so nothing reflows; the section meta reads "Tap a name" on touch devices; committee logo placeholder shows the abbreviation (from CONTENT.md) instead of the design's "–".
