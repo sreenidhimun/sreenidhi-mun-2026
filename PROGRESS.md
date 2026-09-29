@@ -5,7 +5,7 @@
 ## Phase plan
 - [x] **Phase 0 — Foundations:** file structure, tokens/base/components CSS, grain.svg, data.js, all /data/*.json
 - [x] **Phase 1 — Motion core + shared chrome:** smooth.js (Lenis ↔ ScrollTrigger), chrome.js + main.js (dateline, masthead, mobile menu, glass pill, progress line, footers), transitions.js, cursor.js, magnetic.js, all 7 pages + 404 with heads/skeletons/page headers
-- [ ] **Phase 2 — Home layout:** hero, fact strip, opening image, countdown, letter + envelope markup, collage, contact & map, partners, full footer
+- [x] **Phase 2 — Home layout:** hero, fact strip, opening image, countdown, letter + envelope markup, collage, contact & map, partners, full footer
 - [ ] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
 - [ ] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
 - [ ] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
@@ -45,3 +45,10 @@
   - A 5-second failsafe in each page's `<head>` shows all content if scripts fail to load.
   - Committees deck uses the design's wording ("Hover a committee to preview its emblem…") with a touch variant ("Tap a committee…"), same approach as the Secretariat deck.
   - `.h-page` tracking −.012em so "The Minds Behind SMUN XIV." fits one line at 1440 like the design.
+
+### Phase 2 — Home layout ✅
+- `index.html`: loader markup (inline scales SVG, cleaned of metadata, flame wrapped in `<g id="flame">` so it can scale from its base), hero, fact strip, opening image, 01 countdown, 02 letter + envelope (back / pocket / flap / seal as *siblings* of the letter inside `.letter-stage` so the letter can slide between the envelope's back and pocket), 03 collage, 04 contact + map, 05 partners.
+- `css/pages/home.css`: all home sections + loader + lightbox styles; mobile-first (hero figure first on phones, 2×2 fact strip and countdown, 2-column collage with half rotations).
+- `js/home.js`: renders letter paragraphs, collage prints (placeholder art when `src` is empty), contact rows (tel:/mailto: links on touch), map iframe + directions link from `contact.mapQuery`, partner mailto with subject, countdown with all states (no date / counting / in session / concluded) and an SR-only text updated each minute.
+- `js/main.js`: site-wide `[data-copy]` / `[data-copy-from]` copy buttons (Clipboard API + textarea fallback, "Copied ✓" 1.8s, announced via live region).
+- **Decisions:** collage note combines the design's "Click any photograph to enlarge." with the spec's "More photographs coming after the conference."; countdown caption left-aligned as in the design (spec said centred); placeholder label on the opening image sits bottom-left as in the design. Reduced-motion/static letter layout follows the PNG: letter in front, closed envelope + wax seal beneath.

@@ -9,8 +9,8 @@
    Page scripts import what they need from here, e.g.
      import { site, ready, reveal, refreshSoon } from './main.js';
    ========================================================================== */
-import { reduce, canHover, isTouch, gsapReady, motionOK, fontsReady, qs, qsa, trapFocus } from './motion/env.js';
-import { bindSite, loadLogo, writeCache } from './chrome.js';
+import { reduce, canHover, isTouch, gsapReady, motionOK, fontsReady, qs, qsa, trapFocus, announce } from './motion/env.js';
+import { bindSite, loadLogo, writeCache, getPath } from './chrome.js';
 import { fetchJSON } from './data.js';
 import { initSmooth, stopScroll, startScroll } from './motion/smooth.js';
 import { initTransitions } from './motion/transitions.js';
@@ -72,6 +72,7 @@ if (canHover && !reduce) {
 initMenu();
 initPill();
 initProgress();
+initCopyButtons();
 
 ready.then(() => reveal(document));
 
@@ -184,6 +185,51 @@ function initProgress() {
     };
     window.addEventListener('scroll', update, { passive: true });
     update();
+  }
+}
+
+/* ==========================================================================
+   Copy buttons (anywhere on the site)
+     <button data-copy="text to copy">Copy</button>
+     <button data-copy-from="contact.email">Copy</button>   ← value from site.json
+   The button says "Copied ✓" for 1.8s and screen readers hear it too.
+   ========================================================================== */
+function initCopyButtons() {
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-copy], [data-copy-from]');
+    if (!btn) return;
+    let text = btn.dataset.copy;
+    if (!text && btn.dataset.copyFrom) text = getPath(await site, btn.dataset.copyFrom);
+    if (!text) return;
+    const ok = await copyText(String(text));
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+    btn.textContent = ok ? 'Copied ✓' : 'Select & copy';
+    btn.classList.toggle('is-done', ok);
+    announce(ok ? `Copied to clipboard: ${text}` : 'Could not copy automatically.');
+    clearTimeout(btn._copyTimer);
+    btn._copyTimer = setTimeout(() => {
+      btn.textContent = btn.dataset.label;
+      btn.classList.remove('is-done');
+    }, 1800);
+  });
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    // Older browsers / non-secure pages: fall back to a hidden textarea.
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(area);
+    area.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch { ok = false; }
+    area.remove();
+    return ok;
   }
 }
 

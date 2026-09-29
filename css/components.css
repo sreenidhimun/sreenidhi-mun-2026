@@ -382,6 +382,7 @@
 
 /* ---------- 11. Placeholder art (never show broken images) ---------- */
 .ph {
+  display: block;
   position: relative;
   overflow: hidden;
   background: var(--ph, var(--sage));

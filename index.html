@@ -67,6 +67,51 @@
 </head>
 <body data-page="home" data-footer="full">
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= LOADER (first visit only — see js/loader.js) ================= -->
+  <div class="loader" id="loader" role="dialog" aria-label="Loading Sreenidhi Model United Nations">
+    <div class="loader__top">
+      <span class="meta">Sreenidhi Model United Nations</span>
+      <span class="meta">Vol. XIV — 2026</span>
+    </div>
+    <div class="loader__stage">
+      <!-- Scales of Justice (from assets/svg/scales.svg). The beam turns around 260,80;
+           the pans are moved separately so they always hang straight down. -->
+      <svg class="loader__scales" viewBox="0 0 520 420" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F28C28" stop-opacity=".55"/>
+            <stop offset="60%" stop-color="#F28C28" stop-opacity=".18"/>
+            <stop offset="100%" stop-color="#F28C28" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g fill="none" stroke="#1A2620" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle id="glow" cx="260" cy="52" r="90" fill="url(#glowGrad)" stroke="none" opacity="0"/>
+          <path id="pillar" d="M260 80 L260 340"/>
+          <path id="base" d="M188 340 L332 340"/>
+          <path id="foot" d="M219 340 L234 322 L286 322 L301 340"/>
+          <g id="beam-assembly"><path id="beam" d="M90 80 L430 80"/></g>
+          <g id="pan-left" class="pan">
+            <path class="chain" d="M90 80 L39 185 M90 80 L141 185"/>
+            <path class="bowl" d="M31 185 C39 222 141 222 149 185 Z"/>
+          </g>
+          <g id="pan-right" class="pan">
+            <path class="chain" d="M430 80 L379 185 M430 80 L481 185"/>
+            <path class="bowl" d="M371 185 C379 222 481 222 489 185 Z"/>
+          </g>
+          <circle id="knob" cx="260" cy="80" r="7" fill="#F4EEE2"/>
+          <g id="flame" opacity="0">
+            <path transform="translate(248 32) scale(.4)" fill="#F28C28" stroke="none"
+              d="M30 0 C45 25 60 40 60 62 C60 82 46 96 30 96 C14 96 0 82 0 62 C0 45 12 35 18 20 C20 34 26 40 30 42 C28 28 26 14 30 0 Z"/>
+          </g>
+        </g>
+      </svg>
+      <p class="loader__caption">Weighing the arguments…</p>
+      <p class="kicker loader__pct" aria-hidden="true"><span data-loader-pct>0</span>%</p>
+    </div>
+    <button class="loader__skip" type="button" data-loader-skip>Skip <span aria-hidden="true">→</span></button>
+    <div class="loader__line" aria-hidden="true" data-loader-line></div>
+  </div>
   <noscript>
     <nav class="container noscript-nav" aria-label="Main">
       <a href="index.html">Home</a> · <a href="secretariat.html">Secretariat</a> · <a href="committees.html">Committees</a> ·
@@ -76,7 +121,187 @@
   <div id="chrome-top"></div>
 
   <main id="main" tabindex="-1">
-    <!-- HOME SECTIONS -->
+    <!-- ================= HERO ================= -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="kicker hero__kicker" data-hero-item>№ 14 — The 2026 Edition</p>
+          <h1 id="hero-title" class="h-hero hero__title" data-hero-title>Sreenidhi<br>Model United<br><em>Nations</em><span class="hero__dot">.</span></h1>
+          <p class="deck hero__deck" data-hero-item>Three days of debate, diplomacy and dialogue — where the next generation of leaders takes the floor.</p>
+          <div class="hero__actions" data-hero-item>
+            <a class="btn btn--primary" href="registrations.html">Register as Delegate <span aria-hidden="true">→</span></a>
+            <a class="link-underline" href="#letter">Read the Secretary-General’s letter</a>
+          </div>
+        </div>
+        <figure class="hero__figure" data-hero-item>
+          <div class="hero__emblem-wrap" role="img" aria-label="The SMUN emblem: an orange flame in a cream roundel">
+            <span class="hero__glow" aria-hidden="true" data-hero-glow></span>
+            <span class="emblem hero__emblem" data-emblem></span>
+          </div>
+          <span class="hero__fig-rule" aria-hidden="true"></span>
+          <figcaption class="caption">Fig. 1 — The Flame of Sreenidhi,<br>ignited on arrival.</figcaption>
+        </figure>
+      </div>
+
+      <div class="rule" data-draw></div>
+      <dl class="facts hero__facts" data-reveal-stagger>
+        <div class="facts__cell"><dt class="kicker">Dates</dt><dd class="facts__value" data-site-text="dates">[ Conference Dates ]</dd></div>
+        <div class="facts__cell"><dt class="kicker">Venue</dt><dd class="facts__value" data-site-text="venue">Sreenidhi International School</dd></div>
+        <div class="facts__cell"><dt class="kicker">Committees</dt><dd class="facts__value" data-site-text="committeesCount" data-count>[ 10 ]</dd></div>
+        <div class="facts__cell"><dt class="kicker">Delegates</dt><dd class="facts__value" data-site-text="delegatesCount" data-count>[ 600+ ]</dd></div>
+      </dl>
+      <div class="rule" data-draw></div>
+    </section>
+
+    <!-- ================= OPENING IMAGE ================= -->
+    <section class="opening container" aria-label="Opening photograph">
+      <figure class="opening__figure">
+        <button class="opening__frame" type="button" data-cursor="view" data-opening aria-label="Enlarge the opening photograph">
+          <span class="opening__media" data-opening-media>
+            <span class="ph" style="--ph:#5E6F63" aria-hidden="true">
+              <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice"><circle cx="300" cy="44" r="13" fill="#fff" fill-opacity=".28"/><path d="M-10 164 L112 102 L250 164 Z" fill="#fff" fill-opacity=".2"/><path d="M150 164 L292 88 L430 144 L430 164 Z" fill="#fff" fill-opacity=".14"/><rect y="164" width="400" height="20" fill="#000" fill-opacity=".05"/></svg>
+              <span class="ph__label">Opening image — Conference photo</span>
+            </span>
+          </span>
+        </button>
+        <figcaption class="opening__caption">
+          <span class="caption" data-site-text="openingImage.caption">Fig. 2 — The General Assembly in session, SMUN 2025.</span>
+          <span class="meta">Photo: <span data-site-text="openingImage.credit">[ Credit ]</span></span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= 01 COUNTDOWN ================= -->
+    <section class="section countdown" aria-labelledby="countdown-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__title"><span class="numeral" aria-hidden="true">01</span><h2 id="countdown-title" class="h-section">The Countdown</h2></div>
+          <span class="meta">Until the gavel falls</span>
+        </header>
+        <div class="rule" data-draw></div>
+        <div class="countdown__grid" data-countdown aria-hidden="true">
+          <div class="countdown__cell"><div class="countdown__digits" data-unit="days">00</div><p class="countdown__label">Days</p></div>
+          <div class="countdown__cell"><div class="countdown__digits" data-unit="hours">00</div><p class="countdown__label">Hours</p></div>
+          <div class="countdown__cell"><div class="countdown__digits" data-unit="minutes">00</div><p class="countdown__label">Minutes</p></div>
+          <div class="countdown__cell"><div class="countdown__digits" data-unit="seconds">00</div><p class="countdown__label">Seconds</p></div>
+        </div>
+        <p class="sr-only" data-countdown-sr>Countdown to SMUN XIV.</p>
+        <p class="caption countdown__caption" data-countdown-caption data-reveal>Days until the gavel falls · Day I begins [ date, time ]</p>
+      </div>
+    </section>
+
+    <!-- ================= 02 LETTER ================= -->
+    <section class="section section--deep letter-section" id="letter" aria-labelledby="letter-title" data-letter-section>
+      <div class="container">
+        <header class="section-head" data-reveal data-letter-head>
+          <div class="section-head__title"><span class="numeral" aria-hidden="true">02</span><h2 id="letter-title" class="h-section">A Letter from the Secretary-General</h2></div>
+          <span class="meta">Correspondence</span>
+        </header>
+        <div class="rule" data-draw></div>
+
+        <!-- The stage holds the envelope parts and the letter as siblings, so the
+             letter can sit between the envelope's back and its front pocket. -->
+        <div class="letter-stage" data-letter-stage>
+          <div class="envelope" aria-hidden="true" data-envelope>
+            <div class="envelope__back" data-env-part></div>
+            <svg class="envelope__pocket" data-env-part data-env-pocket viewBox="0 0 100 56" preserveAspectRatio="none">
+              <path d="M0 0 L50 30 L100 0 L100 56 L0 56 Z" fill="#E9DCC2"/>
+              <path d="M0 0 L50 30 L100 0" fill="none" stroke="rgba(26,38,32,.16)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <svg class="envelope__flap" data-env-part data-env-flap viewBox="0 0 100 56" preserveAspectRatio="none">
+              <path d="M0 0 L100 0 L50 32 Z" fill="#D9C8A6" stroke="rgba(26,38,32,.15)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <div class="envelope__seal" data-env-part data-env-seal>
+              <svg viewBox="0 0 60 96"><path fill="#F28C28" d="M30 0 C45 25 60 40 60 62 C60 82 46 96 30 96 C14 96 0 82 0 62 C0 45 12 35 18 20 C20 34 26 40 30 42 C28 28 26 14 30 0 Z"/></svg>
+              <span class="envelope__shard envelope__shard--a" data-env-shard></span>
+              <span class="envelope__shard envelope__shard--b" data-env-shard></span>
+            </div>
+          </div>
+
+          <article class="letter" data-letter aria-labelledby="letter-title">
+            <div class="letter__top">
+              <span class="emblem letter__emblem" data-emblem></span>
+              <p class="letter__date">Hyderabad, <span data-site-text="letter.date">[ Date ]</span></p>
+            </div>
+            <p class="letter__salutation" data-letter-line data-site-text="letter.salutation">Dear Esteemed Delegates,</p>
+            <div class="letter__body" data-letter-body>
+              <p>[ Placeholder — the Secretary-General’s letter paragraph 1 ]</p>
+            </div>
+            <p class="letter__closing" data-letter-line data-site-text="letter.closing">With immense pride and excitement,</p>
+            <div class="letter__signature" data-signature>
+              <span class="letter__sign-text" data-sign-text data-site-text="letter.signatureName">[ Signature ]</span>
+              <span class="letter__nib" aria-hidden="true" data-nib></span>
+            </div>
+            <p class="kicker letter__signoff" data-signoff data-site-text="letter.signOff">[ Name ] · Secretary-General, SMUN XIV</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 03 COLLAGE ================= -->
+    <section class="section collage-section" aria-labelledby="collage-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__title"><span class="numeral" aria-hidden="true">03</span><h2 id="collage-title" class="h-section">Moments from SMUN</h2></div>
+          <span class="meta">A small collage</span>
+        </header>
+        <div class="rule" data-draw></div>
+        <ul class="collage" role="list" data-collage></ul>
+        <p class="caption collage__note" data-reveal>Click any photograph to enlarge. More photographs coming after the conference.</p>
+      </div>
+    </section>
+
+    <!-- ================= 04 CONTACT ================= -->
+    <section class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__title"><span class="numeral" aria-hidden="true">04</span><h2 id="contact-title" class="h-section">Contact &amp; Location</h2></div>
+          <span class="meta">Find us</span>
+        </header>
+        <div class="rule" data-draw></div>
+        <div class="contact__grid">
+          <ul class="contact__list" role="list" data-contact-list></ul>
+          <div class="map" data-map>
+            <div class="map__frame" data-map-frame>
+              <iframe class="map__iframe" data-map-iframe title="Map to Sreenidhi International School" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1"></iframe>
+              <button class="map__shield" type="button" data-map-shield>
+                <span class="map__shield-pill">Click to interact with the map</span>
+              </button>
+              <div class="map__label">
+                <span class="map__pin" aria-hidden="true"><svg viewBox="0 0 60 96"><path fill="#F28C28" d="M30 0 C45 25 60 40 60 62 C60 82 46 96 30 96 C14 96 0 82 0 62 C0 45 12 35 18 20 C20 34 26 40 30 42 C28 28 26 14 30 0 Z"/></svg></span>
+                <span>
+                  <span class="map__label-title" data-site-text="venue">Sreenidhi International School</span>
+                  <span class="map__label-sub" data-site-text="contact.addressLines.1">Hyderabad, Telangana</span>
+                </span>
+              </div>
+              <a class="btn btn--primary btn--sm map__directions" data-map-directions target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sreenidhi%20International%20School%2C%20Hyderabad">Get directions <span aria-hidden="true">↗</span><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 05 PARTNERS ================= -->
+    <section class="section partners" aria-labelledby="partners-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__title"><span class="numeral" aria-hidden="true">05</span><h2 id="partners-title" class="h-section">Our Partners</h2></div>
+          <span class="meta">Sponsors</span>
+        </header>
+        <div class="rule" data-draw></div>
+        <div class="notice" data-reveal>
+          <div class="notice__inner">
+            <p class="kicker">Notice to Readers</p>
+            <h3 class="notice__title">Partners to be announced.</h3>
+            <p class="notice__text">This year’s sponsors and partners will be revealed here soon. Interested in supporting SMUN&nbsp;XIV?</p>
+            <div class="notice__actions">
+              <a class="btn btn--ghost" data-partner-mailto href="mailto:sreenidhimun@sis.edu.in?subject=Partnership%20%E2%80%94%20SMUN%20XIV">Partner with SMUN <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <span class="stamp stamp--soon" aria-hidden="true">Coming Soon</span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="chrome-bottom"></div>

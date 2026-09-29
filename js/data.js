@@ -67,7 +67,7 @@ export const PORTRAIT_COLORS = ['#3F6A55', '#3F6876', '#A16A3F', '#1E4D3A', '#6B
 
 /** Landscape placeholder: coloured block + pale sun + two hills. */
 export function phLandscape(color = PH_COLORS[0], label = '') {
-  return `<div class="ph" style="--ph:${esc(color)}" role="img" aria-label="${esc(label || 'Photo coming soon')}">
+  return `<span class="ph" style="--ph:${esc(color)}" role="img" aria-label="${esc(label || 'Photo coming soon')}">
     <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <circle cx="300" cy="84" r="22" fill="#fff" fill-opacity=".28"/>
       <path d="M-10 262 L112 150 L250 262 Z" fill="#fff" fill-opacity=".2"/>
@@ -75,7 +75,7 @@ export function phLandscape(color = PH_COLORS[0], label = '') {
       <rect y="262" width="400" height="40" fill="#000" fill-opacity=".05"/>
     </svg>
     ${label ? `<span class="ph__label" aria-hidden="true">${esc(label)}</span>` : ''}
-  </div>`;
+  </span>`;
 }
 
 /** Portrait placeholder: coloured block + head-and-shoulders silhouette. */
@@ -84,10 +84,10 @@ export function phPortrait(color = PORTRAIT_COLORS[0], label = 'Portrait', wide 
     ? '<circle cx="200" cy="112" r="56" fill="#fff" fill-opacity=".22"/><ellipse cx="200" cy="232" rx="136" ry="82" fill="#fff" fill-opacity=".18"/>'
     : '<circle cx="165" cy="150" r="50" fill="#fff" fill-opacity=".22"/><ellipse cx="165" cy="365" rx="120" ry="130" fill="#fff" fill-opacity=".18"/>';
   const box = wide ? '0 0 400 242' : '0 0 330 430';
-  return `<div class="ph" style="--ph:${esc(color)}" aria-hidden="true">
+  return `<span class="ph" style="--ph:${esc(color)}" aria-hidden="true">
     <svg viewBox="${box}" preserveAspectRatio="xMidYMid slice">${shape}</svg>
     <span class="ph__label">${esc(label)}</span>
-  </div>`;
+  </span>`;
 }
 
 /** An <img> when a src exists, otherwise the given placeholder HTML. */

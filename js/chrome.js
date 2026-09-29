@@ -235,7 +235,7 @@ function slimFooterHTML() {
      data-site-mailto="contact.email" → sets href="mailto:…"
      data-site-tel="contact.secGen.phone" → sets href="tel:…"
    -------------------------------------------------------------------------- */
-const getPath = (obj, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
+export const getPath = (obj, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
 export const telHref = (phone) => 'tel:' + String(phone).replace(/[^\d+]/g, '');
 
 export function bindSite(site, root = document) {
