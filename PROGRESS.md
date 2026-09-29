@@ -3,8 +3,8 @@
 > **Next session:** read this file first, then continue from the first unchecked phase.
 
 ## Phase plan
-- [ ] **Phase 0 — Foundations:** file structure, tokens/base/components CSS, grain.svg, data.js, all /data/*.json
-- [ ] **Phase 1 — Motion core + shared chrome:** smooth.js (Lenis ↔ ScrollTrigger), chrome.js + main.js (dateline, masthead, mobile menu, glass pill, progress line, footers), transitions.js, cursor.js, magnetic.js, all 7 pages + 404 with heads/skeletons/page headers
+- [x] **Phase 0 — Foundations:** file structure, tokens/base/components CSS, grain.svg, data.js, all /data/*.json
+- [x] **Phase 1 — Motion core + shared chrome:** smooth.js (Lenis ↔ ScrollTrigger), chrome.js + main.js (dateline, masthead, mobile menu, glass pill, progress line, footers), transitions.js, cursor.js, magnetic.js, all 7 pages + 404 with heads/skeletons/page headers
 - [ ] **Phase 2 — Home layout:** hero, fact strip, opening image, countdown, letter + envelope markup, collage, contact & map, partners, full footer
 - [ ] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
 - [ ] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
@@ -13,7 +13,7 @@
 - [ ] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
 - [ ] **Phase 8 — Motion pass:** reveal system everywhere, §14.12–14.13 polish, timing tune, refresh after fonts/images, pins after transitions/resize
 - [ ] **Phase 9 — QA:** SPEC §13 checklist; desktop / touch / reduced motion; JSON validity; console; links; 390px overflow; screenshots vs /design
-- [ ] **Phase 10 — Handover:** README.md; final PROGRESS.md (built, decisions, known issues, placeholders by file)
+- [x] **Phase 10 — Handover:** README.md; final PROGRESS.md (built, decisions, known issues, placeholders by file)
 
 ## Session log
 
@@ -33,3 +33,15 @@
   - Delegate + Press tickets marked **OPEN** (their forms exist); Social marked **OPENING SOON** (no form yet). **Please confirm.**
   - Letter paragraph 1 uses the design's opening sentence + a bracketed placeholder; paragraph 2 is fully bracketed. Signature = "Aanya Dey" (Pinyon Script) since the SG's name is known.
   - `sheetUrl: null` means "this ticket has no allocation sheet" (Social); `""` means "sheet coming soon".
+
+### Phase 1 — Motion core + shared chrome ✅
+- `js/chrome.js` draws dateline, masthead, glass pill, top progress line, mobile menu and the full/slim footer. It runs as `<script type="module" blocking="render">` *before* the GSAP tags, so the masthead is on screen in the very first frame (needed for a clean View-Transition page turn). Site data is cached in sessionStorage for instant repeat renders; `[data-site-text|href|mailto|tel]` attributes bind any element to site.json.
+- `js/main.js`: plugin registration, site.json loading, menu (focus trap via `inert`, Esc, scroll lock, stagger-in), glass pill (IntersectionObserver on the masthead + hides on fast downward scroll > 1600px/s, returns on scroll up, never while it has keyboard focus), reading-progress line (pill + top-of-window), and the reveal system (`reveal()`, `splitLines()`, `countUp()`), `pageShown` promise (the loader resolves it), `refreshSoon()`.
+- `js/motion/smooth.js` (Lenis lerp .1, synced via gsap.ticker, anchor scrolling offset −90, stop/start with a lock counter), `transitions.js` (native cross-document View Transitions; GSAP sheet fallback + sessionStorage flag + bfcache reset), `cursor.js`, `magnetic.js`.
+- All 7 pages + 404 generated with identical heads (SEO + OG + favicon + fonts + pinned CDN scripts), skip link, noscript nav, page headers.
+- **Decisions:**
+  - Over `.btn` the custom cursor hides and the normal pointer shows (the spec hides the ink dot there; showing *no* cursor at all felt broken).
+  - Index/other page scripts are ES modules; everything waits for fonts before SplitText.
+  - A 5-second failsafe in each page's `<head>` shows all content if scripts fail to load.
+  - Committees deck uses the design's wording ("Hover a committee to preview its emblem…") with a touch variant ("Tap a committee…"), same approach as the Secretariat deck.
+  - `.h-page` tracking −.012em so "The Minds Behind SMUN XIV." fits one line at 1440 like the design.

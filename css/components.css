@@ -686,3 +686,8 @@ html.has-custom-cursor iframe { cursor: auto; }
 .cursor[data-state="hidden"] .cursor__ring { opacity: 0; }
 .cursor.is-away .cursor__dot, .cursor.is-away .cursor__ring { opacity: 0; }
 .cursor__ring { transition: opacity .2s; }
+
+/* ---------- 15. Misc ---------- */
+.noscript-nav { padding: 16px var(--gutter); font-family: var(--font-ui); font-size: 14px; }
+.not-found__links { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 0; padding: 0; }
+main:focus { outline: none; }
