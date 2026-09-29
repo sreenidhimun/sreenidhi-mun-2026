@@ -1,0 +1,364 @@
+{
+  "committees": [
+    {
+      "slug": "unodc",
+      "name": "United Nations Office on Drugs and Crime",
+      "abbr": "UNODC",
+      "color": "#3F6A55",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "disec",
+      "name": "Disarmament and International Security Committee",
+      "abbr": "DISEC",
+      "color": "#3F6876",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "unhrc",
+      "name": "United Nations Human Rights Council",
+      "abbr": "UNHRC",
+      "color": "#A16A3F",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "unsc",
+      "name": "United Nations Security Council",
+      "abbr": "UNSC",
+      "color": "#1E4D3A",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "ip",
+      "name": "International Press",
+      "abbr": "IP",
+      "color": "#98AA68",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "lok-sabha",
+      "name": "Lok Sabha",
+      "abbr": "LS",
+      "color": "#6B5B4E",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "ccc",
+      "name": "Continuous Crisis Committee",
+      "abbr": "CCC",
+      "color": "#58705F",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "ifi",
+      "name": "Indian Film Industry",
+      "abbr": "IFI",
+      "color": "#7A6A55",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    },
+    {
+      "slug": "marvel",
+      "name": "Marvel",
+      "abbr": "Marvel",
+      "color": "#3F5A66",
+      "logo": "",
+      "agenda": "[ Placeholder agenda for this committee ]",
+      "level": "[ Beginner / Advanced ]",
+      "delegates": "[ 00 ]",
+      "procedure": "[ UNA-USA ]",
+      "guide": {
+        "pdf": "",
+        "pages": "",
+        "sizeMB": "",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading. [ Placeholder ]"
+      },
+      "board": [
+        {
+          "name": "[ Chairperson ]",
+          "role": "Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Vice-Chairperson ]",
+          "role": "Vice-Chairperson",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the vice-chairperson — experience, favourite committee moment, and advice for delegates."
+        },
+        {
+          "name": "[ Rapporteur ]",
+          "role": "Rapporteur",
+          "photo": "",
+          "alt": "",
+          "bio": "[ Placeholder ] A short paragraph about the rapporteur — experience, favourite committee moment, and advice for delegates."
+        }
+      ]
+    }
+  ]
+}

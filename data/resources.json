@@ -1,0 +1,73 @@
+{
+  "videos": [
+    {
+      "title": "[ Video title — Rules of Procedure 101 ]",
+      "youtubeId": "",
+      "duration": "[ 12 min ]",
+      "description": ""
+    },
+    {
+      "title": "[ Video title — Writing a Position Paper ]",
+      "youtubeId": "",
+      "duration": "[ 9 min ]",
+      "description": ""
+    },
+    {
+      "title": "[ Video title — Speaking in Committee ]",
+      "youtubeId": "",
+      "duration": "[ 15 min ]",
+      "description": ""
+    }
+  ],
+  "documents": [
+    {
+      "title": "[ MUN Club Handbook ]",
+      "file": "",
+      "type": "PDF",
+      "size": "[ 2.4 MB ]",
+      "source": "MUN Club Doc",
+      "description": ""
+    },
+    {
+      "title": "[ Rules of Procedure ]",
+      "file": "",
+      "type": "PDF",
+      "size": "[ 1.1 MB ]",
+      "source": "MUN Club Doc",
+      "description": ""
+    },
+    {
+      "title": "[ Resolution Writing Template ]",
+      "file": "",
+      "type": "DOCX",
+      "size": "[ 0.3 MB ]",
+      "source": "MUN Club Doc",
+      "description": ""
+    },
+    {
+      "title": "[ Research Checklist ]",
+      "file": "",
+      "type": "PDF",
+      "size": "[ 0.5 MB ]",
+      "source": "MUN Club Doc",
+      "description": ""
+    }
+  ],
+  "iimun": [
+    {
+      "title": "[ Resource title ]",
+      "description": "[ Short description of the external resource. ]",
+      "url": "#"
+    },
+    {
+      "title": "[ Resource title ]",
+      "description": "[ Short description of the external resource. ]",
+      "url": "#"
+    },
+    {
+      "title": "[ Resource title ]",
+      "description": "[ Short description of the external resource. ]",
+      "url": "#"
+    }
+  ]
+}

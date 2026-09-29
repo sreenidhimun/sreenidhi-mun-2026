@@ -1,0 +1,45 @@
+{
+  "tickets": [
+    {
+      "id": "delegate",
+      "kicker": "Admit One — Delegate",
+      "title": "Delegate Registration & Allocation",
+      "description": "Represent a nation in one of this year’s committees. Register, then check the allocation sheet for your country.",
+      "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeTcW_JnHNO3KoDdjZoWWhY-IBIlCtZtRw2kYnzOrlzucakiQ/viewform?usp=publish-editor",
+      "sheetUrl": "",
+      "status": "OPEN",
+      "closesOn": null
+    },
+    {
+      "id": "press",
+      "kicker": "Admit One — Press",
+      "title": "International Press Registration & Allocation",
+      "description": "Report, photograph and publish from inside the committees as part of the IP corps.",
+      "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdssvg961E4xHioEa90sCV251PQzDcvv0jpM9cf9qHi-fdsnQ/viewform?usp=publish-editor",
+      "sheetUrl": "",
+      "status": "OPEN",
+      "closesOn": null
+    },
+    {
+      "id": "social",
+      "kicker": "Admit One — Social",
+      "title": "Homecoming / Social",
+      "description": "An evening for delegates, alumni and friends of SMUN. Details to follow.",
+      "formUrl": "",
+      "sheetUrl": null,
+      "status": "OPENING SOON",
+      "closesOn": null
+    }
+  ],
+  "allocationSearch": {
+    "delegatesCsv": "",
+    "pressCsv": "",
+    "columns": {
+      "name": "Name",
+      "school": "School",
+      "committee": "Committee",
+      "portfolio": "Country/Portfolio"
+    },
+    "lastUpdated": ""
+  }
+}

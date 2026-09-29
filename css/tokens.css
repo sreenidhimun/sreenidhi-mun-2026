@@ -1,0 +1,60 @@
+/* ==========================================================================
+   SMUN XIV — Design tokens
+   Every colour, font and spacing value used across the site lives here.
+   Change a value once and it updates everywhere.
+   ========================================================================== */
+
+:root {
+  /* ---- Paper & ink ---- */
+  --paper: #F4EEE2;        /* page background */
+  --paper-deep: #ECE3D2;   /* alternate section background */
+  --card: #FBF8F1;         /* cards, drawers, letter */
+  --ink: #1A2620;          /* main text */
+  --muted: #5B6660;        /* secondary text */
+  --rule: rgba(26, 38, 32, .9);
+  --rule-soft: rgba(26, 38, 32, .25);
+
+  /* ---- Brand colours ---- */
+  --green: #1E4D3A;
+  --forest: #12261D;
+  --flame: #E8591C;
+  --orange: #F28C28;
+  --terra: #A16A3F;
+  --sand: #DFC79C;
+  --cream: #F0E2C8;
+  --sage: #5E6F63;         /* image placeholders */
+  --wax: #8E2F1D;          /* wax seal */
+
+  /* Slightly deeper versions for SMALL text only, so it passes WCAG AA
+     (4.5:1) on paper. Borders, stamps' outlines and big type keep the
+     original brand colours above. */
+  --terra-ink: #8A5733;    /* kickers (5.2:1 on paper) */
+  --flame-ink: #B8410F;    /* "closes in X days" stamp text */
+
+  /* ---- Fonts ---- */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-read: "Libre Caslon Text", Georgia, serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+  --font-digits: "Bodoni Moda", Georgia, serif;
+  --font-sign: "Pinyon Script", cursive;
+
+  /* ---- Layout ---- */
+  --maxw: 1248px;                        /* content width at 1440px */
+  --gutter: clamp(20px, 6.6vw, 96px);    /* side padding */
+  --section-y: clamp(56px, 8vw, 96px);   /* vertical padding of sections */
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --ease-page: cubic-bezier(.7, 0, .2, 1);
+
+  /* ---- Layers (z-index) ---- */
+  --z-content: 2;
+  --z-pill: 60;
+  --z-floating: 70;   /* floating committee logo */
+  --z-drawer: 80;
+  --z-menu: 90;
+  --z-loader: 100;
+  --z-cursor: 120;
+  --z-sheet: 200;     /* page-turn sheet */
+}

@@ -1,0 +1,346 @@
+/* ==========================================================================
+   SMUN XIV — Base styles
+   Reset, page, paper grain, layout helpers, typography classes, rules,
+   buttons, focus styles, page-turn (View Transitions) and motion helpers.
+   ========================================================================== */
+
+/* ---------- 1. Minimal reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body, h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, dd { margin: 0; }
+ul[role="list"], ol[role="list"], .list-reset { list-style: none; padding: 0; }
+img, svg, video, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+a { color: inherit; }
+[hidden] { display: none !important; }
+
+/* ---------- 2. Page & paper grain ---------- */
+html { background: var(--paper); scroll-behavior: auto; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-read);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;               /* never allow sideways scrolling */
+  min-height: 100vh;
+}
+/* Faint paper grain over everything (pointer-events off, so it never blocks clicks). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url(../assets/svg/grain.svg);
+  opacity: .06;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+main, header, footer, .site-top, .site-bottom { position: relative; z-index: var(--z-content); }
+
+::selection { background: var(--sand); color: var(--ink); }
+
+/* ---------- 3. Layout ---------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--maxw) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.section { padding-block: var(--section-y); }
+.section--deep { background: var(--paper-deep); }
+
+/* ---------- 4. Typography classes ---------- */
+.kicker {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: .27em;
+  color: var(--terra-ink);
+}
+.meta {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--muted);
+}
+.h-hero, .h-page, .h-section {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink);
+}
+.h-hero { font-size: clamp(56px, 8.6vw, 124px); line-height: .94; letter-spacing: -.01em; }
+.h-page { font-size: clamp(48px, 6.7vw, 96px); line-height: .98; letter-spacing: -.005em; }
+.h-section { font-size: clamp(34px, 3.6vw, 52px); line-height: 1.05; }
+.numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 3.9vw, 56px);
+  line-height: 1;
+  color: var(--orange);
+}
+.deck {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 60ch;
+}
+.body { font-family: var(--font-read); font-size: 15px; line-height: 1.65; }
+@media (min-width: 768px) { .body { font-size: 16px; } }
+.caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+em { font-style: italic; }
+
+/* ---------- 5. Rules (the newspaper motif) ---------- */
+.rule { height: 1px; background: var(--rule); border: 0; margin: 0; transform-origin: 0 50%; }
+.rule--soft { background: var(--rule-soft); }
+.rule--double {
+  height: 6px;                          /* 2px + 3px gap + 1px */
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: none;
+}
+
+/* ---------- 6. Section header (numbered) ---------- */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding-bottom: clamp(22px, 2.8vw, 36px);
+}
+.section-head__title { display: flex; align-items: baseline; gap: clamp(12px, 1.4vw, 20px); }
+.section-head__title .numeral { flex: none; }
+.section-head + .rule { margin-bottom: clamp(28px, 3vw, 40px); }
+.section-head__glyph { color: var(--orange); font-size: .8em; font-style: normal; }
+@media (max-width: 767px) {
+  .section-head { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- 7. Buttons & links ---------- */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55em;
+  padding: 15px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: .02em;
+  text-decoration: none;
+  white-space: nowrap;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1.2px solid transparent;
+  transition: background-color .25s var(--ease-out), color .25s var(--ease-out),
+              border-color .25s var(--ease-out), translate .25s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn__label { display: inline-flex; align-items: center; gap: .55em; pointer-events: none; }
+.btn--sm { padding: 10px 20px; font-size: 13px; }
+.btn--primary { --btn-bg: var(--green); --btn-fg: var(--card); }
+.btn--primary:hover { --btn-bg: var(--forest); translate: 0 -1px; }
+.btn--ghost { border-color: rgba(26, 38, 32, .7); }
+.btn--ghost:hover { --btn-bg: var(--ink); --btn-fg: var(--card); border-color: var(--ink); }
+.btn--block { display: flex; width: 100%; }
+.btn.is-disabled, .btn[aria-disabled="true"] {
+  --btn-bg: transparent;
+  --btn-fg: var(--muted);
+  border: 1.2px dashed rgba(26, 38, 32, .35);
+  cursor: not-allowed;
+  translate: none;
+}
+
+.link-underline {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color .25s var(--ease-out);
+}
+.link-underline:hover { color: var(--green); }
+.link-green {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--green);
+  text-decoration: none;
+}
+.link-green:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Small outlined pill (Copy buttons, tags) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  padding: 7px 14px;
+  border: 1px solid rgba(26, 38, 32, .3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  background: transparent;
+  color: var(--ink);
+  transition: background-color .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out);
+}
+.pill:hover { border-color: var(--ink); }
+.pill.is-done { background: var(--green); border-color: var(--green); color: var(--card); }
+
+/* ---------- 8. Focus & accessibility ---------- */
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: calc(var(--z-sheet) + 1);
+  padding: 10px 18px;
+  background: var(--ink);
+  color: var(--card);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform .2s var(--ease-out);
+}
+.skip-link:focus { transform: none; }
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shown only when the site is opened as a file (fetch blocked). */
+.server-notice {
+  position: fixed;
+  left: 16px; right: 16px; bottom: 16px;
+  z-index: var(--z-sheet);
+  max-width: 560px;
+  margin-inline: auto;
+  padding: 14px 18px;
+  background: var(--ink);
+  color: var(--card);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+.server-notice code { font-family: ui-monospace, Menlo, monospace; color: var(--sand); }
+
+/* ---------- 9. Page-turn transitions (View Transitions API) ----------
+   Browsers that support cross-document view transitions animate between
+   pages automatically. The old page sinks back slightly while the new page
+   slides in from the right like a turning newspaper page. The masthead has
+   its own name, so it stays still. js/motion/transitions.js adds a GSAP
+   fallback for other browsers. */
+@view-transition { navigation: auto; }
+
+::view-transition-group(root) { animation-duration: .7s; animation-timing-function: var(--ease-page); }
+::view-transition-old(root) {
+  animation: .7s var(--ease-page) both page-sink;
+}
+::view-transition-new(root) {
+  animation: .7s var(--ease-page) both page-turn-in;
+  box-shadow: -24px 0 48px rgba(26, 38, 32, .16);
+}
+::view-transition-group(masthead) { animation-duration: .7s; }
+@keyframes page-sink {
+  to { transform: scale(.97); filter: brightness(.92); }
+}
+@keyframes page-turn-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Fallback sheet used by transitions.js (hidden until needed). */
+.page-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-sheet);
+  background: var(--card);
+  border-left: 1px solid var(--ink);
+  box-shadow: -24px 0 48px rgba(26, 38, 32, .16);
+  pointer-events: none;
+  transform: translateX(101%);
+}
+/* When arriving via the fallback, cover the page from the very first paint. */
+html.sheet-arriving .page-sheet { transform: none; }
+html.sheet-arriving body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-sheet);
+  background: var(--card);
+}
+
+/* ---------- 10. Motion helpers ----------
+   html.motion is added by a tiny inline script in <head> when the visitor
+   has NOT asked for reduced motion. We hide elements that are about to be
+   revealed so they don't flash before JS animates them in.
+   html.motion-failsafe (added after a few seconds) shows everything in case
+   a script failed to load — content must never stay hidden. */
+.motion [data-reveal],
+.motion [data-reveal-stagger] > *,
+.motion [data-split] { opacity: 0; }
+.motion [data-draw] { transform: scaleX(0); }
+.motion-failsafe [data-reveal],
+.motion-failsafe [data-reveal-stagger] > *,
+.motion-failsafe [data-split] { opacity: 1 !important; }
+.motion-failsafe [data-draw] { transform: none !important; }
+
+/* SplitText line masks: a little breathing room so descenders aren't clipped. */
+.split-line-mask { padding-bottom: .12em; margin-bottom: -.12em; }
+
+/* Loader: hide the page while the scales animation plays (home page only). */
+html.is-loading main,
+html.is-loading .site-top,
+html.is-loading .site-bottom { visibility: hidden; }
+
+/* Scroll lock used when Lenis isn't running (reduced motion / touch fallback). */
+html.scroll-locked, html.scroll-locked body { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

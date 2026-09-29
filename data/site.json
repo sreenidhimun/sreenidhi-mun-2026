@@ -1,0 +1,48 @@
+{
+  "edition": "XIV",
+  "year": 2026,
+  "dates": "30 Oct – 1 Nov 2026",
+  "countdownTarget": "2026-10-30T00:00:00+05:30",
+  "dayOne": "Friday, 30 October 2026 · [ time ]",
+  "conferenceEnd": "2026-11-01T17:00:00+05:30",
+  "venue": "Sreenidhi International School",
+  "committeesCount": "9",
+  "delegatesCount": "800",
+  "logo": "",
+  "contact": {
+    "addressLines": ["Aziznagar Village Rd, Near TG Police Academy", "Moinabad, Telangana 500075"],
+    "secGen": { "name": "Aanya Dey", "phone": "+91 73868 88350" },
+    "dirGen": { "name": "Zinan Thomas", "phone": "+91 91544 90961" },
+    "email": "sreenidhimun@sis.edu.in",
+    "mapQuery": "Sreenidhi International School, Aziznagar, Telangana"
+  },
+  "instagram": "https://www.instagram.com/sreenidhi.mun/",
+  "openingImage": {
+    "src": "",
+    "alt": "",
+    "caption": "Fig. 2 — The General Assembly in session, SMUN 2025.",
+    "credit": "[ Credit ]"
+  },
+  "letter": {
+    "date": "[ Date ]",
+    "salutation": "Dear Esteemed Delegates,",
+    "paragraphs": [
+      "It is with immense honour that I welcome you to the fourteenth edition of Sreenidhi Model United Nations. [ Placeholder — the full letter from the Secretary-General goes here. ]",
+      "[ Placeholder — paragraph 2. Add as many paragraphs as you need: each one is a separate item in this list. ]"
+    ],
+    "closing": "With immense pride and excitement,",
+    "signatureName": "Aanya Dey",
+    "signatureSvg": "",
+    "signOff": "Aanya Dey · Secretary-General, SMUN XIV"
+  },
+  "collage": [
+    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
+    { "src": "", "alt": "", "caption": "[ Caption ]" },
+    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
+    { "src": "", "alt": "", "caption": "[ Caption ]" },
+    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
+    { "src": "", "alt": "", "caption": "[ Caption ]" },
+    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
+    { "src": "", "alt": "", "caption": "[ Caption ]" }
+  ]
+}
