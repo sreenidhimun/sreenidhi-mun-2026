@@ -309,7 +309,7 @@ html.is-loading .loader,
 
 /* Animated mode (js/envelope.js): letter slides between the envelope's back and pocket. */
 .letter-stage.is-animated { padding-bottom: 0; }
-.letter-stage.is-animated .letter { z-index: 2; will-change: transform; }
+.letter-stage.is-animated .letter { z-index: 2; }
 .letter-stage.is-animated .envelope { bottom: auto; }
 .letter-section.is-pinned { min-height: 100vh; }
 

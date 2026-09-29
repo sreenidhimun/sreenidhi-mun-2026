@@ -11,7 +11,7 @@
 - [x] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
 - [x] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
 - [x] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
-- [ ] **Phase 8 — Motion pass:** reveal system everywhere, §14.12–14.13 polish, timing tune, refresh after fonts/images, pins after transitions/resize
+- [x] **Phase 8 — Motion pass:** reveal system everywhere, §14.12–14.13 polish, timing tune, refresh after fonts/images, pins after transitions/resize
 - [ ] **Phase 9 — QA:** SPEC §13 checklist; desktop / touch / reduced motion; JSON validity; console; links; 390px overflow; screenshots vs /design
 - [x] **Phase 10 — Handover:** README.md; final PROGRESS.md (built, decisions, known issues, placeholders by file)
 
@@ -87,3 +87,11 @@
 - `schedule.html` + `css/pages/schedule.css`: Stop Press notice (double border, COMING SOON stamp, Instagram link bound to `site.instagram`, "Register meanwhile"), ghost three-day preview at 40% with column rules, `aria-hidden`. The ghost uses the same `.day / .day__time / .day__event` markup a real programme would use (instructions in an HTML comment).
 - `resources.html` + `js/resources.js` + `css/pages/resources.css`: `role="tablist"` pills (All / Videos / Documents / IIMUN Resources, ←/→ keys), search (title + description, case-insensitive, 120ms debounce), empty state "No resources match '…'.", address bar kept in sync (`?type=videos&q=…`, shareable, restored on load), GSAP Flip reflow with fade/scale enter/leave. Videos: YouTube thumbnail from the id (or placeholder art), 56px play circle, click swaps in a `youtube-nocookie.com` player (autoplay) in place, "Play ▶" cursor, thumbnail scale 1.04 on hover. Documents: file icon with type label, meta line, Download ↓ (or "Coming soon" when no file). IIMUN cards credit "Source: IIMUN" and open in a new tab; placeholder links (`#`) render as non-links with "Link coming soon".
 - **Decision:** videos without a `youtubeId` show "Video coming soon" and aren't clickable (instead of a broken player).
+
+### Phase 8 — Motion pass ✅
+- Reveal system verified on every page (page headers split into masked lines; section numerals slide in from −12px with a skew that settles; rules draw left→right; fact strips stagger and count up — "9", "800"; lists/cards stagger in after they're rendered).
+- **Fixed:** reveal triggers below the pinned letter fired 1440px too early (they were measured before the pin existed). The pin now has `refreshPriority: 1` and triggers are re-sorted + refreshed after it's created — verified the collage heading now starts exactly where expected.
+- Removed static `will-change` declarations (GSAP promotes layers only while animating).
+- Verified: native View-Transition page turn (masthead stays put), GSAP-sheet fallback arrival (sheet covers from the first paint, sweeps left, flag cleared), magnetic pull (capped at 12px, elastic return), cursor states, pill hide/show, progress line, pins re-measure on resize.
+- Timings kept calm: reveals .8s power3.out, rules 1s, page turn .7s, drawer .45s, lightbox .65s, loader ≈2.4s.
+- **Testing note:** the in-app test browser doesn't fire media-query `change` events when its viewport is resized, so crossing the 900px breakpoint *without reloading* couldn't be observed there. `gsap.matchMedia()` handles this in real browsers (it reverts the pin and switches to the phone timeline); a reload at any width always works.

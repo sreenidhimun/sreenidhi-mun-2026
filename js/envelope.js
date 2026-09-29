@@ -132,6 +132,7 @@ export function initEnvelope() {
         scrub: 1,
         animation: tl,
         invalidateOnRefresh: true,
+        refreshPriority: 1,          // measure the pin first, so everything below it accounts for the extra scroll
         onRefreshInit: () => { gsap.set(letter, { clearProps: 'transform,clipPath' }); },
         onRefresh: measure,
       });
@@ -147,6 +148,10 @@ export function initEnvelope() {
         onRefresh: measure,
       });
     }
+
+    // Triggers further down the page were created before this pin: re-order and re-measure.
+    window.ScrollTrigger.sort();
+    window.ScrollTrigger.refresh();
 
     return () => {                                        // breakpoint changed: undo everything
       split.revert();

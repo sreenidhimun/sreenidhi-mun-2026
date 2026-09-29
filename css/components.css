@@ -429,7 +429,6 @@
   width: 230px;
   text-align: right;
   pointer-events: none;
-  will-change: transform;
 }
 .nl-caption__index {
   display: block;
@@ -492,7 +491,6 @@
   right: 0;
   width: 330px;
   pointer-events: none;
-  will-change: transform;
 }
 .nl-portrait__frame {
   position: relative;
