@@ -95,3 +95,25 @@
 - Verified: native View-Transition page turn (masthead stays put), GSAP-sheet fallback arrival (sheet covers from the first paint, sweeps left, flag cleared), magnetic pull (capped at 12px, elastic return), cursor states, pill hide/show, progress line, pins re-measure on resize.
 - Timings kept calm: reveals .8s power3.out, rules 1s, page turn .7s, drawer .45s, lightbox .65s, loader ≈2.4s.
 - **Testing note:** the in-app test browser doesn't fire media-query `change` events when its viewport is resized, so crossing the 900px breakpoint *without reloading* couldn't be observed there. `gsap.matchMedia()` handles this in real browsers (it reverts the pin and switches to the phone timeline); a reload at any width always works.
+
+### Phase 9 — QA ⏳ IN PROGRESS (session ended by usage limit)
+Done so far:
+- All `/data/*.json` parse; every internal href/src/url() resolves (only false positives from `data-site-href`).
+- Checked in the browser during earlier phases: home, secretariat, committees, committee (all states incl. not-found), registrations, schedule, resources at 1440 and 390; no horizontal overflow at 390 on home/secretariat/committees; reduced motion (`?reduce=1`) on home; mobile menu focus trap/Esc; drawer keyboard; lightbox keys; allocation-search states; resources tabs/search/URL sync.
+**Next session — continue here:**
+1. Overflow sweep at 390 / 768 / 1440 for all 8 pages (the one-shot iframe script timed out — run pages one or two at a time).
+2. Console-error check per page in a fresh tab; `?reduce=1` on every page; touch (mobile preset) on every page.
+3. Countdown states: temporarily set `countdownTarget` to null / past / (past target + future `conferenceEnd`) in site.json, check captions, then `git checkout data/site.json`.
+4. Heading order + alt text sweep; map shield click → `is-live`; copy button "Copied ✓" + live region.
+5. Screenshot 390 & 1440 per page vs `/design`.
+
+### Phase 10 — Handover ☐ NOT STARTED
+- Write README.md (preview, editing each JSON incl. publishing Google Sheet CSVs, where images/logos/PDFs/signature SVG go, Netlify Drop + GitHub Pages, tweaking animation speeds).
+- Final PROGRESS summary. Placeholder list so far (by file):
+  - `data/site.json`: dayOne time, openingImage (src/alt/credit), letter.date, letter paragraphs, collage (8 × src/alt/caption), logo (""), signatureSvg ("").
+  - `data/secretariat.json`: 18 × photo/alt/bio.
+  - `data/committees.json`: 9 × agenda, level, delegates, procedure, logo, guide (pdf/pages/sizeMB/description), board (3 placeholder people each).
+  - `data/registrations.json`: sheetUrls, Social formUrl, statuses/closesOn to confirm, allocationSearch CSV links + lastUpdated.
+  - `data/resources.json`: all videos (youtubeId/titles/durations), documents (files/sizes), IIMUN links.
+  - Every page `<head>`: og:image (assets/img/og-image.jpg, make absolute after deploy); favicon = placeholder emblem.
+  - To confirm: DG phone formatting, ticket statuses, countdown start time.
