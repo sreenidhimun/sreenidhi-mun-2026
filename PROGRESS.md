@@ -6,7 +6,7 @@
 - [x] **Phase 0 — Foundations:** file structure, tokens/base/components CSS, grain.svg, data.js, all /data/*.json
 - [x] **Phase 1 — Motion core + shared chrome:** smooth.js (Lenis ↔ ScrollTrigger), chrome.js + main.js (dateline, masthead, mobile menu, glass pill, progress line, footers), transitions.js, cursor.js, magnetic.js, all 7 pages + 404 with heads/skeletons/page headers
 - [x] **Phase 2 — Home layout:** hero, fact strip, opening image, countdown, letter + envelope markup, collage, contact & map, partners, full footer
-- [ ] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
+- [x] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
 - [ ] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
 - [ ] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
 - [ ] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
@@ -52,3 +52,14 @@
 - `js/home.js`: renders letter paragraphs, collage prints (placeholder art when `src` is empty), contact rows (tel:/mailto: links on touch), map iframe + directions link from `contact.mapQuery`, partner mailto with subject, countdown with all states (no date / counting / in session / concluded) and an SR-only text updated each minute.
 - `js/main.js`: site-wide `[data-copy]` / `[data-copy-from]` copy buttons (Clipboard API + textarea fallback, "Copied ✓" 1.8s, announced via live region).
 - **Decisions:** collage note combines the design's "Click any photograph to enlarge." with the spec's "More photographs coming after the conference."; countdown caption left-aligned as in the design (spec said centred); placeholder label on the opening image sits bottom-left as in the design. Reduced-motion/static letter layout follows the PNG: letter in front, closed envelope + wax seal beneath.
+
+### Phase 3 — Loader + home motion ✅
+- `js/loader.js`: DrawSVG ink draw → weighing (+9/−7/+4°, pans repositioned every frame from the beam angle so they hang straight) → holds a gentle weigh loop if the page is still loading (never beyond 2.5s) → elastic settle + 100% → flame ignites + glow blooms + flicker → hand-off (beam becomes a 2px line, stretches full width, glides into the masthead double rule, overlay fades, hero intro starts). Once per visitor, `?loader=1` forces it, Skip works, reduced motion shows the lit scales for 0.5s.
+- Hero intro (in `js/home.js`): SplitText masked line rise, kicker/deck/actions/figure fade-up, emblem flame ignites, glow breathes (paused off-screen).
+- Opening image: clip-path `inset(12% 18%)` → 0 at 20% in view; parallax −8% → 8%.
+- `js/motion/odometer.js`: per-digit strips, only changed digits roll (downwards, 0→9 wraps from the bottom "0"), first reveal rolls every digit up from 0 with a stagger; static when off-screen or reduced motion.
+- `js/envelope.js`: pinned (≥900px, `+=160%`, scrub 1) seal crack + shards → 3D flap (tucks behind after 90°) → letter rises out of the pocket (clip hides the part below the envelope) while the envelope drops and fades → lines appear → signature wipe + travelling nib (or DrawSVG if `letter.signatureSvg` is set) → sign-off. Phones: same timeline played once in 2.6s, then the split text is reverted. Long letters glide upwards inside the pin so the end stays readable.
+- `js/lightbox.js`: Flip.fit from the print to centre and back to whichever print is showing; ←/→/Esc, Observer swipe, backdrop click, focus trap, Lenis stopped. The opening image also opens in it.
+- Collage parallax (≥768px), map clip reveal from the centre (where Google's pin sits), countdown roll-in after the page is shown.
+- Added `?reduce=1` to preview the reduced-motion version without changing OS settings.
+- **Decisions:** opening-image parallax uses scale 1.18 (not 1.12) because ±8% travel would otherwise expose the frame edges. The drop-cap paragraph of the letter fades in as one block (splitting it into lines breaks the drop cap's wrap); later paragraphs reveal line by line.

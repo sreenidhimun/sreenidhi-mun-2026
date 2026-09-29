@@ -3,8 +3,10 @@
    (Kept separate from main.js so modules can share it without import loops.)
    ========================================================================== */
 
-/** true when the visitor asked their device for reduced motion. */
-export const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/** true when the visitor asked their device for reduced motion.
+    (Add ?reduce=1 to any address to preview the reduced-motion version.) */
+export const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  || /[?&]reduce=1(&|$)/.test(window.location.search);
 
 /** true on devices with a real mouse/trackpad (hover effects, custom cursor). */
 export const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;

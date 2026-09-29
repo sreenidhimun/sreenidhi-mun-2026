@@ -35,7 +35,7 @@
        If the scripts below fail to load, everything is shown after 5 seconds. */
     (function (h) {
       h.classList.add('js');
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('motion');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !/[?&]reduce=1(&|$)/.test(location.search)) h.classList.add('motion');
       try { if (sessionStorage.getItem('smunSheet')) h.classList.add('sheet-arriving'); } catch (e) {}
       window.__smunFailsafe = setTimeout(function () {
         h.classList.add('motion-failsafe');

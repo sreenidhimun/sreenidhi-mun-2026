@@ -5,22 +5,150 @@
    Motion pieces live in their own files (loader.js, envelope.js,
    lightbox.js, motion/odometer.js) and are started from here.
    ========================================================================== */
-import { site, ready, reveal, refreshSoon } from './main.js';
+import { site, ready, reveal, refreshSoon, pageShown, markPageShown } from './main.js';
 import { motionOK, isTouch, qs, qsa } from './motion/env.js';
 import { esc, isBlank, phLandscape, PH_COLORS, imageOr } from './data.js';
 import { telHref } from './chrome.js';
 import { Odometer } from './motion/odometer.js';
+import { runLoader } from './loader.js';
+import { initEnvelope } from './envelope.js';
+import { openLightbox } from './lightbox.js';
 
-site.then((s) => {
+/* ---- 1. Loader (first visit) → page appears → hero intro ---- */
+runLoader(() => {
+  markPageShown();
+  ready.then(heroIntro);
+});
+
+/* ---- 2. Fill the page from site.json, then add the motion ---- */
+site.then(async (s) => {
   renderOpening(s);
-  renderLetter(s);
+  const letterDone = renderLetter(s);
   renderCollage(s);
   renderContacts(s);
   renderMap(s);
   renderPartner(s);
   initCountdown(s);
+
+  await Promise.all([ready, pageShown, letterDone]);
+  initOpeningMotion();
+  initEnvelope();
+  initCollageMotion(s);
+  initMapReveal();
   refreshSoon();
 });
+
+/* --------------------------------------------------------------------------
+   Hero intro: headline lines rise out of a mask, then the kicker, deck,
+   buttons and emblem follow; the flame "ignites" and the glow breathes.
+   -------------------------------------------------------------------------- */
+function heroIntro() {
+  const title = qs('[data-hero-title]');
+  const items = qsa('[data-hero-item]');
+  const glow = qs('[data-hero-glow]');
+  if (!motionOK()) return;
+  const { gsap, SplitText, ScrollTrigger } = window;
+
+  gsap.set(title, { opacity: 1 });
+  SplitText.create(title, {
+    type: 'lines',
+    mask: 'lines',
+    linesClass: 'split-line',
+    autoSplit: true,
+    onSplit: (self) => gsap.from(self.lines, { yPercent: 110, duration: 0.9, stagger: 0.09, ease: 'power3.out' }),
+  });
+  gsap.fromTo(items, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.3 });
+
+  // The emblem's flame lights up like the loader's.
+  const flame = qs('.hero__emblem [data-emblem-flame]');
+  if (flame) {
+    gsap.timeline({ delay: 0.55 })
+      .fromTo(flame, { scaleY: 0, transformOrigin: '50% 100%' }, { scaleY: 1, duration: 0.5, ease: 'back.out(1.8)' })
+      .to(flame, { keyframes: { scaleX: [0.92, 1.04, 0.96, 1] }, duration: 0.35, ease: 'none', transformOrigin: '50% 100%' }, 0.08);
+  }
+
+  // Glow "breathes" — paused whenever the hero is off-screen.
+  if (glow) {
+    const breathe = gsap.fromTo(glow, { opacity: 0.7, scale: 0.98 }, {
+      opacity: 1, scale: 1.02, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1, paused: true, delay: 1,
+    });
+    ScrollTrigger.create({
+      trigger: glow, start: 'top bottom', end: 'bottom top',
+      onToggle: (self) => (self.isActive ? breathe.play() : breathe.pause()),
+    });
+    if (ScrollTrigger.isInViewport(glow)) breathe.play();
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Opening image: uncovers from the centre, then drifts (parallax).
+   -------------------------------------------------------------------------- */
+function initOpeningMotion() {
+  const frame = qs('[data-opening]');
+  const media = qs('[data-opening-media]');
+  if (!frame) return;
+
+  frame.addEventListener('click', () => {
+    const caption = qs('.opening__caption .caption')?.textContent || '';
+    openLightbox([{ html: media.innerHTML, caption }], 0, [frame]);
+  });
+
+  if (!motionOK()) return;
+  const { gsap } = window;
+  gsap.fromTo(frame, { clipPath: 'inset(12% 18% 12% 18%)' }, {
+    clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.out',
+    scrollTrigger: { trigger: frame, start: 'top 80%', once: true },
+  });
+  // Scaled up a little so the edges never show while it drifts.
+  gsap.set(media, { scale: 1.18 });
+  gsap.fromTo(media, { yPercent: -8 }, {
+    yPercent: 8, ease: 'none',
+    scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: true },
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Collage: prints drift at different speeds; click opens the lightbox.
+   -------------------------------------------------------------------------- */
+function initCollageMotion(s) {
+  const list = qs('[data-collage]');
+  if (!list) return;
+  const buttons = qsa('.print__btn', list);
+  const items = buttons.map((btn, i) => ({
+    html: qs('.print__photo', btn).innerHTML,
+    caption: (s.collage || [])[i]?.caption || '',
+    portrait: false,
+  }));
+  buttons.forEach((btn, i) => btn.addEventListener('click', () => openLightbox(items, i, buttons)));
+
+  list.setAttribute('data-reveal-stagger', '');
+  reveal(list.parentElement);
+
+  if (!motionOK()) return;
+  const { gsap } = window;
+  gsap.matchMedia().add('(min-width: 768px)', () => {
+    qsa('.print', list).forEach((print) => {
+      const speed = parseFloat(print.dataset.speed) || 0;
+      gsap.fromTo(print, { yPercent: -speed * 50 }, {
+        yPercent: speed * 50, ease: 'none',
+        scrollTrigger: { trigger: list, start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Map: the frame opens outwards from the pin (centre) the first time it's seen.
+   -------------------------------------------------------------------------- */
+function initMapReveal() {
+  const frame = qs('[data-map-frame]');
+  if (!frame || !motionOK()) return;
+  window.gsap.fromTo(frame, { clipPath: 'circle(0% at 50% 50%)' }, {
+    clipPath: 'circle(75% at 50% 50%)', duration: 0.9, ease: 'power2.out',
+    scrollTrigger: { trigger: frame, start: 'top 80%', once: true },
+    onComplete: () => window.gsap.set(frame, { clearProps: 'clipPath' }),
+  });
+}
 
 /* --------------------------------------------------------------------------
    Opening image
@@ -36,11 +164,32 @@ function renderOpening(s) {
    Letter paragraphs (salutation, date, closing and sign-off are filled
    automatically through their data-site-text attributes).
    -------------------------------------------------------------------------- */
-function renderLetter(s) {
+async function renderLetter(s) {
   const body = qs('[data-letter-body]');
   const paragraphs = s.letter?.paragraphs || [];
   if (body && paragraphs.length) {
-    body.innerHTML = paragraphs.map((p) => `<p data-letter-line>${esc(p)}</p>`).join('');
+    body.innerHTML = paragraphs.map((p) => `<p>${esc(p)}</p>`).join('');
+  }
+  // Optional real signature drawing (an SVG made of paths).
+  const svgPath = s.letter?.signatureSvg;
+  const slot = qs('[data-sign-text]');
+  if (!isBlank(svgPath) && slot) {
+    try {
+      const res = await fetch(svgPath);
+      if (!res.ok) throw new Error(res.status);
+      const svg = (await res.text()).replace(/<\?xml[\s\S]*?\?>/g, '').replace(/<metadata[\s\S]*?<\/metadata>/g, '');
+      const wrap = document.createElement('span');
+      wrap.innerHTML = svg;
+      const el = wrap.querySelector('svg');
+      if (el) {
+        el.classList.add('letter__sign-svg');
+        el.setAttribute('role', 'img');
+        el.setAttribute('aria-label', `Signature: ${s.letter.signatureName || ''}`);
+        slot.replaceWith(el);
+      }
+    } catch (err) {
+      console.warn('[SMUN] Signature SVG not found, using the script signature instead.', err);
+    }
   }
 }
 
@@ -214,7 +363,9 @@ function initCountdown(s) {
   // First reveal: every digit rolls up from zero.
   const rollIn = () => ['days', 'hours', 'minutes', 'seconds'].forEach((u, i) => odos[u].rollIn(i * 0.1));
   if (motionOK()) {
-    ready.then(() => window.ScrollTrigger.create({ trigger: grid, start: 'top 85%', once: true, onEnter: rollIn }));
+    Promise.all([ready, pageShown]).then(() => {
+      window.ScrollTrigger.create({ trigger: grid, start: 'top 85%', once: true, onEnter: rollIn });
+    });
   } else {
     rollIn();
   }

@@ -15,7 +15,8 @@
   flex-direction: column;
   background: var(--paper);
 }
-html.is-loading .loader { display: flex; }
+html.is-loading .loader,
+.loader.is-leaving { display: flex; }
 .loader::before {                 /* grain on the overlay too */
   content: "";
   position: absolute;
@@ -76,6 +77,10 @@ html.is-loading .loader { display: flex; }
 }
 
 /* ---------- 2. Hero ---------- */
+/* Hidden until the intro animation (js/home.js) — only when motion is on. */
+.motion [data-hero-item], .motion [data-hero-title] { opacity: 0; }
+.motion-failsafe [data-hero-item], .motion-failsafe [data-hero-title] { opacity: 1 !important; }
+.motion .loader__stage { opacity: 0; }       /* loader.js fades it in once the strokes are "undrawn" */
 .hero { padding-top: clamp(40px, 5vw, 64px); }
 .hero__grid {
   display: grid;
@@ -288,16 +293,25 @@ html.is-loading .loader { display: flex; }
   place-items: center;
 }
 .envelope__seal svg { width: 16px; height: 26px; }
-.envelope__shard {
+.envelope__shard {                /* two little wax fragments that fall when the seal cracks */
   position: absolute;
+  z-index: 5;
+  top: calc(32 / 56 * 100%);
+  left: 50%;
   width: 18px;
   height: 14px;
   background: var(--wax);
   border-radius: 40% 60% 50% 40%;
   opacity: 0;
 }
-.envelope__shard--a { left: 6px; top: 36px; }
-.envelope__shard--b { right: 8px; top: 30px; border-radius: 60% 40% 40% 60%; }
+.envelope__shard--a { margin: 2px 0 0 -26px; }
+.envelope__shard--b { margin: -4px 0 0 10px; border-radius: 60% 40% 40% 60%; }
+
+/* Animated mode (js/envelope.js): letter slides between the envelope's back and pocket. */
+.letter-stage.is-animated { padding-bottom: 0; }
+.letter-stage.is-animated .letter { z-index: 2; will-change: transform; }
+.letter-stage.is-animated .envelope { bottom: auto; }
+.letter-section.is-pinned { min-height: 100vh; }
 
 /* ---------- 6. Collage ---------- */
 .collage {
@@ -509,6 +523,8 @@ a.contact__value:hover { color: var(--green); }
   color: var(--cream);
   text-align: center;
 }
+.lightbox__chrome { position: absolute; inset: 0; pointer-events: none; }
+.lightbox__chrome > * { pointer-events: auto; }
 .lightbox__count {
   position: absolute;
   top: 24px;

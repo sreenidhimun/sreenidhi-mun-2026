@@ -36,7 +36,7 @@
        If the scripts below fail to load, everything is shown after 5 seconds. */
     (function (h) {
       h.classList.add('js');
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('motion');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !/[?&]reduce=1(&|$)/.test(location.search)) h.classList.add('motion');
       try { if (sessionStorage.getItem('smunSheet')) h.classList.add('sheet-arriving'); } catch (e) {}
       // Home only: play the Scales of Justice loader on the first visit (or with ?loader=1).
       var forced = /[?&]loader=1(&|$)/.test(location.search), seen = null;
@@ -213,9 +213,9 @@
             </svg>
             <div class="envelope__seal" data-env-part data-env-seal>
               <svg viewBox="0 0 60 96"><path fill="#F28C28" d="M30 0 C45 25 60 40 60 62 C60 82 46 96 30 96 C14 96 0 82 0 62 C0 45 12 35 18 20 C20 34 26 40 30 42 C28 28 26 14 30 0 Z"/></svg>
-              <span class="envelope__shard envelope__shard--a" data-env-shard></span>
-              <span class="envelope__shard envelope__shard--b" data-env-shard></span>
             </div>
+            <span class="envelope__shard envelope__shard--a" data-env-shard></span>
+            <span class="envelope__shard envelope__shard--b" data-env-shard></span>
           </div>
 
           <article class="letter" data-letter aria-labelledby="letter-title">
