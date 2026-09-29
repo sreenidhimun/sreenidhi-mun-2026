@@ -9,7 +9,7 @@
 - [x] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
 - [x] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
 - [x] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
-- [ ] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
+- [x] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
 - [ ] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
 - [ ] **Phase 8 — Motion pass:** reveal system everywhere, §14.12–14.13 polish, timing tune, refresh after fonts/images, pins after transitions/resize
 - [ ] **Phase 9 — QA:** SPEC §13 checklist; desktop / touch / reduced motion; JSON validity; console; links; 390px overflow; screenshots vs /design
@@ -76,3 +76,9 @@
 - `committee.html?id=slug`: breadcrumb, hero (logo 240/140px, "Committee III", name, agenda in curly quotes), fact strip, 01 Executive Board via `initNameList` (with the design's bio excerpt under the list, portraits in the committee colour), 02 Background Guide card (CSS paper stack that lifts/fans on hover; download + preview when `guide.pdf` is set, otherwise a disabled "Background guide coming soon"), back link, page title/description/OG updated from the data, friendly not-found state.
 - `css/pages/committees.css`.
 - **Decisions:** row hover moves the content 24px with a transform (not padding) so nothing reflows; the section meta reads "Tap a name" on touch devices; committee logo placeholder shows the abbreviation (from CONTENT.md) instead of the design's "–".
+
+### Phase 6 — Registrations ✅
+- `js/registrations.js`: ticket cards from `data/registrations.json` — body + stub as two pieces under one drop-shadow, dashed 6/6 perforation with 28px notches, perforations level across cards (body min-height), computed stamps (`stampFor`: OPEN / OPENING SOON / CLOSING / CLOSED, "Closes in X days" when `closesOn` ≤ 7 days away, "Closed" once it has passed), disabled "Link coming soon" for empty URLs, no sheet button when `sheetUrl` is `null`, "Registrations closed" when closed. Desktop: 3D tilt toward the pointer (max 4°) + 10px lift + deeper shadow. Register click: the stub tears (3°, 6px, .25s) and then the form opens in a new tab (falls back to the same tab if a pop-up blocker refuses); the stub springs back a second later.
+- `js/allocation-search.js`: ✦ section head, pill search (56px, green focus ring), Delegates / International Press toggles (`aria-pressed`), CSV fetched once per sheet and cached, quote-aware parser, 150ms debounce, ≥2 characters, max 5 matches, matched text highlighted, only the four configured columns ever shown. States: idle hint, loading skeletons, results (stagger in), "No match for '…'. Can't find your name? Email …", and "Allocations aren't published yet — check back soon" (empty link or fetch error). Verified with an in-memory CSV (quoted commas, escaped quotes, accents, extra columns hidden).
+- Info row with the site email + Copy button.
+- **Note for testing locally:** Python's built-in server occasionally resets a connection when a page requests many files at once; a refresh fixes it (not an issue on Netlify/GitHub Pages).
