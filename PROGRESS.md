@@ -7,7 +7,7 @@
 - [x] **Phase 1 — Motion core + shared chrome:** smooth.js (Lenis ↔ ScrollTrigger), chrome.js + main.js (dateline, masthead, mobile menu, glass pill, progress line, footers), transitions.js, cursor.js, magnetic.js, all 7 pages + 404 with heads/skeletons/page headers
 - [x] **Phase 2 — Home layout:** hero, fact strip, opening image, countdown, letter + envelope markup, collage, contact & map, partners, full footer
 - [x] **Phase 3 — Loader + home motion:** scales loader, hero intro + breathing glow, opening image reveal + parallax, odometer, envelope sequence, collage parallax + Flip lightbox, copy buttons, map overlay
-- [ ] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
+- [x] **Phase 4 — Secretariat:** namelist.js (list, caption, portrait, settle, drawer, mobile cards)
 - [ ] **Phase 5 — Committees:** index + floating logo, committee.html?id= template, fanning PDF card, not-found
 - [ ] **Phase 6 — Registrations:** ticket cards (perforation, stamps, tilt, tear, disabled) + allocation search (all states)
 - [ ] **Phase 7 — Schedule & Resources:** Stop Press + ghost preview; tabs + Flip + search + URL sync + in-place YouTube + IIMUN cards
@@ -63,3 +63,10 @@
 - Collage parallax (≥768px), map clip reveal from the centre (where Google's pin sits), countdown roll-in after the page is shown.
 - Added `?reduce=1` to preview the reduced-motion version without changing OS settings.
 - **Decisions:** opening-image parallax uses scale 1.18 (not 1.12) because ±8% travel would otherwise expose the frame edges. The drop-cap paragraph of the letter fades in as one block (splitting it into lines breaks the drop cap's wrap); later paragraphs reveal line by line.
+
+### Phase 4 — Secretariat ✅
+- `js/namelist.js` → `initNameList(root, people, { color, excerpt })`: three-zone desktop list (≥900px + mouse), active name (100% ink, weight 400→600 animated via the variable font, scale 1.1, +18px), role caption + index level with the active row, portrait cross-fade (old one drifts 14px/+2°) following the cursor's Y with `quickTo`, clamped to the list; keyboard focus aligns the portrait to the row; ↑/↓ move between names; per-hover SplitText "settle" of the letters (split is reverted afterwards so kerning is restored).
+- Bio drawer (shared singleton): slides in from the right, backdrop, counter "05 / 18", portrait, role, name, bio, prev/next with neighbour names; Esc/✕/backdrop close; ←/→ switch with a small cross-fade; focus trapped and returned; Lenis stopped.
+- Mobile/touch: scroll-snap cards (82vw, alternating ±1.5°), "← swipe →", dots pager synced with an IntersectionObserver; tap → same drawer (full-screen on phones).
+- `js/secretariat.js` loads `data/secretariat.json` and staggers the list in.
+- **Decisions:** real names are long ("Vyshnavi Reddy Mandipalli"), so the list auto-fits: if the widest name (bold, ×1.1, +18px) wouldn't fit its column, the whole list's font-size shrinks (≈43px at 1440 instead of 58px) rather than colliding with the portrait. The portrait is also clickable (opens the active person) and shows a "Read →" cursor.
