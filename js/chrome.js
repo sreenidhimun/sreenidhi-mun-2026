@@ -208,7 +208,7 @@ function fullFooterHTML() {
       </div>
       <div class="rule rule--soft"></div>
       <div class="footer__bottom">
-        <span>© 2026 Sreenidhi International School</span>
+        <span>© 2026 Preetham Kommareddy &amp; Aryan Akula</span>
         <span class="footer__imprint">Vol. XIV · Printed in Hyderabad</span>
       </div>
     </div>
@@ -222,7 +222,7 @@ function slimFooterHTML() {
       <div class="rule--double"></div>
       <div class="footer__slim-row">
         <p class="footer__wordmark">Sreenidhi Model United Nations</p>
-        <p class="footer__copy">© 2026 Sreenidhi International School · Vol. XIV</p>
+        <p class="footer__copy">© 2026 Preetham Kommareddy &amp; Aryan Akula · Vol. XIV</p>
       </div>
     </div>
   </footer>`;

@@ -117,3 +117,6 @@ Done so far:
   - `data/resources.json`: all videos (youtubeId/titles/durations), documents (files/sizes), IIMUN links.
   - Every page `<head>`: og:image (assets/img/og-image.jpg, make absolute after deploy); favicon = placeholder emblem.
   - To confirm: DG phone formatting, ticket statuses, countdown start time.
+
+### Change request — copyright
+- Footers now read "© 2026 Preetham Kommareddy & Aryan Akula" (full footer) and "© 2026 Preetham Kommareddy & Aryan Akula · Vol. XIV" (slim footer), per the maintainer's request (overrides SPEC §3.5). Edit in `js/chrome.js` (`fullFooterHTML` / `slimFooterHTML`).
