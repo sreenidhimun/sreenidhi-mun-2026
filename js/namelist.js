@@ -16,6 +16,9 @@
    Phones & tablets: a row of swipeable cards with dots; tap to open the drawer.
    The drawer: Esc / ✕ / backdrop close it, ← → switch person, focus is kept
    inside and returns to the name you came from.
+
+   Picture-only mode: if nobody in the list has a "bio" (e.g. the Secretariat),
+   there is no drawer — names and cards just show the photo, role and name.
    ========================================================================== */
 import { motionOK, canHover, fontsReady, qs, qsa, clamp, trapFocus } from './motion/env.js';
 import { stopScroll, startScroll } from './motion/smooth.js';
@@ -25,6 +28,7 @@ export function initNameList(root, people, options = {}) {
   if (!root || !people?.length) return;
   const color = options.color || '#3F6A55';
   const total = people.length;
+  const withBios = people.some((p) => !isBlank(p.bio));   // no bios → picture-only, no drawer
 
   const portraitHTML = (p, wide = false) => (isBlank(p.photo)
     ? phPortrait(color, 'Portrait', wide)
@@ -41,18 +45,22 @@ export function initNameList(root, people, options = {}) {
       <ul class="nl-list" role="list">
         ${people.map((p, i) => `
           <li>
-            <button class="nl-item" type="button" data-i="${i}" aria-haspopup="dialog"
-              aria-label="${esc(p.name)}, ${esc(p.role)}. Open profile.">
-              <span class="nl-item__name">${esc(p.name)}</span>
-            </button>
+            ${withBios
+              ? `<button class="nl-item" type="button" data-i="${i}" aria-haspopup="dialog"
+                  aria-label="${esc(p.name)}, ${esc(p.role)}. Open profile.">
+                  <span class="nl-item__name">${esc(p.name)}</span>
+                </button>`
+              : `<div class="nl-item" tabindex="0" role="group" data-i="${i}" aria-label="${esc(p.name)}, ${esc(p.role)}">
+                  <span class="nl-item__name">${esc(p.name)}</span>
+                </div>`}
           </li>`).join('')}
       </ul>
       ${options.excerpt ? '<p class="nl-excerpt" aria-hidden="true"></p>' : ''}
-      <div class="nl-portrait" aria-hidden="true" data-cursor="view" data-cursor-label="Read →">
+      <div class="nl-portrait" aria-hidden="true"${withBios ? ' data-cursor="view" data-cursor-label="Read →"' : ''}>
         <div class="nl-portrait__frame">
           ${people.map((p, i) => `<div class="nl-portrait__img" data-i="${i}">${portraitHTML(p)}</div>`).join('')}
         </div>
-        <span class="nl-portrait__cta">Click to read more <span aria-hidden="true">→</span></span>
+        ${withBios ? '<span class="nl-portrait__cta">Click to read more <span aria-hidden="true">→</span></span>' : ''}
       </div>
     </div>
 
@@ -60,12 +68,18 @@ export function initNameList(root, people, options = {}) {
       <ul class="nl-track" role="list">
         ${people.map((p, i) => `
           <li class="nl-card-wrap">
-            <button class="nl-card" type="button" data-i="${i}" aria-haspopup="dialog">
-              <span class="nl-card__photo">${portraitHTML(p)}</span>
-              <span class="kicker">${esc(p.role)}</span>
-              <span class="nl-card__name">${esc(p.name)}</span>
-              <span class="nl-card__hint">Tap to read their story</span>
-            </button>
+            ${withBios
+              ? `<button class="nl-card" type="button" data-i="${i}" aria-haspopup="dialog">
+                  <span class="nl-card__photo">${portraitHTML(p)}</span>
+                  <span class="kicker">${esc(p.role)}</span>
+                  <span class="nl-card__name">${esc(p.name)}</span>
+                  <span class="nl-card__hint">Tap to read their story</span>
+                </button>`
+              : `<div class="nl-card" data-i="${i}">
+                  <span class="nl-card__photo">${portraitHTML(p)}</span>
+                  <span class="kicker">${esc(p.role)}</span>
+                  <span class="nl-card__name">${esc(p.name)}</span>
+                </div>`}
           </li>`).join('')}
       </ul>
       <div class="nl-pager">
@@ -166,7 +180,7 @@ export function initNameList(root, people, options = {}) {
   items.forEach((btn, i) => {
     btn.addEventListener('pointerenter', () => setActive(i));
     btn.addEventListener('focus', () => setActive(i, { alignPortrait: true }));
-    btn.addEventListener('click', () => openDrawer(i, btn));
+    if (withBios) btn.addEventListener('click', () => openDrawer(i, btn));
     btn.addEventListener('keydown', (e) => {         // ↑ ↓ move between names
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
@@ -180,14 +194,16 @@ export function initNameList(root, people, options = {}) {
     });
   }
   // Clicking the portrait opens the active person too.
-  portrait.style.pointerEvents = 'auto';
-  portrait.addEventListener('click', () => { if (active > -1) openDrawer(active, items[active]); });
+  if (withBios) {
+    portrait.style.pointerEvents = 'auto';
+    portrait.addEventListener('click', () => { if (active > -1) openDrawer(active, items[active]); });
+  }
 
   /* ---------------- Mobile cards ---------------- */
   const track = qs('.nl-track', root);
   const cards = qsa('.nl-card', root);
   const dots = qsa('.nl-dot', root);
-  cards.forEach((card, i) => card.addEventListener('click', () => openDrawer(i, card)));
+  if (withBios) cards.forEach((card, i) => card.addEventListener('click', () => openDrawer(i, card)));
   dots.forEach((dot, i) => dot.addEventListener('click', () => {
     const wrap = cards[i].parentElement;
     track.scrollTo({ left: wrap.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft), behavior: motionOK() ? 'smooth' : 'auto' });

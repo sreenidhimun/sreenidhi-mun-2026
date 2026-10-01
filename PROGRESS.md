@@ -129,3 +129,10 @@ Done so far:
 - **Decisions:** no blackletter (maintainer asked for a less imposing nameplate). The fold crease only shows during the unfold and fades out completely (CLAUDE.md bans decorative creases). The unfolding half comes from *behind* the fold, so its blank back never shows (physically correct for a paper folded backwards). Story text is justified from 768px up, ragged on phones.
 - Verified at 1440 / 768 / 390, with the loader, skip-on-scroll, `?reduce=1`; no console errors, no horizontal overflow, letter pin start unchanged.
 - **Still open:** `README.md` doesn't exist yet even though Phase 10 is ticked above — it needs writing.
+
+### Change request — Secretariat photos, no bios
+- 17 photos from `../sec photos/` converted to 900×900 JPEGs (≈1.9 MB total instead of 33 MB of PNGs) in `assets/img/secretariat/<firstname>.jpg` and linked in `data/secretariat.json` (with alt text). The originals were not modified.
+- Bios removed from `data/secretariat.json`. `js/namelist.js` now has a picture-only mode: if nobody in a list has a `bio`, there is no drawer, no "Click to read more" / "Tap to read their story", and names/cards aren't clickable (names stay keyboard-focusable so the photo can be shown without a mouse). Committee boards still have bios, so their drawer is unchanged.
+- Secretariat deck text updated to match ("Hover over a name to see who they are." / "Swipe through the cards…").
+- **Open:** no photo for **Aanya Dey** (placeholder still shows); an extra `mohana.png` doesn't match anyone in the Secretariat list (converted to `assets/img/secretariat/mohana.jpg` but unused).
+- To add/replace a photo later: put a square JPG in `assets/img/secretariat/` and set that member's `"photo"` path in `data/secretariat.json`.
