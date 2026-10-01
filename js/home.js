@@ -7,17 +7,25 @@
    ========================================================================== */
 import { site, ready, reveal, refreshSoon, pageShown, markPageShown } from './main.js';
 import { motionOK, isTouch, qs, qsa } from './motion/env.js';
-import { esc, isBlank, phLandscape, PH_COLORS, imageOr } from './data.js';
+import { fetchJSON, esc, isBlank, phLandscape, PH_COLORS, imageOr } from './data.js';
 import { telHref } from './chrome.js';
 import { Odometer } from './motion/odometer.js';
 import { runLoader } from './loader.js';
 import { initEnvelope } from './envelope.js';
 import { openLightbox } from './lightbox.js';
+import { renderFrontPage, deliverNewspaper } from './newspaper.js';
 
-/* ---- 1. Loader (first visit) → page appears → hero intro ---- */
+/* ---- 1. The front page: fill it in, then (after the loader on a first
+         visit) the newspaper is "delivered". The rest of the page's reveals
+         wait until it has landed. ---- */
+const frontPage = Promise.all([site, fetchJSON('data/registrations.json')]).then(([s, reg]) => {
+  renderFrontPage(s, (reg?.tickets || []).find((t) => t.id === 'delegate'));
+});
+const afterLoader = document.documentElement.classList.contains('is-loading');
 runLoader(() => {
-  markPageShown();
-  ready.then(heroIntro);
+  Promise.all([ready, frontPage])
+    .then(() => deliverNewspaper({ delay: afterLoader ? 0.25 : 0.1 }))
+    .then(markPageShown);
 });
 
 /* ---- 2. Fill the page from site.json, then add the motion ---- */
@@ -37,48 +45,6 @@ site.then(async (s) => {
   initMapReveal();
   refreshSoon();
 });
-
-/* --------------------------------------------------------------------------
-   Hero intro: headline lines rise out of a mask, then the kicker, deck,
-   buttons and emblem follow; the flame "ignites" and the glow breathes.
-   -------------------------------------------------------------------------- */
-function heroIntro() {
-  const title = qs('[data-hero-title]');
-  const items = qsa('[data-hero-item]');
-  const glow = qs('[data-hero-glow]');
-  if (!motionOK()) return;
-  const { gsap, SplitText, ScrollTrigger } = window;
-
-  gsap.set(title, { opacity: 1 });
-  SplitText.create(title, {
-    type: 'lines',
-    mask: 'lines',
-    linesClass: 'split-line',
-    autoSplit: true,
-    onSplit: (self) => gsap.from(self.lines, { yPercent: 110, duration: 0.9, stagger: 0.09, ease: 'power3.out' }),
-  });
-  gsap.fromTo(items, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.3 });
-
-  // The emblem's flame lights up like the loader's.
-  const flame = qs('.hero__emblem [data-emblem-flame]');
-  if (flame) {
-    gsap.timeline({ delay: 0.55 })
-      .fromTo(flame, { scaleY: 0, transformOrigin: '50% 100%' }, { scaleY: 1, duration: 0.5, ease: 'back.out(1.8)' })
-      .to(flame, { keyframes: { scaleX: [0.92, 1.04, 0.96, 1] }, duration: 0.35, ease: 'none', transformOrigin: '50% 100%' }, 0.08);
-  }
-
-  // Glow "breathes" — paused whenever the hero is off-screen.
-  if (glow) {
-    const breathe = gsap.fromTo(glow, { opacity: 0.7, scale: 0.98 }, {
-      opacity: 1, scale: 1.02, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1, paused: true, delay: 1,
-    });
-    ScrollTrigger.create({
-      trigger: glow, start: 'top bottom', end: 'bottom top',
-      onToggle: (self) => (self.isActive ? breathe.play() : breathe.pause()),
-    });
-    if (ScrollTrigger.isInViewport(glow)) breathe.play();
-  }
-}
 
 /* --------------------------------------------------------------------------
    Opening image: uncovers from the centre, then drifts (parallax).

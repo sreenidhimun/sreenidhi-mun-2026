@@ -121,36 +121,98 @@
   <div id="chrome-top"></div>
 
   <main id="main" tabindex="-1">
-    <!-- ================= HERO ================= -->
-    <section class="hero container" aria-labelledby="hero-title">
-      <div class="hero__grid">
-        <div class="hero__text">
-          <p class="kicker hero__kicker" data-hero-item>№ 14 — The 2026 Edition</p>
-          <h1 id="hero-title" class="h-hero hero__title" data-hero-title>Sreenidhi<br>Model United<br><em>Nations</em><span class="hero__dot">.</span></h1>
-          <p class="deck hero__deck" data-hero-item>Three days of debate, diplomacy and dialogue — where the next generation of leaders takes the floor.</p>
-          <div class="hero__actions" data-hero-item>
-            <a class="btn btn--primary" href="registrations.html">Register as Delegate <span aria-hidden="true">→</span></a>
-            <a class="link-underline" href="#letter">Read the Secretary-General’s letter</a>
-          </div>
-        </div>
-        <figure class="hero__figure" data-hero-item>
-          <div class="hero__emblem-wrap" role="img" aria-label="The SMUN emblem: an orange flame in a cream roundel">
-            <span class="hero__glow" aria-hidden="true" data-hero-glow></span>
-            <span class="emblem hero__emblem" data-emblem></span>
-          </div>
-          <span class="hero__fig-rule" aria-hidden="true"></span>
-          <figcaption class="caption">Fig. 1 — The Flame of Sreenidhi,<br>ignited on arrival.</figcaption>
-        </figure>
-      </div>
+    <!-- ================= HERO — THE FRONT PAGE =================
+         A newspaper front page that is "delivered" onto the desk when the page
+         opens (js/newspaper.js). Text comes from data/site.json → frontPage. -->
+    <section class="np-desk container" aria-labelledby="np-title">
+      <div class="np-stage" data-np-stage>
+        <span class="np__shadow" aria-hidden="true" data-np-shadow></span>
+        <span class="np__under" aria-hidden="true" data-np-under></span>
 
-      <div class="rule" data-draw></div>
-      <dl class="facts hero__facts" data-reveal-stagger>
-        <div class="facts__cell"><dt class="kicker">Dates</dt><dd class="facts__value" data-site-text="dates">[ Conference Dates ]</dd></div>
-        <div class="facts__cell"><dt class="kicker">Venue</dt><dd class="facts__value" data-site-text="venue">Sreenidhi International School</dd></div>
-        <div class="facts__cell"><dt class="kicker">Committees</dt><dd class="facts__value" data-site-text="committeesCount" data-count>[ 10 ]</dd></div>
-        <div class="facts__cell"><dt class="kicker">Delegates</dt><dd class="facts__value" data-site-text="delegatesCount" data-count>[ 600+ ]</dd></div>
-      </dl>
-      <div class="rule" data-draw></div>
+        <article class="np" data-np>
+          <!-- Nameplate with an "ear" on each side -->
+          <header class="np__head">
+            <div class="np__ear np__ear--left">
+              <span class="np__ear-kicker">№ 14</span>
+              <span class="np__ear-text" data-site-text="frontPage.ear">The 2026 Edition</span>
+            </div>
+            <h1 id="np-title" class="np__nameplate">Sreenidhi Model United Nations</h1>
+            <div class="np__ear np__ear--right" data-np-tminus>
+              <span class="np__ear-kicker">T–minus</span>
+              <span class="np__ear-text"><span class="np__ear-big" data-np-days>—</span> <span data-np-days-label>days to Day I</span></span>
+            </div>
+          </header>
+          <div class="rule--double"></div>
+          <p class="np__folio">
+            <span>Vol. XIV — No. 14</span>
+            <span>Hyderabad · <span data-site-text="dates">[ Conference Dates ]</span></span>
+            <span><span data-site-text="committeesCount">[ 10 ]</span> Committees · <span data-site-text="delegatesCount">[ 600+ ]</span> Delegates</span>
+          </p>
+          <div class="rule np__rule"></div>
+
+          <!-- Banner headline -->
+          <div class="np__banner">
+            <h2 class="np__headline" data-site-text="frontPage.headline">The Floor Is Yours.</h2>
+            <p class="np__standfirst" data-site-text="frontPage.standfirst">Three days of debate, diplomacy and dialogue — where the next generation of leaders takes the floor.</p>
+          </div>
+
+          <div class="np__cols">
+            <!-- Lead story -->
+            <div class="np__col np__col--story">
+              <p class="kicker np__byline" data-site-text="frontPage.byline">By the Secretariat</p>
+              <div class="np__story" data-np-story>
+                <p>[ Placeholder — the front-page story. ]</p>
+              </div>
+              <p class="np__jump"><span class="np__jump-label">Continued on A2</span><a class="link-underline" href="#letter">The Secretary-General’s letter <span aria-hidden="true">→</span></a></p>
+            </div>
+
+            <!-- Front-page "photo" (the emblem) + at a glance -->
+            <div class="np__col np__col--photo">
+              <figure class="np__figure">
+                <div class="np__photo" role="img" aria-label="The SMUN emblem: an orange flame in a cream roundel">
+                  <span class="hero__glow" aria-hidden="true" data-hero-glow></span>
+                  <span class="emblem hero__emblem" data-emblem></span>
+                </div>
+                <figcaption class="np__caption">
+                  <span class="caption" data-site-text="frontPage.photoCaption">Fig. 1 — The Flame of Sreenidhi, ignited on arrival.</span>
+                  <span class="meta">Emblem · SMUN</span>
+                </figcaption>
+              </figure>
+              <section class="np__glance" aria-labelledby="np-glance-title">
+                <h3 id="np-glance-title" class="kicker">At a Glance</h3>
+                <dl class="np__facts">
+                  <div><dt>Dates</dt><dd data-site-text="dates">[ Conference Dates ]</dd></div>
+                  <div><dt>Venue</dt><dd data-site-text="venue">Sreenidhi International School</dd></div>
+                  <div><dt>Committees</dt><dd data-site-text="committeesCount" data-np-count>[ 10 ]</dd></div>
+                  <div><dt>Delegates</dt><dd data-site-text="delegatesCount" data-np-count>[ 600+ ]</dd></div>
+                </dl>
+              </section>
+            </div>
+
+            <!-- Index of the other pages + a "classified" registration notice -->
+            <div class="np__col np__col--side">
+              <nav class="np__index" aria-labelledby="np-index-title">
+                <h3 id="np-index-title" class="kicker">Inside This Edition</h3>
+                <ol class="np__index-list" role="list" data-np-index>
+                  <li><a href="secretariat.html"><span class="np__index-name">Secretariat</span><span class="np__index-folio">A2</span></a></li>
+                  <li><a href="committees.html"><span class="np__index-name">Committees</span><span class="np__index-folio">A3</span></a></li>
+                  <li><a href="registrations.html"><span class="np__index-name">Registrations</span><span class="np__index-folio">A4</span></a></li>
+                  <li><a href="schedule.html"><span class="np__index-name">Schedule</span><span class="np__index-folio">A5</span></a></li>
+                  <li><a href="resources.html"><span class="np__index-name">Resources</span><span class="np__index-folio">A6</span></a></li>
+                </ol>
+              </nav>
+              <aside class="np__ad" aria-labelledby="np-ad-title">
+                <p class="kicker">Notice to Delegates</p>
+                <p class="np__ad-title" id="np-ad-title">Admit One</p>
+                <p class="np__ad-text" data-np-ad-text>Represent a nation in one of this year’s committees.</p>
+                <a class="btn btn--primary btn--block" href="registrations.html">Register as Delegate <span aria-hidden="true">→</span></a>
+                <p class="stamp np__stamp" data-np-stamp hidden></p>
+              </aside>
+            </div>
+          </div>
+          <span class="np__crease" aria-hidden="true" data-np-crease></span>
+        </article>
+      </div>
     </section>
 
     <!-- ================= OPENING IMAGE ================= -->

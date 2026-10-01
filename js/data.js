@@ -95,3 +95,26 @@ export function imageOr(src, alt, placeholderHTML, { className = 'media-cover', 
   if (isBlank(src)) return placeholderHTML;
   return `<img class="${className}" src="${esc(src)}" alt="${esc(alt)}"${lazy ? ' loading="lazy" decoding="async"' : ''}>`;
 }
+
+/* --------------------------------------------------------------------------
+   Ticket status stamp (used by the Registrations page and the home front page)
+     status "OPEN" | "OPENING SOON" | "CLOSING" | "CLOSED"; optional closesOn date.
+   -------------------------------------------------------------------------- */
+export function stampFor(ticket, now = Date.now()) {
+  const status = String(ticket.status || '').toUpperCase().trim();
+  if (status === 'CLOSED') return { text: 'Closed', cls: 'closed' };
+  if (!isBlank(ticket.closesOn)) {
+    const end = Date.parse(ticket.closesOn);
+    if (!isNaN(end)) {
+      const days = Math.ceil((end - now) / 864e5);
+      if (days < 0) return { text: 'Closed', cls: 'closed' };
+      if (days <= 7 && status !== 'OPENING SOON') {
+        return { text: days === 0 ? 'Closes today' : `Closes in ${days} day${days === 1 ? '' : 's'}`, cls: 'closing' };
+      }
+    }
+  }
+  if (status === 'OPEN') return { text: 'Open', cls: 'open' };
+  if (status === 'CLOSING') return { text: 'Closing', cls: 'closing' };
+  if (status === 'OPENING SOON') return { text: 'Opening soon', cls: 'soon' };
+  return { text: status || '[ Status ]', cls: 'soon' };
+}

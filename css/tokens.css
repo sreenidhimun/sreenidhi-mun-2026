@@ -24,6 +24,7 @@
   --cream: #F0E2C8;
   --sage: #5E6F63;         /* image placeholders */
   --wax: #8E2F1D;          /* wax seal */
+  --newsprint: #FAF6EC;    /* the home page's front-page sheet */
 
   /* Slightly deeper versions for SMALL text only, so it passes WCAG AA
      (4.5:1) on paper. Borders, stamps' outlines and big type keep the

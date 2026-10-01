@@ -10,13 +10,40 @@
   "delegatesCount": "800",
   "logo": "",
   "contact": {
-    "addressLines": ["Aziznagar Village Rd, Near TG Police Academy", "Moinabad, Telangana 500075"],
-    "secGen": { "name": "Aanya Dey", "phone": "+91 73868 88350" },
-    "dirGen": { "name": "Zinan Thomas", "phone": "+91 91544 90961" },
+    "addressLines": [
+      "Aziznagar Village Rd, Near TG Police Academy",
+      "Moinabad, Telangana 500075"
+    ],
+    "secGen": {
+      "name": "Aanya Dey",
+      "phone": "+91 73868 88350"
+    },
+    "dirGen": {
+      "name": "Zinan Thomas",
+      "phone": "+91 91544 90961"
+    },
     "email": "sreenidhimun@sis.edu.in",
     "mapQuery": "Sreenidhi International School, Aziznagar, Telangana"
   },
   "instagram": "https://www.instagram.com/sreenidhi.mun/",
+  "frontPage": {
+    "ear": "The 2026 Edition",
+    "headline": "The Floor Is Yours.",
+    "standfirst": "Three days of debate, diplomacy and dialogue — where the next generation of leaders takes the floor.",
+    "byline": "By the Secretariat",
+    "story": [
+      "Sreenidhi Model United Nations returns for its fourteenth edition at Sreenidhi International School, Hyderabad, from 30 October to 1 November 2026. [ Placeholder — the rest of the front-page story. ]",
+      "[ Placeholder — a second short paragraph. Edit data/site.json → frontPage.story; each paragraph is one item in the list. ]"
+    ],
+    "photoCaption": "Fig. 1 — The Flame of Sreenidhi, ignited on arrival.",
+    "inside": {
+      "secretariat": "The minds behind SMUN XIV.",
+      "committees": "Every committee, its agenda and its board.",
+      "registrations": "Register, then find your allocation.",
+      "schedule": "Three days at a glance.",
+      "resources": "Videos, documents and trusted guides."
+    }
+  },
   "openingImage": {
     "src": "",
     "alt": "",
@@ -36,13 +63,45 @@
     "signOff": "Aanya Dey · Secretary-General, SMUN XIV"
   },
   "collage": [
-    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
-    { "src": "", "alt": "", "caption": "[ Caption ]" },
-    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
-    { "src": "", "alt": "", "caption": "[ Caption ]" },
-    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
-    { "src": "", "alt": "", "caption": "[ Caption ]" },
-    { "src": "", "alt": "", "caption": "SMUN [ year ]" },
-    { "src": "", "alt": "", "caption": "[ Caption ]" }
+    {
+      "src": "",
+      "alt": "",
+      "caption": "SMUN [ year ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "[ Caption ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "SMUN [ year ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "[ Caption ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "SMUN [ year ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "[ Caption ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "SMUN [ year ]"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "[ Caption ]"
+    }
   ]
 }

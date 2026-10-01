@@ -120,3 +120,12 @@ Done so far:
 
 ### Change request — copyright
 - Footers now read "© 2026 Preetham Kommareddy & Aryan Akula" (full footer) and "© 2026 Preetham Kommareddy & Aryan Akula · Vol. XIV" (slim footer), per the maintainer's request (overrides SPEC §3.5). Edit in `js/chrome.js` (`fullFooterHTML` / `slimFooterHTML`).
+
+### Change request — home hero becomes a delivered newspaper
+- The hero + fact strip are replaced by a newspaper front page (`index.html` `.np-desk`): ears (№ 14 / live "T–minus N days" from `countdownTarget`), nameplate "Sreenidhi Model United Nations" (h1, Playfair 600, auto-fitted to one line ≥1000px), folio line, banner headline (h2), standfirst, lead story with drop cap, the emblem as the front-page "photo" on a faint halftone screen, "At a glance" box, "Inside this edition" index linking to the other pages (A2–A6, built from `NAV` in `js/chrome.js`), and an "Admit One" notice with the Register button + the delegate ticket's real status stamp.
+- New `js/newspaper.js`: `renderFrontPage()` + `deliverNewspaper()`. After the loader (or straight away on later visits) the paper falls folded from above the screen in front of the masthead, lands with a squash and a slide, the bottom half swings down from behind the fold, then it settles straight, the stamp thumps on and the flame lights (≈2s). Any click/key/scroll/touch finishes it instantly. Phones: drop + slide, no fold. Reduced motion: the paper is simply there. The rest of the page's reveals start once it has landed.
+- New editable content: `data/site.json` → `frontPage` (ear, headline, standfirst, byline, story paragraphs, photoCaption, inside-index blurbs). Headline defaults to "The Floor Is Yours."; story paragraph 1 states only facts from CONTENT.md, the rest is `[ placeholder ]`.
+- `stampFor()` moved from `js/registrations.js` to `js/data.js` (shared). New token `--newsprint`. Old hero CSS/JS (`heroIntro`) removed.
+- **Decisions:** no blackletter (maintainer asked for a less imposing nameplate). The fold crease only shows during the unfold and fades out completely (CLAUDE.md bans decorative creases). The unfolding half comes from *behind* the fold, so its blank back never shows (physically correct for a paper folded backwards). Story text is justified from 768px up, ragged on phones.
+- Verified at 1440 / 768 / 390, with the loader, skip-on-scroll, `?reduce=1`; no console errors, no horizontal overflow, letter pin start unchanged.
+- **Still open:** `README.md` doesn't exist yet even though Phase 10 is ticked above — it needs writing.

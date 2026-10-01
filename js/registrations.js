@@ -8,7 +8,7 @@
    ========================================================================== */
 import { site, ready, reveal, refreshSoon } from './main.js';
 import { motionOK, canHover, qs, qsa, clamp } from './motion/env.js';
-import { fetchJSON, esc, isBlank, pad2 } from './data.js';
+import { fetchJSON, esc, isBlank, pad2, stampFor } from './data.js';
 import { initAllocationSearch } from './allocation-search.js';
 
 const ticketsEl = qs('[data-tickets]');
@@ -22,28 +22,6 @@ Promise.all([fetchJSON('data/registrations.json'), site]).then(async ([data, s])
   reveal(document);
   refreshSoon();
 });
-
-/* --------------------------------------------------------------------------
-   Status stamp
-   -------------------------------------------------------------------------- */
-export function stampFor(ticket, now = Date.now()) {
-  const status = String(ticket.status || '').toUpperCase().trim();
-  if (status === 'CLOSED') return { text: 'Closed', cls: 'closed' };
-  if (!isBlank(ticket.closesOn)) {
-    const end = Date.parse(ticket.closesOn);
-    if (!isNaN(end)) {
-      const days = Math.ceil((end - now) / 864e5);
-      if (days < 0) return { text: 'Closed', cls: 'closed' };
-      if (days <= 7 && status !== 'OPENING SOON') {
-        return { text: days === 0 ? 'Closes today' : `Closes in ${days} day${days === 1 ? '' : 's'}`, cls: 'closing' };
-      }
-    }
-  }
-  if (status === 'OPEN') return { text: 'Open', cls: 'open' };
-  if (status === 'CLOSING') return { text: 'Closing', cls: 'closing' };
-  if (status === 'OPENING SOON') return { text: 'Opening soon', cls: 'soon' };
-  return { text: status || '[ Status ]', cls: 'soon' };
-}
 
 const arrowSpan = (a) => `<span aria-hidden="true">${a}</span>`;
 const newTab = '<span class="sr-only"> (opens in a new tab)</span>';
