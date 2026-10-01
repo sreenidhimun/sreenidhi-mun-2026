@@ -91,10 +91,13 @@ html.is-loading .loader,
   padding-bottom: clamp(28px, 3.4vw, 48px);
 }
 .np-stage { position: relative; }
-.np__shadow {
+.np__shadow {                    /* the paper's shadow on the desk — layered for depth */
   position: absolute;
-  inset: 1% .6% -.4%;
-  box-shadow: 0 34px 60px -12px rgba(26, 38, 32, .24), 0 6px 14px rgba(26, 38, 32, .08);
+  inset: .5% .4% -.2%;
+  box-shadow:
+    0 2px 4px rgba(26, 38, 32, .08),
+    0 14px 28px -6px rgba(26, 38, 32, .2),
+    0 42px 80px -18px rgba(26, 38, 32, .32);
   transform-origin: 50% 0;
   pointer-events: none;
 }
@@ -103,6 +106,7 @@ html.is-loading .loader,
   inset: 0;
   background: #EFE7D6;
   border: 1px solid rgba(26, 38, 32, .12);
+  box-shadow: 0 10px 24px -8px rgba(26, 38, 32, .22);
   transform: rotate(1.1deg) translate(10px, 8px);
   pointer-events: none;
 }
@@ -384,6 +388,11 @@ html.is-loading .loader,
   pointer-events: none;
 }
 .np__col--side .np__ad { margin-top: 22px; }
+/* International Press notice: sits at the foot of the story column,
+   level with the delegate notice on the right. */
+.np__col--story { display: flex; flex-direction: column; }
+.np__ad--press { margin-top: 26px; }
+@media (min-width: 768px) { .np__ad--press { margin-top: auto; } .np__jump { margin-bottom: 26px; } }
 @media (min-width: 768px) and (max-width: 1099px) { .np__col--side .np__ad { margin-top: 0; } }
 .np__ad-title { margin: 6px 0 8px; font-family: var(--font-display); font-size: clamp(30px, 2.6vw, 38px); line-height: 1; letter-spacing: .02em; }
 .np__ad-text { margin-bottom: 16px; font-family: var(--font-read); font-style: italic; font-size: 14px; line-height: 1.5; color: var(--muted); }
@@ -589,7 +598,7 @@ html.is-loading .loader,
   display: grid;
   place-items: center;
 }
-.envelope__seal svg { width: 16px; height: 26px; }
+.envelope__seal svg { width: 32px; height: 32px; }
 .envelope__shard {                /* two little wax fragments that fall when the seal cracks */
   position: absolute;
   z-index: 5;
@@ -608,7 +617,38 @@ html.is-loading .loader,
 .letter-stage.is-animated { padding-bottom: 0; }
 .letter-stage.is-animated .letter { z-index: 2; }
 .letter-stage.is-animated .envelope { bottom: auto; }
-.letter-section.is-pinned { min-height: 100vh; }
+
+/* The wax seal is the "open" button (js/envelope.js). A soft ripple invites a click. */
+.envelope__seal { border: 0; padding: 0; transition: filter .25s var(--ease-out); }
+.letter-stage:not(.is-animated) .envelope__seal { pointer-events: none; }
+.letter-stage.is-animated .envelope__seal { cursor: pointer; }
+.letter-stage.is-animated .envelope__seal:hover { filter: brightness(1.15); }
+.envelope__seal:focus-visible { outline-offset: 5px; border-radius: 50%; }
+.letter-stage.is-animated:not(.is-opening) .envelope__seal::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 2px solid rgba(142, 47, 29, .5);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: seal-ripple 2.4s ease-out infinite;
+}
+@keyframes seal-ripple {
+  0% { transform: scale(.88); opacity: .9; }
+  70%, 100% { transform: scale(1.45); opacity: 0; }
+}
+.envelope__hint {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--muted);
+}
 
 /* ---------- 6. Collage ---------- */
 .collage {
@@ -769,7 +809,7 @@ a.contact__value:hover { color: var(--green); }
   border-radius: 50%;
   background: var(--green);
 }
-.map__pin svg { width: 12px; height: 19px; }
+.map__pin svg { width: 20px; height: 20px; }
 .map__label-title { display: block; font-family: var(--font-display); font-weight: 600; font-size: 15px; line-height: 1.25; }
 .map__label-sub { display: block; margin-top: 2px; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
 .map__directions { position: absolute; left: 20px; bottom: 20px; z-index: 3; }

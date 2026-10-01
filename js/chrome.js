@@ -33,19 +33,19 @@ export function writeCache(key, value) {
 const cachedSite = readCache('smunSite') || {};
 
 /* --------------------------------------------------------------------------
-   Emblem. Until the real logo arrives this is the placeholder emblem
-   (assets/svg/emblem-placeholder.svg, cleaned up for inlining).
-   To use the real logo: save it as assets/svg/logo.svg and set
-   "logo": "assets/svg/logo.svg" in data/site.json. If the flame is its own
-   group with id="emblem-flame", the hero will animate it.
+   Emblem = the Sreenidhi logo (assets/svg/logo.svg, inlined below so it is
+   on screen from the very first paint). The path has data-emblem-mark so
+   pages can animate it (it "draws" itself in ink, then fills).
+   To swap the logo later: either paste the new SVG path below, or save the
+   file and set "logo": "assets/svg/your-logo.svg" in data/site.json.
    -------------------------------------------------------------------------- */
-const PLACEHOLDER_EMBLEM = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-  <circle cx="100" cy="100" r="98" fill="#F0E2C8" stroke="#DFC79C" stroke-width="3"/>
-  <circle cx="100" cy="100" r="80" fill="none" stroke="#1E4D3A" stroke-opacity=".35" stroke-width="1.5"/>
-  <g data-emblem-flame><path transform="translate(68 49) scale(1.066)" fill="#F28C28" d="M30 0 C45 25 60 40 60 62 C60 82 46 96 30 96 C14 96 0 82 0 62 C0 45 12 35 18 20 C20 34 26 40 30 42 C28 28 26 14 30 0 Z"/></g>
+export const LOGO_PATH = 'M130.0 0.0 L153.9 0.0 L155.0 0.5 L162.0 1.1 L173.8 3.0 L186.0 6.1 L197.8 10.1 L209.0 15.0 L213.0 17.1 L213.8 18.2 L195.2 26.1 L180.2 34.1 L165.2 44.1 L152.0 55.2 L144.0 63.2 L138.1 70.2 L129.0 83.2 L121.1 98.5 L116.1 112.0 L112.0 129.2 L111.0 136.9 L110.3 149.5 L111.1 167.5 L114.0 184.5 L119.1 201.8 L126.1 218.0 L135.1 233.5 L145.1 246.5 L154.2 255.8 L161.2 261.6 L170.5 267.7 L172.4 268.8 L173.8 268.8 L184.7 257.5 L189.6 251.8 L194.6 245.5 L200.8 236.5 L203.7 231.5 L207.8 223.0 L209.7 217.8 L211.6 209.5 L211.9 198.5 L210.8 190.6 L207.7 182.2 L203.7 175.2 L198.7 168.2 L191.4 160.2 L162.2 133.6 L154.1 124.8 L150.1 119.5 L147.1 114.2 L145.0 108.8 L144.2 105.0 L144.0 98.0 L145.0 92.2 L147.1 86.8 L152.0 78.2 L157.0 71.9 L164.2 64.2 L173.2 56.2 L184.0 47.9 L184.5 47.9 L184.6 48.5 L180.0 55.2 L177.1 61.5 L175.0 70.0 L175.0 75.7 L176.0 80.5 L178.0 85.0 L181.2 89.8 L185.9 94.8 L190.2 98.6 L202.2 106.7 L215.0 113.7 L249.8 131.0 L261.8 138.1 L271.5 145.1 L279.8 152.9 L284.7 159.2 L288.7 167.2 L290.2 174.5 L290.8 175.2 L290.8 190.2 L290.2 191.2 L289.6 195.2 L287.7 202.2 L283.7 211.8 L278.6 220.5 L271.7 229.5 L262.8 238.6 L254.5 245.7 L243.5 253.6 L233.5 259.6 L221.5 265.7 L209.8 270.6 L198.2 274.7 L183.5 278.7 L173.0 280.7 L159.8 282.2 L158.4 282.8 L136.0 282.8 L134.9 282.2 L128.5 281.6 L119.2 279.7 L102.0 274.7 L87.0 268.7 L75.2 262.7 L62.2 254.7 L50.2 245.5 L41.8 237.8 L32.1 227.5 L23.0 215.5 L15.2 202.5 L9.0 189.2 L5.1 177.8 L2.1 165.5 L0.6 153.2 L0.0 151.9 L0.0 129.5 L0.5 128.3 L1.1 122.0 L3.1 110.5 L8.1 93.0 L12.1 83.8 L20.1 69.2 L28.1 57.2 L36.2 47.2 L46.0 37.1 L55.2 29.1 L66.5 21.1 L77.0 15.1 L88.0 10.0 L102.5 5.1 L115.8 2.1 L129.0 0.5 Z';
+
+const DEFAULT_EMBLEM = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 291 283" aria-hidden="true" focusable="false">
+  <path data-emblem-mark fill="#E48023" d="${LOGO_PATH}"/>
 </svg>`;
 
-let emblemSVG = readCache('smunLogo') || PLACEHOLDER_EMBLEM;
+let emblemSVG = readCache('smunLogo') || DEFAULT_EMBLEM;
 
 /** HTML for an emblem of any size (size is set in CSS). */
 export function emblem(extraClass = '') {
@@ -68,8 +68,8 @@ export async function loadLogo(path) {
       .replace(/<\?xml[\s\S]*?\?>/g, '')
       .replace(/<!--[\s\S]*?-->/g, '')
       .replace(/<metadata[\s\S]*?<\/metadata>/g, '')
-      .replace(/\s(width|height)="[^"]*"/, '')                // let CSS size it
-      .replace(/id="emblem-flame"/g, 'data-emblem-flame')      // ids must be unique; we use a data attribute
+      .replace(/\s(width|height|role|aria-label)="[^"]*"/g, '') // let CSS size it; it's decorative here
+      .replace(/id="emblem-(flame|mark)"/g, 'data-emblem-mark') // ids must be unique; we use a data attribute
       .replace(/<svg\b/, '<svg aria-hidden="true" focusable="false"')
       .trim();
     if (svg === emblemSVG) return;
@@ -77,7 +77,7 @@ export async function loadLogo(path) {
     writeCache('smunLogo', svg);
     paintEmblems();
   } catch (err) {
-    console.warn('[SMUN] Logo could not be loaded, keeping the placeholder emblem.', err);
+    console.warn('[SMUN] Logo could not be loaded, keeping the built-in one.', err);
   }
 }
 

@@ -25,6 +25,7 @@ Lines marked ⚠️ CONFIRM were copied from last year's website — check they 
 
 ## Secretariat (name — role)
 Aanya Dey — Secretary-General
+Mohana Chandra — Deputy Secretary-General
 Zinan Thomas — Director-General
 Purvi Kaasam — Chargé d’Affaires
 D. Sandilya Srinivas — Head of Conference
@@ -33,7 +34,7 @@ Aryan Akula & Preetham Kommareddy — USG IT
 Anika Kankanala — USG Conference Management & Logistics
 Purva Reddy K & Navya Sri — USG Delegate Affairs
 Shanmukh Chetan Reddy — USG Outreach (Sponsors)
-Tavishi Suggula & Goutam — USG Outreach (Vendors)
+Tavishi Suggula & Goutam Nutalapati — USG Outreach (Vendors)
 Jasmitha Yelamarthi — USG Administration & Policy
 Ruthvika Mamidipally — USG Finance
 Nishka Rao Katikanani & Noor Imani — USG Social Media & Marketing

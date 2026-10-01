@@ -57,7 +57,7 @@ function renderVideos(videos) {
       <article class="video" data-item data-text="${searchText(v.title, v.description)}">
         ${playable
           ? `<button class="video__thumb" type="button" data-play="${esc(v.youtubeId)}" data-title="${esc(v.title)}"
-               data-cursor="view" data-cursor-label="Play ▶" aria-label="Play video: ${esc(v.title)}">${inner}</button>`
+               aria-label="Play video: ${esc(v.title)}">${inner}</button>`
           : `<div class="video__thumb video__thumb--soon">${inner}<span class="ph__label">Video coming soon</span></div>`}
         <p class="kicker video__kicker">Video <span class="video__dur">${esc(v.duration)}</span></p>
         <h3 class="video__title">${esc(v.title)}</h3>

@@ -12,7 +12,7 @@
      "above the fold", shows), falls from above the screen in front of the
      masthead, lands with a little squash and slide, then the bottom half
      swings down from behind the fold. Finally it settles straight, the
-     "Open" stamp thumps onto the notice and the flame lights.
+     "Open" stamps thump onto the notices and the logo draws itself in ink.
        • ≈2 seconds. Any click, key, scroll or touch finishes it instantly.
        • Phones: the paper drops and slides but doesn't fold (too tall).
        • Reduced motion: no delivery — the paper is simply there.
@@ -27,7 +27,7 @@ import { countUp } from './main.js';
 /* ==========================================================================
    Content
    ========================================================================== */
-export function renderFrontPage(site = {}, delegate = null) {
+export function renderFrontPage(site = {}, delegate = null, press = null) {
   const fp = site.frontPage || {};
 
   // Lead story — the first paragraph gets the drop cap (CSS).
@@ -50,16 +50,21 @@ export function renderFrontPage(site = {}, delegate = null) {
 
   renderTminus(site);
 
-  // Registration notice: the delegate ticket's status stamp + description.
-  const stamp = qs('[data-np-stamp]');
-  if (stamp && delegate) {
-    const s = stampFor(delegate);
-    stamp.className = `stamp stamp--${s.cls} np__stamp`;
-    stamp.innerHTML = `<span class="sr-only">Registration status: </span>${esc(s.text)}`;
-    stamp.hidden = false;
+  // Registration notices (delegates on the right, International Press on the
+  // left): each gets its ticket's status stamp + description from registrations.json.
+  const tickets = { delegate, press };
+  for (const [id, ticket] of Object.entries(tickets)) {
+    if (!ticket) continue;
+    const stamp = qs(`[data-np-stamp="${id}"]`);
+    if (stamp) {
+      const s = stampFor(ticket);
+      stamp.className = `stamp stamp--${s.cls} np__stamp`;
+      stamp.innerHTML = `<span class="sr-only">Registration status: </span>${esc(s.text)}`;
+      stamp.hidden = false;
+    }
+    const text = qs(`[data-np-ad-text="${id}"]`);
+    if (text && ticket.description) text.textContent = ticket.description;
   }
-  const adText = qs('[data-np-ad-text]');
-  if (adText && delegate?.description) adText.textContent = delegate.description;
 
   fitNameplate();
 }
@@ -131,8 +136,8 @@ export function deliverNewspaper({ delay = 0 } = {}) {
   const shadow = qs('[data-np-shadow]', stage);
   const under = qs('[data-np-under]', stage);
   const crease = qs('[data-np-crease]', stage);
-  const stamp = qs('[data-np-stamp]:not([hidden])', stage);
-  const flame = qs('.hero__emblem [data-emblem-flame]', stage);
+  const stamps = qsa('[data-np-stamp]:not([hidden])', stage);
+  const mark = qs('.hero__emblem [data-emblem-mark]', stage);      // the logo's path
   const glow = qs('[data-hero-glow]', stage);
   const fold = window.matchMedia('(min-width: 768px)').matches;   // phones: drop only
 
@@ -153,8 +158,9 @@ export function deliverNewspaper({ delay = 0 } = {}) {
     const visibleHeight = fold ? rect.height / 2 : rect.height;
     const fromY = -(rect.top + visibleHeight + 160);
 
-    if (stamp) gsap.set(stamp, { opacity: 0, scale: 1.7 });
-    if (flame) gsap.set(flame, { scaleY: 0, transformOrigin: '50% 100%' });
+    if (stamps.length) gsap.set(stamps, { opacity: 0, scale: 1.7 });
+    // The logo starts as an empty outline waiting to be "inked".
+    if (mark) gsap.set(mark, { attr: { stroke: '#E48023', 'stroke-width': 3 }, fillOpacity: 0, drawSVG: '0%' });
     if (fold) flap = buildFlap(stage, sheet);        // clone first, so it matches the page exactly
     gsap.set(stage, {
       visibility: 'visible',
@@ -197,17 +203,18 @@ export function deliverNewspaper({ delay = 0 } = {}) {
         .add(unfolded, t + 0.74);
     }
 
-    /* ---- 4. Settle straight, stamp, flame ---- */
+    /* ---- 4. Settle straight, stamps, logo ---- */
     const settle = fold ? 1.85 : 1.15;
     tl.to(stage, { rotation: 0, duration: 0.35, ease: 'power2.inOut' }, settle)
       .to(under, { opacity: 1, duration: 0.4 }, settle);
     if (fold) tl.to(crease, { opacity: 0, duration: 0.5 }, settle);
-    if (stamp) {
-      tl.to(stamp, { opacity: 0.85, scale: 1, duration: 0.2, ease: 'power4.in' }, settle + 0.1);
+    if (stamps.length) {
+      tl.to(stamps, { opacity: 0.85, scale: 1, duration: 0.2, ease: 'power4.in', stagger: 0.18 }, settle + 0.1);
     }
-    if (flame) {
-      tl.to(flame, { scaleY: 1, duration: 0.5, ease: 'back.out(1.8)' }, settle + 0.15)
-        .to(flame, { keyframes: { scaleX: [0.92, 1.04, 0.96, 1] }, duration: 0.35, ease: 'none' }, settle + 0.23);
+    if (mark) {
+      // The outline draws itself, then the orange "ink" floods in.
+      tl.to(mark, { drawSVG: '100%', duration: 0.6, ease: 'power2.inOut' }, settle)
+        .to(mark, { fillOpacity: 1, duration: 0.35, ease: 'power1.out' }, settle + 0.3);
     }
 
     /* ---- Impatient visitor? Jump straight to the end. ---- */
@@ -226,6 +233,11 @@ export function deliverNewspaper({ delay = 0 } = {}) {
       SKIP_EVENTS.forEach((ev) => window.removeEventListener(ev, skip));
       unfolded();
       gsap.set(stage, { clearProps: 'transform' });     // crisp text at rest
+      if (mark) {                                         // a plain filled logo again
+        gsap.set(mark, { clearProps: 'all' });
+        mark.removeAttribute('stroke');
+        mark.removeAttribute('stroke-width');
+      }
       if (crease) gsap.set(crease, { opacity: 0 });
       startScroll();
       breathe(glow);

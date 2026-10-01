@@ -1,7 +1,7 @@
 /* ==========================================================================
    main.js — shared bootstrap for every page.
-   - registers GSAP plugins and starts smooth scrolling, page-turns,
-     the ink-dot cursor and magnetic buttons
+   - registers GSAP plugins and starts smooth scrolling, page-turns
+     and magnetic buttons (the normal mouse cursor is used everywhere)
    - loads data/site.json and fills [data-site-*] slots
    - mobile menu, glass pill nav, reading-progress line
    - the scroll-reveal system (reveal()) used by every page
@@ -14,7 +14,6 @@ import { bindSite, loadLogo, writeCache, getPath } from './chrome.js';
 import { fetchJSON } from './data.js';
 import { initSmooth, stopScroll, startScroll } from './motion/smooth.js';
 import { initTransitions } from './motion/transitions.js';
-import { initCursor } from './motion/cursor.js';
 import { initMagnetic } from './motion/magnetic.js';
 
 export { reduce, canHover, isTouch, motionOK };
@@ -65,10 +64,7 @@ document.addEventListener('load', (e) => { if (e.target.tagName === 'IMG') refre
 /* ---- 4. Start the motion layer ---- */
 initSmooth();
 initTransitions();
-if (canHover && !reduce) {
-  initCursor();
-  initMagnetic();
-}
+if (canHover && !reduce) initMagnetic();
 initMenu();
 initPill();
 initProgress();

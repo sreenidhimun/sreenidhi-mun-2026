@@ -3,7 +3,7 @@
    1. Dateline + masthead      6. Page header           11. Placeholder art
    2. Mobile menu              7. Fact strip            12. Name list (secretariat + boards)
    3. Glass pill nav           8. Notice box + stamp    13. Bio drawer
-   4. Reading-progress line    9. Emblem                14. Ink-dot cursor
+   4. Reading-progress line    9. Emblem                14. Misc
    5. Footers                 10. Breadcrumb/back link
    ========================================================================== */
 
@@ -641,59 +641,7 @@
 .drawer__nav button:last-child { text-align: right; }
 .drawer__nav button:hover { color: var(--green); }
 
-/* ---------- 14. Ink-dot cursor (desktop with a mouse only) ---------- */
-html.has-custom-cursor,
-html.has-custom-cursor * { cursor: none; }
-html.has-custom-cursor .btn,
-html.has-custom-cursor .btn * { cursor: pointer; }
-html.has-custom-cursor input,
-html.has-custom-cursor textarea { cursor: text; }
-html.has-custom-cursor iframe { cursor: auto; }
-
-.cursor { position: fixed; top: 0; left: 0; z-index: var(--z-cursor); pointer-events: none; }
-.cursor__dot, .cursor__ring {
-  position: fixed;
-  top: 0; left: 0;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.cursor__dot { width: 10px; height: 10px; margin: -5px 0 0 -5px; background: var(--ink); transition: opacity .2s; }
-.cursor__ring {
-  width: 36px;
-  height: 36px;
-  margin: -18px 0 0 -18px;
-  display: grid;
-  place-items: center;
-}
-.cursor__ring-bg {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(26, 38, 32, .35);
-  background: rgba(26, 38, 32, 0);
-  transition: transform .35s var(--ease-out), background-color .35s var(--ease-out), border-color .35s var(--ease-out);
-}
-.cursor__label {
-  position: relative;
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: 12px;
-  color: var(--card);
-  white-space: nowrap;
-  opacity: 0;
-  transform: scale(.6);
-  transition: opacity .25s var(--ease-out), transform .35s var(--ease-out);
-}
-.cursor[data-state="link"] .cursor__ring-bg { transform: scale(1.6); background: rgba(26, 38, 32, .08); }
-.cursor[data-state="view"] .cursor__ring-bg { transform: scale(2.333); background: var(--ink); border-color: var(--ink); }
-.cursor[data-state="view"] .cursor__label { opacity: 1; transform: none; }   /* ring grows to 84px */
-.cursor[data-state="view"] .cursor__dot { opacity: 0; }
-.cursor[data-state="hidden"] .cursor__dot,
-.cursor[data-state="hidden"] .cursor__ring { opacity: 0; }
-.cursor.is-away .cursor__dot, .cursor.is-away .cursor__ring { opacity: 0; }
-.cursor__ring { transition: opacity .2s; }
-
-/* ---------- 15. Misc ---------- */
+/* ---------- 14. Misc ---------- */
 .noscript-nav { padding: 16px var(--gutter); font-family: var(--font-ui); font-size: 14px; }
 .not-found__links { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 0; padding: 0; }
 main:focus { outline: none; }

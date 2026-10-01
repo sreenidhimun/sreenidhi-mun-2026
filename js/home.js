@@ -19,7 +19,8 @@ import { renderFrontPage, deliverNewspaper } from './newspaper.js';
          visit) the newspaper is "delivered". The rest of the page's reveals
          wait until it has landed. ---- */
 const frontPage = Promise.all([site, fetchJSON('data/registrations.json')]).then(([s, reg]) => {
-  renderFrontPage(s, (reg?.tickets || []).find((t) => t.id === 'delegate'));
+  const ticket = (id) => (reg?.tickets || []).find((t) => t.id === id);
+  renderFrontPage(s, ticket('delegate'), ticket('press'));
 });
 const afterLoader = document.documentElement.classList.contains('is-loading');
 runLoader(() => {
@@ -175,7 +176,7 @@ function renderCollage(s) {
     const label = `Enlarge photograph ${i + 1} of ${items.length}${caption ? ': ' + caption : ''}`;
     const photo = imageOr(item.src, item.alt || caption, phLandscape(PH_COLORS[i % PH_COLORS.length]));
     return `<li class="print print--${i + 1}${PORTRAIT[i] ? ' print--portrait' : ''}" data-speed="${PARALLAX[i]}">
-      <button class="print__btn" type="button" style="--rot:${ROTATIONS[i] ?? 0}deg" data-cursor="view" data-index="${i}" aria-label="${esc(label)}">
+      <button class="print__btn" type="button" style="--rot:${ROTATIONS[i] ?? 0}deg" data-index="${i}" aria-label="${esc(label)}">
         <span class="print__photo">${photo}</span>
         <span class="print__caption" aria-hidden="true">${esc(caption)}</span>
       </button>

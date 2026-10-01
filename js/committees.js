@@ -40,8 +40,7 @@ export function logoHTML(c, size) {
 function renderIndex(committees) {
   listEl.innerHTML = committees.map((c, i) => `
     <li>
-      <a class="committee-row" href="committee.html?id=${encodeURIComponent(c.slug)}" data-i="${i}"
-         data-cursor="view" data-cursor-label="Open →">
+      <a class="committee-row" href="committee.html?id=${encodeURIComponent(c.slug)}" data-i="${i}">
         <span class="committee-row__num" aria-hidden="true">${toRoman(i + 1)}.</span>
         <span class="committee-row__logo">${logoHTML(c, 52)}</span>
         <span class="committee-row__name">${esc(c.name)}</span>

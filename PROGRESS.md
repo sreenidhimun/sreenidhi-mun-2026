@@ -136,3 +136,10 @@ Done so far:
 - Secretariat deck text updated to match ("Hover over a name to see who they are." / "Swipe through the cards…").
 - **Open:** no photo for **Aanya Dey** (placeholder still shows); an extra `mohana.png` doesn't match anyone in the Secretariat list (converted to `assets/img/secretariat/mohana.jpg` but unused).
 - To add/replace a photo later: put a square JPG in `assets/img/secretariat/` and set that member's `"photo"` path in `data/secretariat.json`.
+
+### Change request — logo, photos, letter, press notice, cursor
+- **Logo:** `logo.png` traced into `assets/svg/logo.svg` (99.6% pixel match) and inlined in `js/chrome.js` as the site emblem (masthead, glass pill, menu, front-page photo, letter). Also replaces the flame at the loader's fulcrum, the wax seal (cream, "embossed"), the map pin and every page's favicon. Animation: on the front page the logo draws its outline in ink, then fills with orange; in the loader it ignites at the top of the scales. Original PNG kept at `assets/img/logo.png`.
+- **Secretariat:** Mohana Chandra (Deputy Secretary-General) added below Aanya; Goutam → Goutam Nutalapati; Aanya's photo cropped from the 6000×4000 original to match the others. All 19 members now have photos. CONTENT.md updated to match.
+- **Letter:** no longer pinned to scrolling. The envelope waits sealed; clicking/tapping the wax seal (a real button with a soft ripple + "Click the seal to open the letter") plays the opening once (~3s). Keyboard users land on the letter afterwards.
+- **Front page:** International Press "Press Pass" notice fills the space under the lead story (stamp + description from the press ticket); deeper layered shadow under the paper and the sheet beneath.
+- **Cursor:** the ink-dot cursor is removed (`js/motion/cursor.js` deleted, CSS removed); the normal mouse cursor is used everywhere.

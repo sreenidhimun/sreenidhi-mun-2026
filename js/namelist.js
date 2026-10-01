@@ -56,7 +56,7 @@ export function initNameList(root, people, options = {}) {
           </li>`).join('')}
       </ul>
       ${options.excerpt ? '<p class="nl-excerpt" aria-hidden="true"></p>' : ''}
-      <div class="nl-portrait" aria-hidden="true"${withBios ? ' data-cursor="view" data-cursor-label="Read →"' : ''}>
+      <div class="nl-portrait" aria-hidden="true"${withBios ? ' style="cursor:pointer"' : ''}>
         <div class="nl-portrait__frame">
           ${people.map((p, i) => `<div class="nl-portrait__img" data-i="${i}">${portraitHTML(p)}</div>`).join('')}
         </div>
