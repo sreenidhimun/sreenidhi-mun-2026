@@ -13,19 +13,10 @@
   z-index: var(--z-loader);
   display: none;
   flex-direction: column;
-  background: var(--paper);
+  background: var(--paper) url(../../assets/img/grain.png);   /* same paper grain as the page */
 }
 html.is-loading .loader,
 .loader.is-leaving { display: flex; }
-.loader::before {                 /* grain on the overlay too */
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url(../../assets/svg/grain.svg);
-  opacity: .06;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
 .loader__top {
   position: relative;
   display: flex;

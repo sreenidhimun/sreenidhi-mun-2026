@@ -143,3 +143,10 @@ Done so far:
 - **Letter:** no longer pinned to scrolling. The envelope waits sealed; clicking/tapping the wax seal (a real button with a soft ripple + "Click the seal to open the letter") plays the opening once (~3s). Keyboard users land on the letter afterwards.
 - **Front page:** International Press "Press Pass" notice fills the space under the lead story (stamp + description from the press ticket); deeper layered shadow under the paper and the sheet beneath.
 - **Cursor:** the ink-dot cursor is removed (`js/motion/cursor.js` deleted, CSS removed); the normal mouse cursor is used everywhere.
+
+### Change request — performance ("the site lags a bit")
+- **Paper grain:** was a full-screen `position: fixed` layer over the page with `mix-blend-mode: multiply` and a live SVG `feTurbulence` filter — browsers re-blend that whole layer on every scroll frame (worst in Safari). Now a pre-rendered 200×200 tileable PNG (`assets/img/grain.png`, 16 KB) painted in the body/menu/loader background. Multiplying faint noise == laying near-transparent dark noise over the paper, so the look is the same. (`assets/svg/grain.svg` is no longer used.)
+- **Glass nav:** backdrop blur 16px → 10px (re-blurred every frame while content scrolls under it).
+- **Smooth scroll:** Lenis `lerp` 0.1 → 0.15 so the page follows the wheel more closely (0.1 felt like lag). Tune in `js/motion/smooth.js`.
+- Removed `text-rendering: optimizeLegibility` from `body` (slows text layout on long pages; kerning is on by default anyway).
+- Couldn't frame-profile here (the in-app browser pane was hidden, so it doesn't draw frames); the changes target known scroll-jank causes. If it still lags somewhere specific, note the page + device.

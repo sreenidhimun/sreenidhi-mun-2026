@@ -13,7 +13,9 @@ export let lenis = null;
 
 export function initSmooth() {
   if (!reduce && gsapReady() && typeof window.Lenis !== 'undefined') {
-    lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true });
+    // lerp = how quickly the page catches up with the wheel each frame.
+    // Higher = snappier (0.1 felt "laggy"), lower = floatier. Try 0.12–0.2.
+    lenis = new window.Lenis({ lerp: 0.15, wheelMultiplier: 1, smoothWheel: true });
 
     // Keep ScrollTrigger in step with Lenis, and drive Lenis from GSAP's clock.
     lenis.on('scroll', window.ScrollTrigger.update);

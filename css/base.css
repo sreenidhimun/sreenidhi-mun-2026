@@ -16,30 +16,22 @@ button { cursor: pointer; background: none; border: 0; padding: 0; }
 a { color: inherit; }
 [hidden] { display: none !important; }
 
-/* ---------- 2. Page & paper grain ---------- */
+/* ---------- 2. Page & paper grain ----------
+   The faint paper grain is a small pre-rendered, tileable PNG painted as part
+   of the page background. (It used to be a full-screen layer fixed over the
+   page with a blend mode and a live SVG noise filter, which made browsers
+   re-blend the whole screen on every scroll frame — the main cause of lag.) */
 html { background: var(--paper); scroll-behavior: auto; }
 body {
-  background: var(--paper);
+  background: var(--paper) url(../assets/img/grain.png);
   color: var(--ink);
   font-family: var(--font-read);
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   overflow-x: clip;               /* never allow sideways scrolling */
   min-height: 100vh;
-}
-/* Faint paper grain over everything (pointer-events off, so it never blocks clicks). */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url(../assets/svg/grain.svg);
-  opacity: .06;
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: multiply;
 }
 main, header, footer, .site-top, .site-bottom { position: relative; z-index: var(--z-content); }
 
