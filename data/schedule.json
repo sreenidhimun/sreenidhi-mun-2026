@@ -1,0 +1,165 @@
+{
+  "days": [
+    {
+      "label": "Day I",
+      "date": "Friday, 30 October 2026",
+      "iso": "2026-10-30",
+      "items": [
+        {
+          "start": "1:30 pm",
+          "end": "2:00 pm",
+          "title": "Registration"
+        },
+        {
+          "start": "2:00 pm",
+          "end": "3:00 pm",
+          "title": "Opening ceremony"
+        },
+        {
+          "start": "3:10 pm",
+          "end": "4:30 pm",
+          "title": "Committee session 1"
+        },
+        {
+          "start": "4:30 pm",
+          "end": "5:00 pm",
+          "title": "Break"
+        },
+        {
+          "start": "5:00 pm",
+          "end": "6:10 pm",
+          "title": "Committee session 2"
+        },
+        {
+          "start": "6:10 pm",
+          "end": "6:35 pm",
+          "title": "Break"
+        },
+        {
+          "start": "6:35 pm",
+          "end": "7:20 pm",
+          "title": "Committee session 3"
+        },
+        {
+          "start": "7:20 pm",
+          "end": "8:00 pm",
+          "title": "Departure"
+        }
+      ]
+    },
+    {
+      "label": "Day II",
+      "date": "Saturday, 31 October 2026",
+      "iso": "2026-10-31",
+      "items": [
+        {
+          "start": "9:00 am",
+          "end": "9:45 am",
+          "title": "Arrival"
+        },
+        {
+          "start": "9:45 am",
+          "end": "11:00 am",
+          "title": "Committee session 1"
+        },
+        {
+          "start": "11:00 am",
+          "end": "11:30 am",
+          "title": "Break"
+        },
+        {
+          "start": "11:30 am",
+          "end": "12:55 pm",
+          "title": "Committee session 2"
+        },
+        {
+          "start": "12:55 pm",
+          "end": "2:00 pm",
+          "title": "Lunch break"
+        },
+        {
+          "start": "2:00 pm",
+          "end": "3:10 pm",
+          "title": "Committee session 3"
+        },
+        {
+          "start": "3:10 pm",
+          "end": "3:30 pm",
+          "title": "Break"
+        },
+        {
+          "start": "3:30 pm",
+          "end": "4:30 pm",
+          "title": "Committee session 4"
+        },
+        {
+          "start": "4:30 pm",
+          "end": "5:00 pm",
+          "title": "Departure"
+        }
+      ]
+    },
+    {
+      "label": "Day III",
+      "date": "Sunday, 1 November 2026",
+      "iso": "2026-11-01",
+      "items": [
+        {
+          "start": "9:00 am",
+          "end": "9:45 am",
+          "title": "Arrival"
+        },
+        {
+          "start": "9:45 am",
+          "end": "11:00 am",
+          "title": "Committee session 1"
+        },
+        {
+          "start": "11:00 am",
+          "end": "11:30 am",
+          "title": "Break"
+        },
+        {
+          "start": "11:30 am",
+          "end": "12:55 pm",
+          "title": "Committee session 2"
+        },
+        {
+          "start": "12:55 pm",
+          "end": "2:00 pm",
+          "title": "Lunch break"
+        },
+        {
+          "start": "2:00 pm",
+          "end": "3:10 pm",
+          "title": "Committee session 3"
+        },
+        {
+          "start": "3:10 pm",
+          "end": "3:30 pm",
+          "title": "Break"
+        },
+        {
+          "start": "3:30 pm",
+          "end": "4:30 pm",
+          "title": "Committee session 4"
+        },
+        {
+          "start": "4:30 pm",
+          "end": "5:30 pm",
+          "title": "Closing ceremony"
+        },
+        {
+          "start": "5:30 pm",
+          "end": "8:15 pm",
+          "title": "Social night"
+        },
+        {
+          "start": "8:15 pm",
+          "end": "8:45 pm",
+          "title": "Departure"
+        }
+      ]
+    }
+  ]
+}

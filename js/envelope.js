@@ -22,6 +22,7 @@ export function initEnvelope() {
   const letter = qs('[data-letter]');
   const envelope = qs('[data-envelope]');
   if (!stage || !letter || !envelope || !motionOK()) return;
+  if (stage.classList.contains('is-sealed')) return;          // letter not released yet
 
   const { gsap, SplitText } = window;
   const parts = qsa('[data-env-part]', envelope);            // back, pocket, flap, seal

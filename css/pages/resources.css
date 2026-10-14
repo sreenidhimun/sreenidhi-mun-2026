@@ -46,6 +46,13 @@
 }
 .res-search__input::placeholder { color: rgba(26, 38, 32, .5); }
 .res-search__input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.res-soon {                         /* a group with nothing published yet */
+  padding: 26px 0 4px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--muted);
+}
 .res-empty {
   padding: 32px 0;
   font-family: var(--font-display);

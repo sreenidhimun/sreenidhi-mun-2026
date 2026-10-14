@@ -641,6 +641,29 @@ html.is-loading .loader,
   color: var(--muted);
 }
 
+/* Sealed mode (letter.released = false in data/site.json): the envelope sits
+   on its own, still sealed, with a "To be released" stamp. Nothing opens. */
+.letter-stage.is-sealed { padding: clamp(12px, 2vw, 24px) 0 0; }
+.letter-stage.is-sealed .envelope { position: relative; left: auto; bottom: auto; margin: 0 auto; }
+.letter-stage.is-sealed .letter[hidden] { display: none; }
+.envelope__stamp {
+  position: absolute;
+  z-index: 6;
+  right: 6%;
+  bottom: 12%;
+  margin: 0;
+  background: rgba(251, 248, 241, .55);
+}
+@media (max-width: 767px) { .envelope__stamp { font-size: 11px; padding: 7px 9px 6px 12px; } }
+.envelope__note {
+  margin: 22px 0 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--muted);
+}
+
 /* ---------- 6. Collage ---------- */
 .collage {
   display: grid;

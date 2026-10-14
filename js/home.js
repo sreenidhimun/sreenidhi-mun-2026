@@ -122,6 +122,9 @@ function initMapReveal() {
    -------------------------------------------------------------------------- */
 function renderOpening(s) {
   const img = s.openingImage || {};
+  // No photographer credit? Hide the "Photo: …" line.
+  const credit = qs('[data-opening-credit]');
+  if (credit && isBlank(img.credit)) credit.hidden = true;
   const media = qs('[data-opening-media]');
   if (!media || isBlank(img.src)) return;
   media.innerHTML = `<img class="media-cover" src="${esc(img.src)}" alt="${esc(img.alt || img.caption || 'SMUN conference photograph')}" decoding="async">`;
@@ -132,6 +135,14 @@ function renderOpening(s) {
    automatically through their data-site-text attributes).
    -------------------------------------------------------------------------- */
 async function renderLetter(s) {
+  // Not released yet? The envelope stays sealed with a "To be released" stamp.
+  if (s.letter?.released === false) {
+    qs('[data-letter-stage]')?.classList.add('is-sealed');
+    qsa('[data-env-stamp], [data-env-note]').forEach((el) => { el.hidden = false; });
+    const letter = qs('[data-letter]');
+    if (letter) letter.hidden = true;
+    return;
+  }
   const body = qs('[data-letter-body]');
   const paragraphs = s.letter?.paragraphs || [];
   if (body && paragraphs.length) {

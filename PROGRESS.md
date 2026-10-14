@@ -150,3 +150,19 @@ Done so far:
 - **Smooth scroll:** Lenis `lerp` 0.1 → 0.15 so the page follows the wheel more closely (0.1 felt like lag). Tune in `js/motion/smooth.js`.
 - Removed `text-rendering: optimizeLegibility` from `body` (slows text layout on long pages; kerning is on by default anyway).
 - Couldn't frame-profile here (the in-app browser pane was hidden, so it doesn't draw frames); the changes target known scroll-jank causes. If it still lags somewhere specific, note the page + device.
+
+### Change request — content from details.xlsx, event photos, schedule
+- **Data filled from the maintainer's `details.xlsx`** (anything left blank in the sheet stays unpublished):
+  - `data/site.json`: countdown → Fri 30 Oct 2026, 2:00 pm IST (registration from 1:30 pm); `conferenceEnd` → Sun 1 Nov, 5:30 pm (end of the closing ceremony, per the schedule); 500 delegates; front-page headline "The World Takes the Floor.", standfirst + two-paragraph lead story; opening photo + alt + caption; 8 collage photos + alts; letter closing line + signature name "Aanya Dey".
+  - `data/committees.json`: level + delegate numbers for all 9 committees; agenda "To be announced"; procedure "To be decided".
+  - `data/resources.json`: emptied (the sheet had no resources yet).
+- **Photos** (from `../Photos for website/`): `assets/img/home/opening.jpg` (2200px) and `collage-1…8.jpg` (1400px, portraits in the portrait slots 2, 5, 7, 8; the CR3 raw was converted with `sips`). `assets/img/og-image.jpg` is now a 1200×630 crop of the opening photo. Originals untouched; `AU7A0968.jpg` unused.
+- **Schedule:** new `data/schedule.json` (3 days, start/end/title) rendered by new `js/schedule.js` into three newspaper columns (double rule under each date). Breaks are quiet/italic, ceremonies + social night are highlighted in green, arrival/registration/departure are muted. During the conference the current session gets a "Now" tag (IST). The Stop Press notice and ghost rows are gone.
+- **No more bracketed placeholders on the live pages** — unreleased content now shows tidy "coming soon" states:
+  - Letter: `letter.released: false` → the envelope stays sealed with a "To be released" stamp and a one-line note; nothing opens. Set `released: true` and fill `date` + `paragraphs` to publish it (the click-to-open animation comes back automatically).
+  - Opening photo: the "Photo: …" credit line hides when `openingImage.credit` is blank.
+  - Committee pages: agenda "To be announced" shown without quote marks; board with no names → "The Executive Board for this committee will be announced soon."; no PDF → "Coming soon" instead of `[ 0.0 ] MB` / `[ 00 ] Pages`.
+  - Resources: each empty group shows "… coming soon." (hidden while searching).
+  - Allocation search: the "· last updated …" part is left out when `lastUpdated` is blank.
+- Verified at desktop and 390px (no horizontal overflow, no console errors); scanned every page for visible `[ … ]` text — none left.
+- **Open:** "Timings – 7:15" at the top of the pasted schedule wasn't used (meaning unclear). `og:image` still needs an absolute URL once the Vercel domain is known. Still to come from the team: S-G letter text, Executive Boards, agendas, background guide PDFs, registration form links, resources, partners, committee logos.

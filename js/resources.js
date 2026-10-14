@@ -26,6 +26,7 @@ fetchJSON('data/resources.json').then(async (data) => {
   renderVideos(data.videos || []);
   renderDocuments(data.documents || []);
   renderIimun(data.iimun || []);
+  addSoonNotes();
 
   // Start from the address bar (?type=…&q=…), if present.
   const params = new URLSearchParams(location.search);
@@ -108,6 +109,20 @@ function renderIimun(links) {
   }).join('');
 }
 
+// A group with nothing in it yet gets a short "coming soon" line.
+const SOON = {
+  videos: 'Training videos are coming soon.',
+  documents: 'MUN Club documents are coming soon.',
+  iimun: 'IIMUN resources are coming soon.',
+};
+function addSoonNotes() {
+  qsa('.res-group', panel).forEach((group) => {
+    if (qs('[data-item]', group)) return;
+    group.dataset.soon = '';
+    qs('[data-list]', group)?.insertAdjacentHTML('afterend', `<p class="res-soon">${SOON[group.dataset.group] || 'Coming soon.'}</p>`);
+  });
+}
+
 /* --------------------------------------------------------------------------
    Filtering (tabs + search)
    -------------------------------------------------------------------------- */
@@ -127,8 +142,11 @@ function apply({ animate = true } = {}) {
       item.style.display = show ? '' : 'none';
       if (show) visible++;
     });
-    group.style.display = visible ? '' : 'none';
-    shown += visible;
+    // Empty groups (nothing published yet) still show their "coming soon" line,
+    // except while searching.
+    const soon = group.hasAttribute('data-soon') && typeMatches && !needle;
+    group.style.display = visible || soon ? '' : 'none';
+    shown += visible + (soon ? 1 : 0);
   });
 
   empty.hidden = shown > 0;

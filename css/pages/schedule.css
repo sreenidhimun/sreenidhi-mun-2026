@@ -1,30 +1,85 @@
 /* ==========================================================================
-   SMUN XIV — Schedule ("coming soon" for now)
+   SMUN XIV — Schedule
    ========================================================================== */
-.stop-press { padding-top: clamp(40px, 5vw, 72px); }
-.notice__title--big { font-size: clamp(36px, 4.2vw, 60px); }
 
-/* Three-day layout. The ghost version is a faint preview until the real
-   programme is published (see the comment in schedule.html). */
+/* Three-day layout, filled in by js/schedule.js from data/schedule.json. */
+.schedule-section { padding-top: clamp(40px, 5vw, 64px); }
 .schedule {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 36px;
-  margin-top: clamp(48px, 6vw, 72px);
+  gap: 48px;
 }
 @media (min-width: 900px) {
   .schedule { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
-  .day { padding: 0 36px; }
+  .day { padding: 0 28px; }
   .day:first-child { padding-left: 0; }
+  .day:last-child { padding-right: 0; }
   .day + .day { border-left: 1px solid var(--rule-soft); }
 }
-.schedule--ghost .day { opacity: .4; }                        /* faint preview */
+@media (min-width: 1200px) { .day { padding: 0 36px; } }
+.schedule__loading { font-family: var(--font-display); font-style: italic; color: var(--muted); }
+
 .day__label { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--orange); }
-.day__date { margin: 6px 0 22px; font-family: var(--font-display); font-size: clamp(32px, 2.8vw, 40px); line-height: 1.1; }
-.day__rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-.day__row { display: flex; gap: 16px; align-items: center; }
-.schedule--ghost .day__time { display: block; flex: none; width: 56px; height: 8px; border-radius: 4px; background: rgba(161, 106, 63, .5); }
-.schedule--ghost .day__event { display: block; width: min(var(--w, 180px), 100%); height: 8px; border-radius: 4px; background: rgba(26, 38, 32, .25); }
-/* Real rows (when published) */
-.schedule:not(.schedule--ghost) .day__time { flex: none; width: 64px; font-family: var(--font-ui); font-weight: 600; font-size: 12px; letter-spacing: .08em; color: var(--terra-ink); }
-.schedule:not(.schedule--ghost) .day__event { font-family: var(--font-read); font-size: 15px; }
+.day__date {
+  margin: 6px 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 3px double var(--rule);       /* newspaper double rule under each day */
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 2.3vw, 34px);
+  line-height: 1.15;
+}
+.day__rows { list-style: none; margin: 0; padding: 0; }
+.day__row {
+  display: grid;
+  grid-template-columns: 8.4rem minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.day__time {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--terra-ink);
+  white-space: nowrap;
+}
+.day__event { font-family: var(--font-read); font-size: 15px; line-height: 1.45; }
+
+/* Row kinds (set by js/schedule.js from the title) */
+.day__row.is-break .day__time { color: var(--muted); font-weight: 500; }
+.day__row.is-break .day__event { font-style: italic; color: var(--muted); }
+.day__row.is-logistics .day__event { color: var(--muted); }
+.day__row.is-key .day__event {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--green);
+}
+
+/* The session happening right now (during the conference only) */
+.day__now {
+  display: none;
+  margin-left: 10px;
+  padding: 3px 8px 2px;
+  border-radius: var(--radius-pill);
+  background: var(--flame);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+}
+.day__row.is-now { background: linear-gradient(90deg, rgba(232, 89, 28, .08), transparent 80%); }
+.day__row.is-now .day__now { display: inline-block; }
+
+.schedule__note { margin-top: clamp(36px, 4vw, 56px); }
+/* Three narrow columns (900–1279px): time sits above the event, like a listings column. */
+@media (min-width: 900px) and (max-width: 1279px) {
+  .day__row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 10px 0; }
+}
+@media (max-width: 380px) { .day__row { grid-template-columns: 7.6rem minmax(0, 1fr); } .day__time { font-size: 12px; } }

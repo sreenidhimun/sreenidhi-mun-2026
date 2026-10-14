@@ -31,7 +31,7 @@ export function initAllocationSearch(root, config, site = {}) {
   let requestId = 0;
 
   const mail = email && !/^\s*\[/.test(email) ? `<a href="mailto:${esc(email)}">${esc(email)}</a>` : 'the Secretariat';
-  const updated = isBlank(config.lastUpdated) ? '[ date ]' : esc(config.lastUpdated);
+  const updated = isBlank(config.lastUpdated) ? '' : ` · last updated ${esc(config.lastUpdated)}`;
 
   root.innerHTML = `
     <div class="container">
@@ -60,7 +60,7 @@ export function initAllocationSearch(root, config, site = {}) {
 
       <div class="alloc__results" data-results></div>
       <p class="sr-only" id="alloc-status" aria-live="polite" data-status></p>
-      <p class="caption alloc__source" data-reveal>Source: SMUN allocation sheet · last updated ${updated}. Can’t find your name? Email ${mail}.</p>
+      <p class="caption alloc__source" data-reveal>Source: SMUN allocation sheet${updated}. Can’t find your name? Email ${mail}.</p>
     </div>`;
 
   const input = qs('.alloc__input', root);

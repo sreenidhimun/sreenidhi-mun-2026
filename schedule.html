@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schedule — SMUN XIV</title>
-  <meta name="description" content="The programme for Sreenidhi Model United Nations XIV — to be announced.">
+  <meta name="description" content="The three-day programme for Sreenidhi Model United Nations XIV, 30 October – 1 November 2026.">
   <meta name="theme-color" content="#F4EEE2">
 
   <!-- Open Graph (link previews). og:image is a [ placeholder ]: add a 1200×630 image at
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sreenidhi Model United Nations">
   <meta property="og:title" content="Schedule — SMUN XIV">
-  <meta property="og:description" content="The programme for Sreenidhi Model United Nations XIV — to be announced.">
+  <meta property="og:description" content="The three-day programme for Sreenidhi Model United Nations XIV, 30 October – 1 November 2026.">
   <meta property="og:image" content="assets/img/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -59,6 +59,7 @@
 
   <!-- Site scripts -->
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/schedule.js"></script>
 </head>
 <body data-page="schedule">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -74,65 +75,18 @@
     <header class="page-head container">
       <p class="kicker" data-reveal>The Programme</p>
       <h1 class="h-page" data-split data-reveal-delay="0.1">Three Days at a Glance.</h1>
-      <p class="deck" data-reveal data-reveal-delay="0.35">The full conference schedule will be published here.</p>
+      <p class="deck" data-reveal data-reveal-delay="0.35">Friday 30 October to Sunday 1 November 2026 — committee sessions, ceremonies and a social night to close.</p>
       <div class="rule" data-draw data-reveal-delay="0.4"></div>
     </header>
 
-    <section class="section stop-press" aria-labelledby="stop-press-title">
+    <section class="section schedule-section" aria-label="Conference schedule">
       <div class="container">
-        <div class="notice" data-reveal>
-          <div class="notice__inner">
-            <p class="kicker">Stop Press</p>
-            <h2 id="stop-press-title" class="notice__title notice__title--big">Programme to be announced.</h2>
-            <p class="notice__text">The complete three-day schedule is being finalised and will appear here shortly. Check back soon, or follow us on Instagram for the announcement.</p>
-            <div class="notice__actions">
-              <a class="btn btn--ghost" data-site-href="instagram" href="https://www.instagram.com/sreenidhi.mun/" target="_blank" rel="noopener">Follow on Instagram <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
-              <a class="btn btn--primary" href="registrations.html">Register meanwhile <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-          <span class="stamp stamp--soon" aria-hidden="true">Coming Soon</span>
+        <!-- The programme is loaded from data/schedule.json by js/schedule.js.
+             To change a timing, edit that file. -->
+        <div class="schedule" data-schedule>
+          <p class="schedule__loading">Loading the programme…</p>
         </div>
-
-        <!-- SCHEDULE — for now a faint "ghost" preview of the three-day layout.
-             When the programme is ready, replace the ghost rows with real ones
-             (same markup: .day__time + .day__event with text inside) and remove
-             the "schedule--ghost" class and aria-hidden, or load them from a
-             future data/schedule.json. -->
-        <div class="schedule schedule--ghost" aria-hidden="true" data-reveal>
-          <div class="day">
-            <p class="day__label">Day I</p>
-            <p class="day__date">[ Date ]</p>
-            <ul class="day__rows" role="list">
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-            </ul>
-          </div>
-          <div class="day">
-            <p class="day__label">Day II</p>
-            <p class="day__date">[ Date ]</p>
-            <ul class="day__rows" role="list">
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-            </ul>
-          </div>
-          <div class="day">
-            <p class="day__label">Day III</p>
-            <p class="day__date">[ Date ]</p>
-            <ul class="day__rows" role="list">
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:150px"></span></li>
-              <li class="day__row"><span class="day__time"></span><span class="day__event" style="--w:210px"></span></li>
-            </ul>
-          </div>
-        </div>
+        <p class="caption schedule__note" data-reveal>All times are India Standard Time. Follow us on <a class="link-green" data-site-href="instagram" href="https://www.instagram.com/sreenidhi.mun/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a> for live updates.</p>
       </div>
     </section>
   </main>

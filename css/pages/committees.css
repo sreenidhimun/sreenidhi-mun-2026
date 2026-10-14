@@ -172,6 +172,14 @@
   font-size: clamp(20px, 1.9vw, 26px);
   line-height: 1.35;
 }
+.committee-hero__agenda.is-tba { color: var(--muted); }
+.board__tba {                       /* shown until the Executive Board is announced */
+  padding: clamp(28px, 4vw, 44px) 0 8px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(19px, 1.8vw, 23px);
+  color: var(--muted);
+}
 @media (min-width: 900px) {
   .committee-hero { grid-template-columns: 240px minmax(0, 1fr); gap: 56px; align-items: start; }
   .committee-hero__logo .c-logo { --size: 240px !important; }

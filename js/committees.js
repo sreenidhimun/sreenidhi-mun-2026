@@ -149,8 +149,15 @@ function renderCommittee(committees) {
 
   const g = c.guide || {};
   const hasPdf = !isBlank(g.pdf);
-  const size = isBlank(g.sizeMB) ? '[ 0.0 ] MB' : `${g.sizeMB} MB`;
-  const pages = isBlank(g.pages) ? '[ 00 ]' : g.pages;
+  // Size/pages only appear once a PDF exists (and the numbers are filled in).
+  const guideMeta = !hasPdf ? 'PDF · Coming soon'
+    : ['PDF', isBlank(g.pages) ? '' : `${g.pages} Pages`, isBlank(g.sizeMB) ? '' : `${g.sizeMB} MB`].filter(Boolean).join(' · ');
+  const guideFact = !hasPdf ? 'Coming soon' : (isBlank(g.sizeMB) ? 'PDF' : `PDF · ${g.sizeMB} MB`);
+  // "To be announced" agendas are shown plainly, without quotation marks.
+  const agendaTBA = isBlank(c.agenda) || /^to be (announced|decided)/i.test(c.agenda);
+  const agenda = agendaTBA ? esc(c.agenda || 'To be announced') : `“${esc(c.agenda)}”`;
+  // Board not announced yet? (every name blank)
+  const boardTBA = !(c.board || []).some((m) => !isBlank(m.name));
   const guideActions = hasPdf
     ? `<a class="btn btn--primary" href="${esc(g.pdf)}" download>Download PDF <span aria-hidden="true">↓</span></a>
        <a class="btn btn--ghost" href="${esc(g.pdf)}" target="_blank" rel="noopener">Preview in browser<span class="sr-only"> (opens in a new tab)</span></a>`
@@ -167,7 +174,7 @@ function renderCommittee(committees) {
           <p class="kicker" data-reveal>Committee ${roman}</p>
           <h1 class="committee-hero__name" data-split data-reveal-delay="0.1">${esc(c.name)}</h1>
           <p class="meta committee-hero__label" data-reveal data-reveal-delay="0.3">The Agenda</p>
-          <p class="committee-hero__agenda" data-reveal data-reveal-delay="0.35">“${esc(c.agenda)}”</p>
+          <p class="committee-hero__agenda${agendaTBA ? ' is-tba' : ''}" data-reveal data-reveal-delay="0.35">${agenda}</p>
         </div>
       </header>
       <div class="rule" data-draw></div>
@@ -175,7 +182,7 @@ function renderCommittee(committees) {
         <div class="facts__cell"><dt class="kicker">Level</dt><dd class="facts__value">${esc(c.level)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Delegates</dt><dd class="facts__value" data-count>${esc(c.delegates)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Procedure</dt><dd class="facts__value">${esc(c.procedure)}</dd></div>
-        <div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">PDF · ${esc(size)}</dd></div>
+        <div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>
       </dl>
       <div class="rule" data-draw></div>
     </div>
@@ -184,10 +191,12 @@ function renderCommittee(committees) {
       <div class="container">
         <header class="section-head" data-reveal>
           <div class="section-head__title"><span class="numeral" aria-hidden="true">01</span><h2 id="board-title" class="h-section">The Executive Board</h2></div>
-          <span class="meta">${isTouch ? 'Tap a name' : 'Hover a name'}</span>
+          <span class="meta">${boardTBA ? 'Coming soon' : (isTouch ? 'Tap a name' : 'Hover a name')}</span>
         </header>
         <div class="rule" data-draw></div>
-        <div data-board></div>
+        ${boardTBA
+          ? '<p class="board__tba" data-reveal>The Executive Board for this committee will be announced soon.</p>'
+          : '<div data-board></div>'}
       </div>
     </section>
 
@@ -209,7 +218,7 @@ function renderCommittee(committees) {
             </span>
           </div>
           <div class="guide__info">
-            <p class="meta">PDF · ${esc(pages)} Pages · ${esc(size)}</p>
+            <p class="meta">${esc(guideMeta)}</p>
             <h3 class="guide__heading">Background Guide — ${esc(c.name)}</h3>
             <p class="guide__desc">${esc(g.description || '')}</p>
             <div class="guide__actions">${guideActions}</div>
@@ -220,6 +229,7 @@ function renderCommittee(committees) {
     </section>`;
 
   const board = qs('[data-board]', pageEl);
+  if (!board) return;
   initNameList(board, c.board || [], { color: c.color, excerpt: true });
   qs('.nl-list', board)?.setAttribute('data-reveal-stagger', '');
   qs('.nl-track', board)?.setAttribute('data-reveal-stagger', '');
