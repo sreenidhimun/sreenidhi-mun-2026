@@ -143,6 +143,9 @@ async function renderLetter(s) {
     if (letter) letter.hidden = true;
     return;
   }
+  // No date in the data? The letterhead just says "Hyderabad".
+  const date = qs('.letter__date');
+  if (date) date.textContent = isBlank(s.letter?.date) ? 'Hyderabad' : `Hyderabad, ${s.letter.date}`;
   const body = qs('[data-letter-body]');
   const paragraphs = s.letter?.paragraphs || [];
   if (body && paragraphs.length) {

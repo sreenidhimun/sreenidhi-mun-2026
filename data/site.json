@@ -51,14 +51,20 @@
     "credit": ""
   },
   "letter": {
-    "released": false,
+    "released": true,
     "date": "",
-    "salutation": "Dear Esteemed Delegates,",
-    "paragraphs": [],
-    "closing": "With immense pride and excitement, we look forward to welcoming you to SMUN XIV for three days of diplomacy, collaboration and meaningful change.",
+    "salutation": "Dear Delegates,",
+    "paragraphs": [
+      "It is an absolute pleasure to welcome you to the 12th Edition of Sreenidhi Model United Nations 2026, taking place on October 30th, 31st, and November 1st. Reaching twelve editions is an incredible milestone. Over the years, SMUN has grown from an ambitious student idea into a defining tradition at Sreenidhi International School. It has become a space where critical thinking meets real collaboration. Over these three days, you will not just be representing assigned nations or drafting resolutions. You will be testing bold ideas, building genuine friendships, and discovering the confidence behind your own voice.",
+      "In a world full of rapid arguments and quick judgments, real debate matters more than ever. Being a strong delegate is never about shouting over someone else or reciting rehearsed points. It comes down to the discipline of listening closely, breaking down complicated international issues, and working hard to build consensus across tough divides.",
+      "As Secretary-General, my priority, alongside the entire Secretariat, is to make sure SMUN 2026 gives every delegate an unforgettable experience. We have put endless hours into setting up committees where sharp debate thrives, every idea gets treated with respect, and each delegate feels ready to own the room.",
+      "I remember stepping into my very first committee with plenty of nerves, a massive stack of notes, and a lot of uncertainty. I hope you use this conference as the exact place to start your own path. Take risks, speak up even when your hands shake, and embrace our motto: Debate. Inspire. Achieve. Most importantly, show up to do good work on the floor and prove to yourself what you can do.",
+      "The Secretariat and I cannot wait to welcome you to Sreenidhi International School this October!"
+    ],
+    "closing": "Warm regards,",
     "signatureName": "Aanya Dey",
     "signatureSvg": "",
-    "signOff": "Aanya Dey · Secretary-General, SMUN XIV"
+    "signOff": "Aanya Dey · Secretary-General, SMUN 2026"
   },
   "collage": [
     {

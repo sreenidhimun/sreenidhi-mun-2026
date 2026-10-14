@@ -166,3 +166,8 @@ Done so far:
   - Allocation search: the "· last updated …" part is left out when `lastUpdated` is blank.
 - Verified at desktop and 390px (no horizontal overflow, no console errors); scanned every page for visible `[ … ]` text — none left.
 - **Open:** "Timings – 7:15" at the top of the pasted schedule wasn't used (meaning unclear). `og:image` still needs an absolute URL once the Vercel domain is known. Still to come from the team: S-G letter text, Executive Boards, agendas, background guide PDFs, registration form links, resources, partners, committee logos.
+
+### Change request — the Secretary-General's letter
+- `data/site.json` → `letter`: `released: true`, salutation "Dear Delegates,", the five paragraphs exactly as written by Aanya Dey (only stray spaces trimmed), closing "Warm regards,", sign-off "Aanya Dey · Secretary-General, SMUN 2026". No date was given, so the letterhead reads just "Hyderabad" (it shows "Hyderabad, <date>" if `letter.date` is filled in).
+- `js/envelope.js`: the long letter made the closed stage as tall as the letter (envelope floating in ~450px of empty space). The closed stage is now only envelope-tall; it grows to the letter's height as the letter comes out, then ScrollTrigger refreshes. The letter's sides are clipped flush while it's inside (no shadow line at the envelope's bottom edge).
+- **Flag:** the letter says "12th Edition" / "twelve editions", while the rest of the site says XIV / № 14 / "Fourteen editions" (from the details sheet). Left the letter's wording untouched — needs a decision from the team.

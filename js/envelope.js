@@ -48,23 +48,29 @@ export function initEnvelope() {
   let m = {};
 
   /* ---- Where everything sits while the letter is still inside ---- */
+  // While closed, the stage is only as tall as the envelope (+ room for the
+  // hint), however long the letter is. It grows to the letter's full height
+  // as the letter comes out.
   function measure() {
     const letterH = letter.offsetHeight;
     const letterTop = letter.offsetTop;                       // inside the stage
     const envH = envelope.offsetHeight;
-    const band = Math.max(letterH, envH + 120);
-    const envTop = Math.max(24, (band - envH) / 2);
+    const envTop = Math.min(60, Math.max(24, (letterH - envH) / 2));
     envelope.style.top = `${envTop}px`;
     const startY = envTop + 18 - letterTop;                  // letter tucked just inside
     const clip = Math.max(0, startY + letterTop + letterH - (envTop + envH) + 6);
-    m = { envH, startY, clip };
+    const closedH = envTop + envH + 72;                      // 72px: the hint line below
+    const openH = letterTop + letterH;
+    m = { envH, startY, clip, closedH, openH };
   }
 
   function prime() {
     measure();
-    // (Negative clip insets keep the letter's soft shadow; the bottom inset
-    //  hides whatever would poke out below the envelope.)
-    gsap.set(letter, { y: m.startY, clipPath: `inset(-40px -40px ${m.clip}px -40px)` });
+    // (The bottom inset hides whatever would poke out below the envelope; the
+    //  sides are clipped flush so the letter's shadow can't peek out. Opening
+    //  widens the clip to -40px so the soft shadow comes back.)
+    gsap.set(stage, { height: Math.max(m.closedH, 0) });
+    gsap.set(letter, { y: m.startY, clipPath: `inset(-40px 0px ${m.clip}px 0px)` });
     gsap.set(blocks, { opacity: 0, y: 10 });
     gsap.set(signoff, { opacity: 0 });
     gsap.set(flap, { rotationX: 0, transformPerspective: 1200, zIndex: 4 });
@@ -116,6 +122,13 @@ export function initEnvelope() {
 
     // Letter rises out; envelope drops away
     tl.to(letter, { y: 0, clipPath: 'inset(-40px -40px -40px -40px)', duration: 1.1, ease: 'power3.inOut' }, 0.95)
+      .to(stage, {
+        height: m.openH, duration: 1.1, ease: 'power3.inOut',
+        onComplete: () => {                                  // page is taller now
+          gsap.set(stage, { clearProps: 'height' });
+          window.ScrollTrigger?.refresh();
+        },
+      }, 0.95)
       .to(parts, { y: m.envH * 0.45, opacity: 0, duration: 0.8, ease: 'power2.in' }, 1.25);
 
     // Lines appear
