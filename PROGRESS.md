@@ -170,4 +170,4 @@ Done so far:
 ### Change request — the Secretary-General's letter
 - `data/site.json` → `letter`: `released: true`, salutation "Dear Delegates,", the five paragraphs exactly as written by Aanya Dey (only stray spaces trimmed), closing "Warm regards,", sign-off "Aanya Dey · Secretary-General, SMUN 2026". No date was given, so the letterhead reads just "Hyderabad" (it shows "Hyderabad, <date>" if `letter.date` is filled in).
 - `js/envelope.js`: the long letter made the closed stage as tall as the letter (envelope floating in ~450px of empty space). The closed stage is now only envelope-tall; it grows to the letter's height as the letter comes out, then ScrollTrigger refreshes. The letter's sides are clipped flush while it's inside (no shadow line at the envelope's bottom edge).
-- **Flag:** the letter says "12th Edition" / "twelve editions", while the rest of the site says XIV / № 14 / "Fourteen editions" (from the details sheet). Left the letter's wording untouched — needs a decision from the team.
+- Edition number corrected in the letter: "14th Edition" / "fourteen editions" (the S-G's draft said 12th; confirmed 14th by the maintainer).
