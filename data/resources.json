@@ -1,5 +1,54 @@
 {
   "videos": [],
-  "documents": [],
+  "documents": [
+    {
+      "title": "SMUN Training Material 2026",
+      "file": "assets/pdf/training/smun-training-material-2026.pdf",
+      "type": "PDF",
+      "size": "3.3 MB",
+      "source": "SMUN 2026",
+      "description": "The full training handbook: an introduction to MUN, how to “speak like a delegate” in every SMUN committee, diplomatic vocabulary, and what each committee covers."
+    },
+    {
+      "title": "SMUN Training Sessions 2026",
+      "file": "assets/pdf/training/smun-training-sessions-2026.pdf",
+      "type": "PDF",
+      "size": "2.5 MB",
+      "source": "SMUN 2026",
+      "description": "Slides from the training sessions: the MUN cycle, myths and facts, research and country preparation, diplomacy and language, speeches, points and common mistakes to avoid."
+    },
+    {
+      "title": "SMUN Procedure",
+      "file": "assets/pdf/training/smun-procedure.pdf",
+      "type": "PDF",
+      "size": "52 KB",
+      "source": "SMUN 2026",
+      "description": "How a committee runs from start to finish — roll call, setting the agenda, speakers’ list, caucuses, working papers, draft resolutions, amendments and voting."
+    },
+    {
+      "title": "Rules of Procedure",
+      "file": "assets/pdf/training/smun-rules-of-procedure.pdf",
+      "type": "PDF",
+      "size": "104 KB",
+      "source": "SMUN 2026",
+      "description": "Points, motions, caucus and speaking rules, yields, right of reply, voting and decorum — with example wording."
+    },
+    {
+      "title": "Delegate Sample Booklet",
+      "file": "assets/pdf/training/smun-delegate-sample-booklet.pdf",
+      "type": "PDF",
+      "size": "523 KB",
+      "source": "SMUN 2026",
+      "description": "Sample speeches, sentence starters, points and motions, points of information, rebuttals and negotiation phrases you can adapt for committee."
+    },
+    {
+      "title": "Conference-Day Operations",
+      "file": "assets/pdf/training/conference-day-operations.pdf",
+      "type": "PDF",
+      "size": "228 KB",
+      "source": "SMUN 2026",
+      "description": "For volunteers: roles, registration and check-in, Social Night QR check-in, delegate movement, room management, safety and the escalation chain."
+    }
+  ],
   "iimun": []
 }

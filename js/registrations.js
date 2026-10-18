@@ -2,22 +2,18 @@
    registrations.js — the Registrations page.
    Tickets come from data/registrations.json → "tickets":
      formUrl  ""  → "Link coming soon" (disabled)
-     sheetUrl ""  → "Link coming soon" (disabled) · null → no sheet button at all
      status   "OPEN" | "OPENING SOON" | "CLOSING" | "CLOSED"
      closesOn "2026-10-20" → the stamp says "Closes in X days" when ≤ 7 days away
    ========================================================================== */
-import { site, ready, reveal, refreshSoon } from './main.js';
+import { ready, reveal, refreshSoon } from './main.js';
 import { motionOK, canHover, qs, qsa, clamp } from './motion/env.js';
 import { fetchJSON, esc, isBlank, pad2, stampFor } from './data.js';
-import { initAllocationSearch } from './allocation-search.js';
 
 const ticketsEl = qs('[data-tickets]');
-const allocationEl = qs('[data-allocation]');
 
-Promise.all([fetchJSON('data/registrations.json'), site]).then(async ([data, s]) => {
+fetchJSON('data/registrations.json').then(async (data) => {
   if (!data) return;
   if (ticketsEl) renderTickets(data.tickets || []);
-  if (allocationEl) initAllocationSearch(allocationEl, data.allocationSearch || {}, s);
   await ready;
   reveal(document);
   refreshSoon();
@@ -41,9 +37,6 @@ function renderTickets(tickets) {
     const register = closed
       ? '<span class="btn btn--primary btn--block is-disabled" aria-disabled="true">Registrations closed</span>'
       : linkOrDisabled(t.formUrl, `Register ${arrowSpan('→')}`, 'btn--primary', 'data-tear');
-    const sheet = t.sheetUrl === null || t.sheetUrl === undefined
-      ? ''
-      : linkOrDisabled(t.sheetUrl, `View allocation sheet ${arrowSpan('↗')}`, 'btn--ghost');
     return `
       <article class="ticket" aria-labelledby="ticket-${esc(t.id)}">
         <div class="ticket__body">
@@ -54,7 +47,7 @@ function renderTickets(tickets) {
         </div>
         <div class="ticket__stub">
           <span class="ticket__perf" aria-hidden="true"></span>
-          <div class="ticket__actions">${register}${sheet}</div>
+          <div class="ticket__actions">${register}</div>
           <div class="ticket__foot">
             <span class="ticket__no">No. ${pad2(i + 1)}</span>
             <span class="meta">SMUN XIV</span>
