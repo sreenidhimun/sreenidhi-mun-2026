@@ -211,3 +211,4 @@ Done so far:
 - People: Maitreyee Mukherjee — Chief Advisor (Group Director Marketing, Sreenidhi Educational Group); Nidhi Sehgal — Coordinator (HOD University & Career Guidance, Sreenidhi International School).
 - Headline "The Guiding Hands of SMUN XIV." and deck line are editorial copy; change freely in `advisors.html`.
 - Gotcha: `data-reveal-stagger` must be added in JS *after* rendering (the page-load reveal claims empty lists otherwise) — same as the Secretariat page.
+- Moved Advisors to the **end** of the navigation (after Resources) at the maintainer's request; front-page folios back to Secretariat A2 … Resources A6, Advisors A7.
