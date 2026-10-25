@@ -178,3 +178,7 @@ Done so far:
   - Note: *SMUN Training Sessions* contains links to three Google Docs/Slides (procedure, rules, final briefing) by their `/edit` URLs — anyone with the PDF can open them, so their sharing should be "Viewer" only. *Conference-Day Operations* is a volunteer guide (no personal details), published as asked.
 - **Allocation search removed** (maintainer request): `js/allocation-search.js` deleted, its section/CSS removed from Registrations, `allocationSearch` + `sheetUrl` removed from `data/registrations.json`, the "View allocation sheet" ticket button removed. Wording updated: page kicker "Registrations", ticket titles "Delegate Registration" / "International Press Registration", front-page index blurb "Delegate and International Press registration."
 - **Registration links NOT changed:** the two links supplied for round 3 were Google Forms editor links (`/forms/d/<id>/edit`). Tested as public links: `17b3-5i2…` asks visitors to sign in to Google (form not published / restricted); `19znNhy…` opens the delegate form that's already on the site ("Delegate Registration Form (Out of school)"). Waiting for the public "Send → link" URLs.
+
+### Change request — committee background guides
+- Added four background guide PDFs under `assets/pdf/`: UNODC, UNHRC, DISEC, and UNSC.
+- Updated `data/committees.json` so each committee page shows its PDF download/preview links, page count, and rounded file size (0.5 MB).

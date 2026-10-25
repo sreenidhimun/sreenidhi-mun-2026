@@ -11,9 +11,9 @@
       "delegates": "60",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
+        "pdf": "assets/pdf/SMUN_2026_UNODC_BG.pdf",
+        "pages": "12",
+        "sizeMB": "0.5",
         "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
       },
       "board": [
@@ -51,9 +51,9 @@
       "delegates": "65",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
+        "pdf": "assets/pdf/SMUN_2026_DISEC_BG.pdf",
+        "pages": "11",
+        "sizeMB": "0.5",
         "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
       },
       "board": [
@@ -91,9 +91,9 @@
       "delegates": "60",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
+        "pdf": "assets/pdf/SMUN_2026_UNHRC_BG.pdf",
+        "pages": "12",
+        "sizeMB": "0.5",
         "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
       },
       "board": [
@@ -131,9 +131,9 @@
       "delegates": "50",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
+        "pdf": "assets/pdf/SMUN_2026_UNSC_BG.pdf",
+        "pages": "11",
+        "sizeMB": "0.5",
         "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
       },
       "board": [
