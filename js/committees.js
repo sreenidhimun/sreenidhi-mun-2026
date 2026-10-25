@@ -154,6 +154,9 @@ function renderCommittee(committees) {
   const fallbackGuideMeta = ['PDF', isBlank(g.pages) ? '' : `${g.pages} Pages`, isBlank(g.sizeMB) ? '' : `${g.sizeMB} MB`].filter(Boolean).join(' · ');
   const guideMeta = !hasPdf ? 'PDF · Coming soon' : (g.label || fallbackGuideMeta);
   const guideFact = !hasPdf ? 'Coming soon' : (g.label || (isBlank(g.sizeMB) ? 'PDF' : `PDF · ${g.sizeMB} MB`));
+  const guideFactCell = isPressRoom
+    ? '<div class="facts__cell"><dt class="kicker">Press Desk</dt><dd class="facts__value">Field notes</dd></div>'
+    : `<div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>`;
   // "To be announced" agendas are shown plainly, without quotation marks.
   const agendaTBA = isBlank(c.agenda) || /^to be (announced|decided)/i.test(c.agenda);
   const agenda = agendaTBA ? esc(c.agenda || 'To be announced') : `“${esc(c.agenda)}”`;
@@ -183,9 +186,7 @@ function renderCommittee(committees) {
         <div class="facts__cell"><dt class="kicker">Level</dt><dd class="facts__value">${esc(c.level)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Delegates</dt><dd class="facts__value" data-count>${esc(c.delegates)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Procedure</dt><dd class="facts__value">${esc(c.procedure)}</dd></div>
-        ${hasPdf ? `${isPressRoom
-          ? '<div class="facts__cell"><dt class="kicker">Press Desk</dt><dd class="facts__value">Field notes</dd></div>'
-          : '<div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>'}` : ''}
+        ${guideFactCell}
       </dl>
       <div class="rule" data-draw></div>
     </div>

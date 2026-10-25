@@ -199,3 +199,7 @@ Done so far:
 ### Change request — International Press page
 - Removed the guide placeholder for IP and replaced it with a Press Room feature built from the site's existing editorial card design.
 - Replaced the IP page's “Background Guide” fact with “Press Desk · Field notes”.
+
+### Fix — committee guide fact label rendering
+- Corrected the committee fact strip so guide labels render as text instead of exposing the literal template expression.
+- Preserved the IP-specific “Press Desk · Field notes” label.
