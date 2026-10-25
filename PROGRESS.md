@@ -203,3 +203,11 @@ Done so far:
 ### Fix — committee guide fact label rendering
 - Corrected the committee fact strip so guide labels render as text instead of exposing the literal template expression.
 - Preserved the IP-specific “Press Desk · Field notes” label.
+
+### 2026-10-25 — Advisory Committee page ✅
+- New page `advisors.html` (nav label "Advisors", placed before Secretariat in `js/chrome.js` NAV, so it also appears in the menu, pill, footer and front-page index; front-page folios shift to A2–A7).
+- Content lives in `data/advisors.json` (name, SMUN role, school position, organisation, photo). Rendered by `js/advisors.js`, styled in `css/pages/advisors.css`: two tilted portrait plates with Fig. captions, stacked on phones.
+- Photos: `assets/img/advisors/maitreyee.jpg` (720×900) and `nidhi.jpg` (480×600), centre-cropped to 4:5 from the WhatsApp originals.
+- People: Maitreyee Mukherjee — Chief Advisor (Group Director Marketing, Sreenidhi Educational Group); Nidhi Sehgal — Coordinator (HOD University & Career Guidance, Sreenidhi International School).
+- Headline "The Guiding Hands of SMUN XIV." and deck line are editorial copy; change freely in `advisors.html`.
+- Gotcha: `data-reveal-stagger` must be added in JS *after* rendering (the page-load reveal claims empty lists otherwise) — same as the Secretariat page.

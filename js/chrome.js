@@ -13,6 +13,7 @@ import { esc, isBlank } from './data.js';
 /* ---- Navigation (edit here) ---- */
 export const NAV = [
   { id: 'home',          label: 'Home',          href: 'index.html' },
+  { id: 'advisors',      label: 'Advisors',      href: 'advisors.html' },
   { id: 'secretariat',   label: 'Secretariat',   href: 'secretariat.html' },
   { id: 'committees',    label: 'Committees',    href: 'committees.html' },
   { id: 'registrations', label: 'Registrations', href: 'registrations.html' },

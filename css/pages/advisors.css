@@ -1,0 +1,70 @@
+/* ==========================================================================
+   SMUN XIV — advisory committee page styles
+   Two portrait "plates" side by side (stacked on phones). Each plate is a
+   slightly tilted print with a second sheet peeking out behind it — the same
+   look as the Secretariat portrait.
+   ========================================================================== */
+.adv-list {
+  display: grid;
+  gap: clamp(56px, 7vw, 96px) clamp(32px, 6vw, 96px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .adv-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.adv { max-width: 460px; }
+.adv:nth-child(even) { justify-self: end; }   /* second plate sits to the right */
+@media (max-width: 767px) {
+  .adv, .adv:nth-child(even) { justify-self: center; width: 100%; }
+}
+
+/* ---- The photograph ---- */
+.adv__plate { margin: 0; }
+.adv__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--card);
+  padding: 12px;                                   /* white print border */
+  box-shadow: 0 20px 40px rgba(26, 38, 32, .16);
+  rotate: -1.2deg;
+}
+.adv:nth-child(even) .adv__frame { rotate: 1.2deg; }
+.adv__frame::before {                            /* the "next sheet" behind */
+  content: "";
+  position: absolute;
+  inset: 12px -12px -10px 10px;
+  background: #D6CCBA;
+  rotate: 2deg;
+  z-index: -1;
+}
+.adv__frame > img,
+.adv__frame > .ph { display: block; width: 100%; height: 100%; object-fit: cover; }
+.adv__fig { margin-top: 18px; }
+
+/* ---- Name and titles ---- */
+.adv__text { margin-top: clamp(20px, 2.4vw, 28px); }
+.adv__text .kicker { margin-bottom: 10px; }
+.adv__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.4vw, 46px);
+  line-height: 1.05;
+  color: var(--ink);
+}
+.adv__rule { margin-block: 16px 14px; }
+.adv__position {
+  font-family: var(--font-read);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.adv__org {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+}
