@@ -1,8 +1,8 @@
 /* ==========================================================================
    advisors.js — the Advisory Committee page.
    People come from data/advisors.json → "members" (in the order listed).
-   Each person is drawn as a large portrait "plate" with
-   their SMUN role (kicker), their name and their school position.
+   Each person is drawn as a large portrait "plate", then (in this order)
+   their name, school position + organisation, and SMUN role.
    ========================================================================== */
 import { ready, reveal, refreshSoon } from './main.js';
 import { fetchJSON, esc, isBlank, imageOr, phPortrait, PORTRAIT_COLORS } from './data.js';
@@ -23,11 +23,14 @@ fetchJSON('data/advisors.json').then(async (data) => {
         </div>
       </figure>
       <div class="adv__text">
-        <p class="kicker">${esc(m.role)}</p>
         <h3 class="adv__name">${esc(m.name)}</h3>
-        <div class="rule rule--soft adv__rule"></div>
+        <!-- 1) Their position at school -->
         ${isBlank(m.position) ? '' : `<p class="adv__position">${esc(m.position)}</p>`}
         ${isBlank(m.organisation) ? '' : `<p class="adv__org">${esc(m.organisation)}</p>`}
+        <div class="rule rule--soft adv__rule"></div>
+        <!-- 2) Their role at SMUN -->
+        ${isBlank(m.role) ? '' : `<p class="adv__position">${esc(m.role)}</p>`}
+        ${isBlank(m.roleOrganisation) ? '' : `<p class="adv__org">${esc(m.roleOrganisation)}</p>`}
       </div>
     </li>`).join('');
 

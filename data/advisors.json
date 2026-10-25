@@ -2,17 +2,19 @@
   "members": [
     {
       "name": "Maitreyee Mukherjee",
-      "role": "Chief Advisor",
       "position": "Group Director Marketing",
       "organisation": "Sreenidhi Educational Group",
+      "role": "Chief Advisor",
+      "roleOrganisation": "Sreenidhi Model United Nations",
       "photo": "assets/img/advisors/maitreyee.jpg",
       "alt": "Portrait of Maitreyee Mukherjee"
     },
     {
       "name": "Nidhi Sehgal",
-      "role": "Coordinator",
       "position": "HOD University & Career Guidance",
       "organisation": "Sreenidhi International School",
+      "role": "Coordinator",
+      "roleOrganisation": "Sreenidhi Model United Nations",
       "photo": "assets/img/advisors/nidhi.jpg",
       "alt": "Portrait of Nidhi Sehgal"
     }

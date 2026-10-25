@@ -45,7 +45,7 @@
 
 /* ---- Name and titles ---- */
 .adv__text { margin-top: clamp(20px, 2.4vw, 28px); }
-.adv__text .kicker { margin-bottom: 10px; }
+.adv__name + .adv__position { margin-top: 12px; }   /* gap under the name */
 .adv__name {
   font-family: var(--font-display);
   font-weight: 400;
