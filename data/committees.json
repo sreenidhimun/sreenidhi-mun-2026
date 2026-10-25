@@ -14,7 +14,8 @@
         "pdf": "assets/pdf/SMUN_2026_UNODC_BG.pdf",
         "pages": "12",
         "sizeMB": "0.5",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "UNODC_PDF"
       },
       "board": [
         {
@@ -54,7 +55,8 @@
         "pdf": "assets/pdf/SMUN_2026_DISEC_BG.pdf",
         "pages": "11",
         "sizeMB": "0.5",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "DISEC_PDF"
       },
       "board": [
         {
@@ -94,7 +96,8 @@
         "pdf": "assets/pdf/SMUN_2026_UNHRC_BG.pdf",
         "pages": "12",
         "sizeMB": "0.5",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "UNHRC_PDF"
       },
       "board": [
         {
@@ -134,7 +137,8 @@
         "pdf": "assets/pdf/SMUN_2026_UNSC_BG.pdf",
         "pages": "11",
         "sizeMB": "0.5",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "UNSC_PDF"
       },
       "board": [
         {
@@ -211,10 +215,11 @@
       "delegates": "30",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "pdf": "assets/pdf/SMUN_2026_Lok_Sabha_BG.pdf",
+        "pages": "12",
+        "sizeMB": "0.5",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "Lok_Sabha_PDF"
       },
       "board": [
         {
@@ -291,10 +296,11 @@
       "delegates": "50",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "pdf": "assets/pdf/SMUN_2026_IFI_BG.pdf",
+        "pages": "16",
+        "sizeMB": "0.5",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "IFI_PDF"
       },
       "board": [
         {
@@ -331,10 +337,11 @@
       "delegates": "55",
       "procedure": "To be decided",
       "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
+        "pdf": "assets/pdf/SMUN_2026_MCC_BG.pdf",
+        "pages": "13",
+        "sizeMB": "0.5",
+        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading.",
+        "label": "MCC_PDF"
       },
       "board": [
         {

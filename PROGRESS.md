@@ -182,3 +182,8 @@ Done so far:
 ### Change request — committee background guides
 - Added four background guide PDFs under `assets/pdf/`: UNODC, UNHRC, DISEC, and UNSC.
 - Updated `data/committees.json` so each committee page shows its PDF download/preview links, page count, and rounded file size (0.5 MB).
+
+### Change request — committee PDF labels and additional background guides
+- Added background guide PDFs for MCC (Marvel), IFI, and Lok Sabha under `assets/pdf/`.
+- Set the guide labels to committee-specific names (for example, `UNODC_PDF`, `MCC_PDF`, and `Lok_Sabha_PDF`) in both the committee facts strip and guide card, replacing the generic PDF size label.
+- Remaining committees without a background guide: International Press (IP) and Continuous Crisis Committee (CCC).

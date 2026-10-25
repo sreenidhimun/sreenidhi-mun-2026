@@ -150,9 +150,9 @@ function renderCommittee(committees) {
   const g = c.guide || {};
   const hasPdf = !isBlank(g.pdf);
   // Size/pages only appear once a PDF exists (and the numbers are filled in).
-  const guideMeta = !hasPdf ? 'PDF · Coming soon'
-    : ['PDF', isBlank(g.pages) ? '' : `${g.pages} Pages`, isBlank(g.sizeMB) ? '' : `${g.sizeMB} MB`].filter(Boolean).join(' · ');
-  const guideFact = !hasPdf ? 'Coming soon' : (isBlank(g.sizeMB) ? 'PDF' : `PDF · ${g.sizeMB} MB`);
+  const fallbackGuideMeta = ['PDF', isBlank(g.pages) ? '' : `${g.pages} Pages`, isBlank(g.sizeMB) ? '' : `${g.sizeMB} MB`].filter(Boolean).join(' · ');
+  const guideMeta = !hasPdf ? 'PDF · Coming soon' : (g.label || fallbackGuideMeta);
+  const guideFact = !hasPdf ? 'Coming soon' : (g.label || (isBlank(g.sizeMB) ? 'PDF' : `PDF · ${g.sizeMB} MB`));
   // "To be announced" agendas are shown plainly, without quotation marks.
   const agendaTBA = isBlank(c.agenda) || /^to be (announced|decided)/i.test(c.agenda);
   const agenda = agendaTBA ? esc(c.agenda || 'To be announced') : `“${esc(c.agenda)}”`;
