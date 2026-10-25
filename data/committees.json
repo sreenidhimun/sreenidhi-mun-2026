@@ -246,46 +246,6 @@
       ]
     },
     {
-      "slug": "ccc",
-      "name": "Continuous Crisis Committee",
-      "abbr": "CCC",
-      "color": "#58705F",
-      "logo": "",
-      "agenda": "Escalation of Hostilities in the Middle East: A Regional Crisis Threatening International Peace and Security.",
-      "level": "Advanced",
-      "delegates": "40",
-      "procedure": "To be decided",
-      "guide": {
-        "pdf": "",
-        "pages": "",
-        "sizeMB": "",
-        "description": "Everything you need to prepare: committee history, key questions, bloc positions and further reading."
-      },
-      "board": [
-        {
-          "name": "",
-          "role": "Chairperson",
-          "photo": "",
-          "alt": "",
-          "bio": ""
-        },
-        {
-          "name": "",
-          "role": "Vice-Chairperson",
-          "photo": "",
-          "alt": "",
-          "bio": ""
-        },
-        {
-          "name": "",
-          "role": "Rapporteur",
-          "photo": "",
-          "alt": "",
-          "bio": ""
-        }
-      ]
-    },
-    {
       "slug": "ifi",
       "name": "Indian Film Industry",
       "abbr": "IFI",

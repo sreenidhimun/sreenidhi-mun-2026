@@ -6,7 +6,7 @@ Lines marked ⚠️ CONFIRM were copied from last year's website — check they 
 - Conference dates (as shown on site, e.g. "30 Oct – 1 Nov 2026"): 30 Oct - 1st Nov 2026
 - Day I start date + time (for the countdown, e.g. 2026-10-30 09:00): 30th Oct
 - Last day end date + time: 1st Nov 5pm
-- Number of committees: 9
+- Number of committees: 8
 - Expected delegates: 800
 
 ## Contact
@@ -49,7 +49,6 @@ United Nations Human Rights Council — UNHRC
 United Nations Security Council — UNSC
 International Press — IP
 Lok Sabha — LS
-Continuous Crisis Committee — CCC
 Indian Film Industry — IFI
 Marvel — Marvel
 

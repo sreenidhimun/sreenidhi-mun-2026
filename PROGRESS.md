@@ -187,3 +187,7 @@ Done so far:
 - Added background guide PDFs for MCC (Marvel), IFI, and Lok Sabha under `assets/pdf/`.
 - Set the guide labels to committee-specific names (for example, `UNODC_PDF`, `MCC_PDF`, and `Lok_Sabha_PDF`) in both the committee facts strip and guide card, replacing the generic PDF size label.
 - Remaining committees without a background guide: International Press (IP) and Continuous Crisis Committee (CCC).
+
+### Change request — remove Continuous Crisis Committee
+- Removed CCC from `data/committees.json` and the active committee list in `CONTENT.md`.
+- Updated the listed committee count from 9 to 8.
