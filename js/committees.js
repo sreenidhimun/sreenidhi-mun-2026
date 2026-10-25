@@ -149,6 +149,7 @@ function renderCommittee(committees) {
 
   const g = c.guide || {};
   const hasPdf = !isBlank(g.pdf);
+  const isPressRoom = c.slug === 'ip';
   // Size/pages only appear once a PDF exists (and the numbers are filled in).
   const fallbackGuideMeta = ['PDF', isBlank(g.pages) ? '' : `${g.pages} Pages`, isBlank(g.sizeMB) ? '' : `${g.sizeMB} MB`].filter(Boolean).join(' · ');
   const guideMeta = !hasPdf ? 'PDF · Coming soon' : (g.label || fallbackGuideMeta);
@@ -182,7 +183,9 @@ function renderCommittee(committees) {
         <div class="facts__cell"><dt class="kicker">Level</dt><dd class="facts__value">${esc(c.level)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Delegates</dt><dd class="facts__value" data-count>${esc(c.delegates)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Procedure</dt><dd class="facts__value">${esc(c.procedure)}</dd></div>
-        ${hasPdf ? `<div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>` : ''}
+        ${hasPdf ? `${isPressRoom
+          ? '<div class="facts__cell"><dt class="kicker">Press Desk</dt><dd class="facts__value">Field notes</dd></div>'
+          : '<div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>'}` : ''}
       </dl>
       <div class="rule" data-draw></div>
     </div>
@@ -200,7 +203,32 @@ function renderCommittee(committees) {
       </div>
     </section>
 
-    ${hasPdf ? `<section class="section guide-section" aria-labelledby="guide-title">
+    ${isPressRoom ? `<section class="section guide-section press-room" aria-labelledby="press-room-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__title"><span class="numeral" aria-hidden="true">02</span><h2 id="press-room-title" class="h-section">The Press Room</h2></div>
+          <span class="meta">From the floor</span>
+        </header>
+        <div class="rule" data-draw></div>
+        <article class="guide" data-reveal>
+          <div class="guide__thumb" aria-hidden="true">
+            <span class="guide__page guide__page--back"></span>
+            <span class="guide__page guide__page--front">
+              ${logoHTML(c, 50)}
+              <span class="kicker guide__kicker">Field Notes</span>
+              <span class="guide__name">Press Room</span>
+              <span class="guide__lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            </span>
+          </div>
+          <div class="guide__info">
+            <p class="meta">THE NEWSROOM</p>
+            <h3 class="guide__heading">Every debate leaves a trace.</h3>
+            <p class="guide__desc">A sharp question. A shift in the room. A line worth remembering. Follow the details that make the conference a story.</p>
+          </div>
+        </article>
+        <p class="committee-back" data-reveal><a class="link-green back-link" href="committees.html"><span aria-hidden="true">←</span> All committees</a></p>
+      </div>
+    </section>` : `<section class="section guide-section" aria-labelledby="guide-title">
       <div class="container">
         <header class="section-head" data-reveal>
           <div class="section-head__title"><span class="numeral" aria-hidden="true">02</span><h2 id="guide-title" class="h-section">The Background Guide</h2></div>

@@ -195,3 +195,7 @@ Done so far:
 ### Change request — hide the guide section for International Press
 - Updated the shared committee page so the Background Guide fact and guide section appear only when that committee has a PDF.
 - International Press has no guide PDF, so its page no longer shows a “Coming soon” guide section.
+
+### Change request — International Press page
+- Removed the guide placeholder for IP and replaced it with a Press Room feature built from the site's existing editorial card design.
+- Replaced the IP page's “Background Guide” fact with “Press Desk · Field notes”.
