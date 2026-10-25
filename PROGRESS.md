@@ -213,3 +213,4 @@ Done so far:
 - Gotcha: `data-reveal-stagger` must be added in JS *after* rendering (the page-load reveal claims empty lists otherwise) — same as the Secretariat page.
 - Moved Advisors to the **end** of the navigation (after Resources) at the maintainer's request; front-page folios back to Secretariat A2 … Resources A6, Advisors A7.
 - Front-page folio line now reads just "8 Committees" (delegate count removed there); `committeesCount` in site.json set to 8 after CCC was dissolved.
+- Advisors page: removed the "Fig. 1/2 — Name." captions (names already shown). Front page "At a Glance" box: removed the Delegates figure (now Dates, Venue, Committees). `delegatesCount` stays in site.json but is no longer shown anywhere.

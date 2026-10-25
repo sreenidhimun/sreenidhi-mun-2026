@@ -1,7 +1,7 @@
 /* ==========================================================================
    advisors.js — the Advisory Committee page.
    People come from data/advisors.json → "members" (in the order listed).
-   Each person is drawn as a large portrait "plate" with a Fig. caption,
+   Each person is drawn as a large portrait "plate" with
    their SMUN role (kicker), their name and their school position.
    ========================================================================== */
 import { ready, reveal, refreshSoon } from './main.js';
@@ -21,7 +21,6 @@ fetchJSON('data/advisors.json').then(async (data) => {
                     phPortrait(PORTRAIT_COLORS[i % PORTRAIT_COLORS.length], m.name),
                     { lazy: false })}
         </div>
-        <figcaption class="caption adv__fig">Fig. ${i + 1} — ${esc(m.name)}.</figcaption>
       </figure>
       <div class="adv__text">
         <p class="kicker">${esc(m.role)}</p>
