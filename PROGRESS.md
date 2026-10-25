@@ -191,3 +191,7 @@ Done so far:
 ### Change request — remove Continuous Crisis Committee
 - Removed CCC from `data/committees.json` and the active committee list in `CONTENT.md`.
 - Updated the listed committee count from 9 to 8.
+
+### Change request — hide the guide section for International Press
+- Updated the shared committee page so the Background Guide fact and guide section appear only when that committee has a PDF.
+- International Press has no guide PDF, so its page no longer shows a “Coming soon” guide section.

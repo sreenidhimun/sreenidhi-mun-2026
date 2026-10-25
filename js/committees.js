@@ -182,7 +182,7 @@ function renderCommittee(committees) {
         <div class="facts__cell"><dt class="kicker">Level</dt><dd class="facts__value">${esc(c.level)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Delegates</dt><dd class="facts__value" data-count>${esc(c.delegates)}</dd></div>
         <div class="facts__cell"><dt class="kicker">Procedure</dt><dd class="facts__value">${esc(c.procedure)}</dd></div>
-        <div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>
+        ${hasPdf ? `<div class="facts__cell"><dt class="kicker">Background Guide</dt><dd class="facts__value">${esc(guideFact)}</dd></div>` : ''}
       </dl>
       <div class="rule" data-draw></div>
     </div>
@@ -200,7 +200,7 @@ function renderCommittee(committees) {
       </div>
     </section>
 
-    <section class="section guide-section" aria-labelledby="guide-title">
+    ${hasPdf ? `<section class="section guide-section" aria-labelledby="guide-title">
       <div class="container">
         <header class="section-head" data-reveal>
           <div class="section-head__title"><span class="numeral" aria-hidden="true">02</span><h2 id="guide-title" class="h-section">The Background Guide</h2></div>
@@ -226,7 +226,7 @@ function renderCommittee(committees) {
         </article>
         <p class="committee-back" data-reveal><a class="link-green back-link" href="committees.html"><span aria-hidden="true">←</span> All committees</a></p>
       </div>
-    </section>`;
+    </section>` : ''}`;
 
   const board = qs('[data-board]', pageEl);
   if (!board) return;
