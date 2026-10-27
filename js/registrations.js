@@ -4,6 +4,8 @@
      formUrl  ""  → "Link coming soon" (disabled)
      status   "OPEN" | "OPENING SOON" | "CLOSING" | "CLOSED"
      closesOn "2026-10-20" → the stamp says "Closes in X days" when ≤ 7 days away
+     secondForm { "label": "…", "url": "…" } → optional second button under
+              Register (e.g. the Plus One form on the Social ticket)
    ========================================================================== */
 import { ready, reveal, refreshSoon } from './main.js';
 import { motionOK, canHover, qs, qsa, clamp } from './motion/env.js';
@@ -37,6 +39,10 @@ function renderTickets(tickets) {
     const register = closed
       ? '<span class="btn btn--primary btn--block is-disabled" aria-disabled="true">Registrations closed</span>'
       : linkOrDisabled(t.formUrl, `Register ${arrowSpan('→')}`, 'btn--primary', 'data-tear');
+    // Optional second form (outlined button), hidden once registrations close.
+    const second = (!closed && t.secondForm && !isBlank(t.secondForm.url))
+      ? linkOrDisabled(t.secondForm.url, `${esc(t.secondForm.label || 'Second form')} ${arrowSpan('→')}`, 'btn--ghost')
+      : '';
     return `
       <article class="ticket" aria-labelledby="ticket-${esc(t.id)}">
         <div class="ticket__body">
@@ -47,7 +53,7 @@ function renderTickets(tickets) {
         </div>
         <div class="ticket__stub">
           <span class="ticket__perf" aria-hidden="true"></span>
-          <div class="ticket__actions">${register}</div>
+          <div class="ticket__actions">${register}${second}</div>
           <div class="ticket__foot">
             <span class="ticket__no">No. ${pad2(i + 1)}</span>
             <span class="meta">SMUN XIV</span>

@@ -215,3 +215,4 @@ Done so far:
 - Front-page folio line now reads just "8 Committees" (delegate count removed there); `committeesCount` in site.json set to 8 after CCC was dissolved.
 - Advisors page: removed the "Fig. 1/2 — Name." captions (names already shown). Front page "At a Glance" box: removed the Delegates figure (now Dates, Venue, Committees). `delegatesCount` stays in site.json but is no longer shown anywhere.
 - Advisors text order now matches the maintainer's brief: name → school position → organisation → (rule) → SMUN role → "Sreenidhi Model United Nations" (new `roleOrganisation` field in advisors.json).
+- 2026-10-27: Homecoming / Social ticket is now OPEN with two forms: "Register" (regular sign-up) and "Register as a Plus One" (new optional `secondForm` field in registrations.json, drawn as an outlined button). Dropped the `&ouid=` owner-id parameter from the share links (forms work without it).

@@ -22,9 +22,13 @@
       "id": "social",
       "kicker": "Admit One — Social",
       "title": "Homecoming / Social",
-      "description": "An evening for delegates, alumni and friends of SMUN. Details to follow.",
-      "formUrl": "",
-      "status": "OPENING SOON",
+      "description": "An evening for delegates, alumni and friends of SMUN. Coming as someone’s plus one? Use the Plus One form.",
+      "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd_hYIy_AK825vfyacP0K17jl7QtQCWLuf5CPO7T-HvHwYedw/viewform?usp=sharing",
+      "secondForm": {
+        "label": "Register as a Plus One",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSfgXSof0B319ATV-tG6DWxTF2oKl2sxR5cp0Rnm_m1pd0jkLA/viewform?usp=sharing"
+      },
+      "status": "OPEN",
       "closesOn": null
     }
   ]
