@@ -101,17 +101,17 @@
       },
       "board": [
         {
-          "name": "",
+          "name": "Kamlesh Mohanty",
           "role": "Chairperson",
-          "photo": "",
-          "alt": "",
+          "photo": "assets/img/committees/unhrc-kamlesh.jpg",
+          "alt": "Portrait of Kamlesh Mohanty",
           "bio": ""
         },
         {
-          "name": "",
+          "name": "Vansh Jain",
           "role": "Vice-Chairperson",
-          "photo": "",
-          "alt": "",
+          "photo": "assets/img/committees/unhrc-vansh.jpg",
+          "alt": "Portrait of Vansh Jain",
           "bio": ""
         },
         {
@@ -182,24 +182,17 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
-          "photo": "",
-          "alt": "",
+          "name": "Aamirah Ahmed",
+          "role": "Head",
+          "photo": "assets/img/committees/ip-aamirah.jpg",
+          "alt": "Portrait of Aamirah Ahmed",
           "bio": ""
         },
         {
-          "name": "",
-          "role": "Vice-Chairperson",
-          "photo": "",
-          "alt": "",
-          "bio": ""
-        },
-        {
-          "name": "",
-          "role": "Rapporteur",
-          "photo": "",
-          "alt": "",
+          "name": "Prudhvi Sistla",
+          "role": "Director of Photography",
+          "photo": "assets/img/committees/ip-prudhvi.jpg",
+          "alt": "Portrait of Prudhvi Sistla",
           "bio": ""
         }
       ]

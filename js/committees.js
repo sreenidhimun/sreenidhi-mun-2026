@@ -259,7 +259,9 @@ function renderCommittee(committees) {
 
   const board = qs('[data-board]', pageEl);
   if (!board) return;
-  initNameList(board, c.board || [], { color: c.color, excerpt: true });
+  // Only list board members whose name has been filled in (empty slots stay hidden).
+  const members = (c.board || []).filter((m) => !isBlank(m.name));
+  initNameList(board, members, { color: c.color, excerpt: true });
   qs('.nl-list', board)?.setAttribute('data-reveal-stagger', '');
   qs('.nl-track', board)?.setAttribute('data-reveal-stagger', '');
 }
