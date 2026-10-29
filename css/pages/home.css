@@ -830,86 +830,102 @@ a.contact__value:hover { color: var(--green); }
 
 /* ---------- 8. Partners ---------- */
 /* ---------- 8. Sponsors ---------- */
+.sponsor-panel {
+  margin-top: 4px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(26, 38, 32, .12);
+  box-shadow: 0 16px 34px rgba(26, 38, 32, .08);
+}
+.sponsor-banner {
+  padding: clamp(24px, 3.5vw, 42px) 20px;
+  background: #fff;
+  text-align: center;
+}
+.sponsor-banner .kicker {
+  margin-bottom: 10px;
+  color: var(--terra);
+}
+.sponsor-banner .h-section {
+  margin: 0;
+}
 .sponsor-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
-  gap: 18px;
-  margin: 30px 0 0;
-  padding: 0;
+  gap: 1px;
+  margin: 0;
+  padding: 1px;
+  background: rgba(26, 38, 32, .10);
   list-style: none;
 }
-.sponsor-card {
-  flex: 1 1 220px;
-  min-width: min(100%, 220px);
-  max-width: 280px;
-  padding: 18px 18px 20px;
-  background: var(--card);
-  border: 1px solid rgba(26, 38, 32, .13);
-  box-shadow: 0 10px 24px rgba(26, 38, 32, .06);
+.sponsor-item {
+  display: flex;
+  flex: 1 1 calc(25% - 1px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 205px;
+  max-width: calc(25% - 1px);
+  min-height: 192px;
+  padding: 18px 16px 20px;
+  background: #fff;
   text-align: center;
-  transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out);
 }
-.sponsor-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(63, 106, 85, .35);
-  box-shadow: 0 16px 30px rgba(26, 38, 32, .11);
-}
-.sponsor-card__mark {
+.sponsor-item__mark {
   display: grid;
   place-items: center;
   width: 100%;
-  height: 126px;
-  margin-bottom: 17px;
-  padding: 12px;
+  height: 100px;
+  margin-bottom: 12px;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(26, 38, 32, .07);
 }
-.sponsor-card__mark img {
+.sponsor-item__mark img {
   display: block;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 92%;
+  max-height: 82px;
   object-fit: contain;
 }
-.sponsor-card__mark--crop img {
+.sponsor-item__mark--crop img {
   width: 100%;
-  height: 56px;
+  height: 48px;
   max-width: none;
   max-height: none;
   object-fit: cover;
   object-position: center 27%;
 }
-.sponsor-card__mark img.sponsor-card__image--square {
-  width: 90px;
-  height: 90px;
-  max-width: 90px;
-  max-height: 90px;
+.sponsor-item__mark img.sponsor-item__image--square {
+  width: 82px;
+  height: 82px;
+  max-width: 82px;
+  max-height: 82px;
 }
-.sponsor-card .kicker { margin: 0; color: var(--terra); }
-.sponsor-card__name {
-  margin: 8px 0 0;
+.sponsor-item--named::before {
+  content: "";
+  display: block;
+  flex: 0 0 100px;
+}
+.sponsor-item__name {
+  max-width: 100%;
+  margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(20px, 1.8vw, 25px);
+  font-size: clamp(19px, 1.75vw, 24px);
   font-weight: 400;
   line-height: 1.2;
   color: var(--ink);
+  text-align: center;
 }
-.sponsor-card--named .sponsor-card__mark { background: var(--paper-deep); }
-.sponsor-card--named .sponsor-card__mark span {
-  display: grid;
-  place-items: center;
-  width: 76px;
-  aspect-ratio: 1;
-  border: 1px solid rgba(63, 106, 85, .34);
-  border-radius: 50%;
-  color: var(--green);
-  font-family: var(--font-display);
-  font-size: 30px;
+.sponsor-item__label {
+  margin: 8px 0 0;
+  color: var(--terra);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
 }
 .sponsor-note {
-  margin: 26px 0 0;
+  margin: 22px 0 0;
   color: var(--muted);
   text-align: center;
   font-family: var(--font-read);
@@ -918,11 +934,25 @@ a.contact__value:hover { color: var(--green); }
 }
 .sponsor-note .link-green { font-style: normal; }
 
-@media (max-width: 599px) {
-  .sponsor-grid { gap: 14px; margin-top: 22px; }
-  .sponsor-card { flex-basis: 100%; max-width: 360px; }
+@media (max-width: 900px) {
+  .sponsor-item {
+    flex-basis: calc(33.333% - 1px);
+    max-width: calc(33.333% - 1px);
+  }
 }
-
+@media (max-width: 680px) {
+  .sponsor-item {
+    flex-basis: calc(50% - 1px);
+    max-width: calc(50% - 1px);
+  }
+}
+@media (max-width: 460px) {
+  .sponsor-item {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-height: 176px;
+  }
+}
 
 /* ---------- 9. Lightbox (js/lightbox.js) ---------- */
 .lightbox {
