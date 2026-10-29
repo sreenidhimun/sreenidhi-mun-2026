@@ -910,9 +910,15 @@ a.contact__value:hover { color: var(--green); }
 }
 .sponsor-card--named {
   justify-content: center;
+  text-align: center;
 }
 .sponsor-card--named .sponsor-card__name {
-  margin: auto 0 0;
+  margin: 0;
+  text-align: center;
+}
+.sponsor-card--named .sponsor-card__label {
+  align-self: center;
+  margin-top: 8px;
 }
 .sponsor-note {
   margin: 26px 0 0;
