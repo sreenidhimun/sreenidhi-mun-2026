@@ -7,16 +7,16 @@
       "items": [
         {
           "start": "12:30 pm",
-          "end": "2:00 pm",
+          "end": "1:30 pm",
           "title": "Registration"
         },
         {
-          "start": "2:00 pm",
-          "end": "2:45 pm",
+          "start": "1:30 pm",
+          "end": "2:30 pm",
           "title": "Opening Ceremony"
         },
         {
-          "start": "3:00 pm",
+          "start": "2:40 pm",
           "end": "4:00 pm",
           "title": "Committee session 1"
         },
