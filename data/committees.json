@@ -62,7 +62,7 @@
         {
           "name": "Faraaz",
           "role": "Chair",
-          "photo": "",
+          "photo": "assets/img/committees/disec-faraaz.jpeg",
           "alt": "Portrait of Faraaz",
           "bio": ""
         },
@@ -151,7 +151,7 @@
         {
           "name": "Aarav Mehta",
           "role": "Vice President",
-          "photo": "",
+          "photo": "assets/img/committees/unsc-aarav.jpeg",
           "alt": "Portrait of Aarav Mehta",
           "bio": ""
         },
@@ -218,14 +218,14 @@
         {
           "name": "Sai Eshwar",
           "role": "Speaker",
-          "photo": "",
+          "photo": "assets/img/committees/lok-sabha-sai-eshwar.jpeg",
           "alt": "Portrait of Sai Eshwar",
           "bio": ""
         },
         {
           "name": "Adnaan Farooqui",
           "role": "Deputy Speaker",
-          "photo": "",
+          "photo": "assets/img/committees/lok-sabha-adnaan.jpeg",
           "alt": "Portrait of Adnaan Farooqui",
           "bio": ""
         },
@@ -259,7 +259,7 @@
         {
           "name": "Laxmikanth",
           "role": "Chair",
-          "photo": "",
+          "photo": "assets/img/committees/ifi-lakshmikant.jpeg",
           "alt": "Portrait of Laxmikanth",
           "bio": ""
         },
