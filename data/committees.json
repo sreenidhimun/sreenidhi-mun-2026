@@ -19,15 +19,15 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
+          "name": "Soumith",
+          "role": "Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Soumith",
           "bio": ""
         },
         {
           "name": "",
-          "role": "Vice-Chairperson",
+          "role": "Vice Chair",
           "photo": "",
           "alt": "",
           "bio": ""
@@ -60,17 +60,17 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
+          "name": "Faraaz",
+          "role": "Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Faraaz",
           "bio": ""
         },
         {
-          "name": "",
-          "role": "Vice-Chairperson",
+          "name": "Aadya Reedy",
+          "role": "Vice Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Aadya Reedy",
           "bio": ""
         },
         {
@@ -102,14 +102,14 @@
       "board": [
         {
           "name": "Kamlesh Mohanty",
-          "role": "Chairperson",
+          "role": "Chair",
           "photo": "assets/img/committees/unhrc-kamlesh.jpg",
           "alt": "Portrait of Kamlesh Mohanty",
           "bio": ""
         },
         {
           "name": "Vansh Jain",
-          "role": "Vice-Chairperson",
+          "role": "Vice Chair",
           "photo": "assets/img/committees/unhrc-vansh.jpg",
           "alt": "Portrait of Vansh Jain",
           "bio": ""
@@ -142,17 +142,17 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
+          "name": "Zeeshaan",
+          "role": "President",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Zeeshaan",
           "bio": ""
         },
         {
-          "name": "",
-          "role": "Vice-Chairperson",
+          "name": "Aarav Mehta",
+          "role": "Vice President",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Aarav Mehta",
           "bio": ""
         },
         {
@@ -189,10 +189,10 @@
           "bio": ""
         },
         {
-          "name": "Prudhvi Sistla",
-          "role": "Director of Photography",
+          "name": "Pruthvi Sistla",
+          "role": "DOP",
           "photo": "assets/img/committees/ip-prudhvi.jpg",
-          "alt": "Portrait of Prudhvi Sistla",
+          "alt": "Portrait of Pruthvi Sistla",
           "bio": ""
         }
       ]
@@ -216,17 +216,17 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
+          "name": "Sai Eshwar",
+          "role": "Speaker",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Sai Eshwar",
           "bio": ""
         },
         {
-          "name": "",
-          "role": "Vice-Chairperson",
+          "name": "Adnaan Farooqui",
+          "role": "Deputy Speaker",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Adnaan Farooqui",
           "bio": ""
         },
         {
@@ -257,17 +257,17 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
+          "name": "Laxmikanth",
+          "role": "Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Laxmikanth",
           "bio": ""
         },
         {
-          "name": "",
-          "role": "Vice-Chairperson",
+          "name": "Hrishi",
+          "role": "Vice Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Hrishi",
           "bio": ""
         },
         {
@@ -298,17 +298,17 @@
       },
       "board": [
         {
-          "name": "",
-          "role": "Chairperson",
+          "name": "Sharan Velluri",
+          "role": "Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Sharan Velluri",
           "bio": ""
         },
         {
-          "name": "",
-          "role": "Vice-Chairperson",
+          "name": "Kartheek",
+          "role": "Vice Chair",
           "photo": "",
-          "alt": "",
+          "alt": "Portrait of Kartheek",
           "bio": ""
         },
         {
