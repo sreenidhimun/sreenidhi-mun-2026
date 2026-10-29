@@ -578,6 +578,27 @@
 }
 .nl-dot[aria-current="true"]::before { width: 18px; background: var(--ink); }
 
+/* Laptop and desktop: show every executive-board portrait together in a row. */
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  .nl-desktop { display: none; }
+  .nl-cards { display: block; }
+  .nl-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 24px;
+    overflow: visible;
+    padding: 24px 0 34px;
+    margin-inline: 0;
+    scroll-snap-type: none;
+  }
+  .nl-card-wrap {
+    width: 100%;
+    max-width: 380px;
+    justify-self: center;
+  }
+  .nl-pager { display: none; }
+}
+
 /* ---------- 13. Bio drawer ---------- */
 .drawer { position: fixed; inset: 0; z-index: var(--z-drawer); }
 .drawer__backdrop { position: absolute; inset: 0; background: rgba(26, 38, 32, .45); }
