@@ -830,92 +830,76 @@ a.contact__value:hover { color: var(--green); }
 
 /* ---------- 8. Partners ---------- */
 /* ---------- 8. Sponsors ---------- */
-.sponsor-panel {
-  margin-top: 4px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(26, 38, 32, .12);
-  box-shadow: 0 16px 34px rgba(26, 38, 32, .08);
-}
-.sponsor-banner {
-  padding: clamp(24px, 3.5vw, 42px) 20px;
-  background: #fff;
-  text-align: center;
-}
-.sponsor-banner .kicker {
-  margin-bottom: 10px;
-  color: var(--terra);
-}
-.sponsor-banner .h-section {
-  margin: 0;
-}
 .sponsor-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1px;
-  margin: 0;
-  padding: 1px;
-  background: rgba(26, 38, 32, .10);
+  align-items: stretch;
+  gap: 18px;
+  margin: 30px 0 0;
+  padding: 0;
   list-style: none;
 }
-.sponsor-item {
+.sponsor-card {
   display: flex;
-  flex: 1 1 calc(25% - 1px);
+  flex: 1 1 220px;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-width: 205px;
-  max-width: calc(25% - 1px);
-  min-height: 192px;
-  padding: 18px 16px 20px;
+  min-width: min(100%, 220px);
+  max-width: 280px;
+  min-height: 246px;
+  padding: 20px 18px 22px;
   background: #fff;
+  border: 1px solid rgba(26, 38, 32, .15);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(26, 38, 32, .07);
   text-align: center;
+  transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out);
 }
-.sponsor-item__mark {
+.sponsor-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(63, 106, 85, .38);
+  box-shadow: 0 16px 30px rgba(26, 38, 32, .12);
+}
+.sponsor-card__mark {
   display: grid;
   place-items: center;
   width: 100%;
-  height: 100px;
-  margin-bottom: 12px;
+  height: 126px;
+  margin-bottom: 16px;
   overflow: hidden;
+  background: #fff;
 }
-.sponsor-item__mark img {
+.sponsor-card__mark img {
   display: block;
-  max-width: 92%;
-  max-height: 82px;
+  max-width: 94%;
+  max-height: 100%;
   object-fit: contain;
 }
-.sponsor-item__mark--crop img {
+.sponsor-card__mark--crop img {
   width: 100%;
-  height: 48px;
+  height: 56px;
   max-width: none;
   max-height: none;
   object-fit: cover;
   object-position: center 27%;
 }
-.sponsor-item__mark img.sponsor-item__image--square {
-  width: 82px;
-  height: 82px;
-  max-width: 82px;
-  max-height: 82px;
+.sponsor-card__mark img.sponsor-card__image--square {
+  width: 90px;
+  height: 90px;
+  max-width: 90px;
+  max-height: 90px;
 }
-.sponsor-item--named::before {
-  content: "";
-  display: block;
-  flex: 0 0 100px;
-}
-.sponsor-item__name {
-  max-width: 100%;
-  margin: 0;
+.sponsor-card__name {
+  width: 100%;
+  margin: auto 0 0;
+  color: var(--ink);
   font-family: var(--font-display);
-  font-size: clamp(19px, 1.75vw, 24px);
+  font-size: clamp(20px, 1.8vw, 25px);
   font-weight: 400;
   line-height: 1.2;
-  color: var(--ink);
-  text-align: center;
 }
-.sponsor-item__label {
+.sponsor-card__label {
   margin: 8px 0 0;
   color: var(--terra);
   font-family: var(--font-ui);
@@ -924,8 +908,14 @@ a.contact__value:hover { color: var(--green); }
   letter-spacing: .2em;
   text-transform: uppercase;
 }
+.sponsor-card--named {
+  justify-content: center;
+}
+.sponsor-card--named .sponsor-card__name {
+  margin: auto 0 0;
+}
 .sponsor-note {
-  margin: 22px 0 0;
+  margin: 26px 0 0;
   color: var(--muted);
   text-align: center;
   font-family: var(--font-read);
@@ -935,23 +925,14 @@ a.contact__value:hover { color: var(--green); }
 .sponsor-note .link-green { font-style: normal; }
 
 @media (max-width: 900px) {
-  .sponsor-item {
-    flex-basis: calc(33.333% - 1px);
-    max-width: calc(33.333% - 1px);
-  }
+  .sponsor-card { flex-basis: calc(33.333% - 18px); }
 }
 @media (max-width: 680px) {
-  .sponsor-item {
-    flex-basis: calc(50% - 1px);
-    max-width: calc(50% - 1px);
-  }
+  .sponsor-card { flex-basis: calc(50% - 18px); }
 }
 @media (max-width: 460px) {
-  .sponsor-item {
-    flex-basis: 100%;
-    max-width: 100%;
-    min-height: 176px;
-  }
+  .sponsor-grid { gap: 14px; margin-top: 22px; }
+  .sponsor-card { flex-basis: 100%; max-width: 360px; }
 }
 
 /* ---------- 9. Lightbox (js/lightbox.js) ---------- */
