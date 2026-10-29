@@ -849,7 +849,7 @@ a.contact__value:hover { color: var(--green); }
   max-width: 280px;
   min-height: 246px;
   padding: 20px 18px 22px;
-  background: #fff;
+  background: #FAF6EC;
   border: 1px solid rgba(26, 38, 32, .15);
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(26, 38, 32, .07);
