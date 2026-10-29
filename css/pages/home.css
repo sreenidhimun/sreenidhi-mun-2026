@@ -829,7 +829,100 @@ a.contact__value:hover { color: var(--green); }
 .map__directions { position: absolute; left: 20px; bottom: 20px; z-index: 3; }
 
 /* ---------- 8. Partners ---------- */
-.partners .notice { margin-top: 4px; }
+/* ---------- 8. Sponsors ---------- */
+.sponsor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.sponsor-card {
+  flex: 1 1 220px;
+  min-width: min(100%, 220px);
+  max-width: 280px;
+  padding: 18px 18px 20px;
+  background: var(--card);
+  border: 1px solid rgba(26, 38, 32, .13);
+  box-shadow: 0 10px 24px rgba(26, 38, 32, .06);
+  text-align: center;
+  transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out);
+}
+.sponsor-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(63, 106, 85, .35);
+  box-shadow: 0 16px 30px rgba(26, 38, 32, .11);
+}
+.sponsor-card__mark {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 126px;
+  margin-bottom: 17px;
+  padding: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(26, 38, 32, .07);
+}
+.sponsor-card__mark img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.sponsor-card__mark--crop img {
+  width: 100%;
+  height: 56px;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 27%;
+}
+.sponsor-card__mark img.sponsor-card__image--square {
+  width: 90px;
+  height: 90px;
+  max-width: 90px;
+  max-height: 90px;
+}
+.sponsor-card .kicker { margin: 0; color: var(--terra); }
+.sponsor-card__name {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.8vw, 25px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.sponsor-card--named .sponsor-card__mark { background: var(--paper-deep); }
+.sponsor-card--named .sponsor-card__mark span {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(63, 106, 85, .34);
+  border-radius: 50%;
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 30px;
+}
+.sponsor-note {
+  margin: 26px 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-family: var(--font-read);
+  font-style: italic;
+  font-size: 16px;
+}
+.sponsor-note .link-green { font-style: normal; }
+
+@media (max-width: 599px) {
+  .sponsor-grid { gap: 14px; margin-top: 22px; }
+  .sponsor-card { flex-basis: 100%; max-width: 360px; }
+}
+
 
 /* ---------- 9. Lightbox (js/lightbox.js) ---------- */
 .lightbox {
