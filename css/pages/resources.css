@@ -160,3 +160,13 @@ a.iimun:hover, a.iimun:focus-visible { border-color: rgba(26, 38, 32, .35); box-
 .iimun__desc { margin-top: 12px; font-family: var(--font-display); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--muted); }
 .iimun__note { margin-top: 18px; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
 .iimun--soon .iimun__arrow { opacity: .4; }
+
+/* Keep native video controls, without an extra frame around the player. */
+.video__file {
+  -webkit-appearance: auto;
+  appearance: auto;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
