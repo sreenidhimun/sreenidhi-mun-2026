@@ -1,5 +1,18 @@
 {
-  "videos": [],
+  "videos": [
+    {
+      "title": "MUN Training Video 1",
+      "file": "assets/videos/MUN Training Video 1.MP4"
+    },
+    {
+      "title": "MUN Training Video 2",
+      "file": "assets/videos/MUN Training Video 2.MP4"
+    },
+    {
+      "title": "MUN Training Video 3",
+      "file": "assets/videos/MUN Training Video 3.MP4"
+    }
+  ],
   "documents": [
     {
       "title": "SMUN Training Material 2026",
