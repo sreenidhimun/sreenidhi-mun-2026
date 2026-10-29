@@ -169,4 +169,5 @@ a.iimun:hover, a.iimun:focus-visible { border-color: rgba(26, 38, 32, .35); box-
   outline: 0;
   box-shadow: none;
   object-fit: contain;
+  clip-path: inset(1px);
 }
