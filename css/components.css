@@ -578,11 +578,11 @@
 }
 .nl-dot[aria-current="true"]::before { width: 18px; background: var(--ink); }
 
-/* Laptop and desktop: show every executive-board portrait together in a row. */
+/* Laptop and desktop: show every committee executive-board portrait together in a row. */
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) {
-  .nl-desktop { display: none; }
-  .nl-cards { display: block; }
-  .nl-track {
+  body[data-page="committee"] .nl-desktop { display: none; }
+  body[data-page="committee"] .nl-cards { display: block; }
+  body[data-page="committee"] .nl-track {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     gap: 24px;
@@ -591,12 +591,12 @@
     margin-inline: 0;
     scroll-snap-type: none;
   }
-  .nl-card-wrap {
+  body[data-page="committee"] .nl-card-wrap {
     width: 100%;
     max-width: 380px;
     justify-self: center;
   }
-  .nl-pager { display: none; }
+  body[data-page="committee"] .nl-pager { display: none; }
 }
 
 /* ---------- 13. Bio drawer ---------- */
