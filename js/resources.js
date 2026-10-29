@@ -1,7 +1,7 @@
 /* ==========================================================================
    resources.js — Training Resources page.
    Everything comes from data/resources.json:
-     videos    [{ title, youtubeId, duration, description }]
+     videos    [{ title, youtubeId or file, duration, description }]
      documents [{ title, file, type, size, source, description }]
      iimun     [{ title, description, url }]      ← always credited to IIMUN
    Tabs filter instantly (cards glide into place with GSAP Flip), the search
@@ -48,19 +48,22 @@ const searchText = (...parts) => esc(parts.filter(Boolean).join(' ').toLowerCase
 
 function renderVideos(videos) {
   qs('[data-list="videos"]').innerHTML = videos.map((v, i) => {
+    const youtube = !isBlank(v.youtubeId);
+    const file = !isBlank(v.file);
     const color = VIDEO_COLORS[i % VIDEO_COLORS.length];
-    const playable = !isBlank(v.youtubeId);
-    const thumb = playable
+    const thumb = youtube
       ? `<img class="media-cover" src="https://i.ytimg.com/vi/${esc(v.youtubeId)}/hqdefault.jpg" alt="" loading="lazy" decoding="async">`
       : phLandscape(color);
     const inner = `${thumb}<span class="video__play" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M6 4 L16 10 L6 16 Z" fill="currentColor"/></svg></span>`;
+    const player = file
+      ? `<video class="video__frame video__file" controls playsinline preload="metadata" aria-label="${esc(v.title)}"><source src="${esc(v.file)}" type="video/mp4">Your browser does not support embedded videos.</video>`
+      : youtube
+        ? `<button class="video__thumb" type="button" data-play="${esc(v.youtubeId)}" data-title="${esc(v.title)}" aria-label="Play video: ${esc(v.title)}">${inner}</button>`
+        : `<div class="video__thumb video__thumb--soon">${inner}<span class="ph__label">Video coming soon</span></div>`;
     return `
       <article class="video" data-item data-text="${searchText(v.title, v.description)}">
-        ${playable
-          ? `<button class="video__thumb" type="button" data-play="${esc(v.youtubeId)}" data-title="${esc(v.title)}"
-               aria-label="Play video: ${esc(v.title)}">${inner}</button>`
-          : `<div class="video__thumb video__thumb--soon">${inner}<span class="ph__label">Video coming soon</span></div>`}
-        <p class="kicker video__kicker">Video <span class="video__dur">${esc(v.duration)}</span></p>
+        ${player}
+        <p class="kicker video__kicker">Video${v.duration ? ` <span class="video__dur">${esc(v.duration)}</span>` : ""}</p>
         <h3 class="video__title">${esc(v.title)}</h3>
       </article>`;
   }).join('');
@@ -77,7 +80,6 @@ function renderVideos(videos) {
     frame.focus();
   }));
 }
-
 function renderDocuments(docs) {
   qs('[data-list="documents"]').innerHTML = docs.map((d) => {
     const type = d.type || 'PDF';
